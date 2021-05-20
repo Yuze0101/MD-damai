@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-20 19:06:47
+ * @LastEditTime: 2021-05-20 21:47:14
  * @LastEditors: GengYuan
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\index.html
@@ -36,15 +36,37 @@
           <a href="#" data-activates="mobile-demo" class="button-collapse"
             ><i class="material-icons">menu</i></a
           >
+
           <!-- 手机左侧导航栏部分 -->
           <ul class="side-nav fixed z-depth-3" id="mobile-demo">
             <li class="cyan">
               <div class="userView">
                 <div class="background"></div>
-                <a href="#!user"
+                <!-- <a href="#!user"
                   ><img class="circle" src="../images/user.jpg"
-                /></a>
+                /></a> -->
                 <!-- TODO 未登录更换字样 -->
+                <a class="waves-effect waves-light btn" href="#modal1">注册</a>
+                <a class="waves-effect waves-light btn" href="#modal2">登录</a>
+
+                <!-- Modal Structure -->
+                <div id="modal1" class="modal bottom-sheet">
+                  <div class="modal-content">
+                    <h4>模态标题</h4>
+                    <p>一堆文本</p>
+                  </div>
+                  <div class="modal-footer">
+                    <a
+                      href="#!"
+                      class="
+                        modal-action modal-close
+                        waves-effect waves-green
+                        btn-flat
+                      "
+                      >同意</a
+                    >
+                  </div>
+                </div>
                 <a href="#!name"><span class="white-text name">张三</span></a>
                 <a href="#!email"
                   ><span class="white-text email">jdandturk@sina.com</span></a
@@ -67,21 +89,25 @@
             </li>
             <li>
               <a class="waves-effect" href="#!" class="hide-on-large-only"
-                >你好，xx</a
+                >首页</a
               >
             </li>
             <li>
               <a class="waves-effect" href="#!" class="hide-on-large-only"
-                >我的大麦</a
+                >体育</a
               >
             </li>
             <li>
               <a class="waves-effect" href="#!" class="hide-on-large-only"
-                >我的订单</a
+                >剧院</a
               >
             </li>
-            <li><a class="subheader">子标题</a></li>
-            <li><a class="waves-effect" href="#!">带波纹效果的第三链接</a></li>
+            <li><a class="subheader">账户中心</a></li>
+            <li><a class="waves-effect" href="#!">个人中心</a></li>
+            <li>
+              <a class="waves-effect" href="#!">购物车</a>
+            </li>
+            <li><a class="waves-effect" href="#modal3">订单管理</a></li>
           </ul>
         </div>
       </nav>
@@ -97,11 +123,43 @@
       </div>
       <!-- 内容流 -->
       <div class="container white z-depth-1">
+        <h4>热门推荐</h4>
         <div class="row">
-          <div class="col l4 m2 s1">
+          <!-- TODO 获取文档流编辑 -->
+          <div class="col l3 s6">
             <div class="card">
               <div class="card-image">
-                <img src="" alt="">
+                <img src="../images/image-1.png" alt="" />
+              </div>
+              <div class="card-content">
+                <p>123</p>
+              </div>
+            </div>
+          </div>
+          <div class="col l3 s6">
+            <div class="card">
+              <div class="card-image">
+                <img src="../images/image-1.png" alt="" />
+              </div>
+              <div class="card-content">
+                <p>123</p>
+              </div>
+            </div>
+          </div>
+          <div class="col l3 s6">
+            <div class="card">
+              <div class="card-image">
+                <img src="../images/image-1.png" alt="" />
+              </div>
+              <div class="card-content">
+                <p>123</p>
+              </div>
+            </div>
+          </div>
+          <div class="col l3 s6">
+            <div class="card">
+              <div class="card-image">
+                <img src="../images/image-1.png" alt="" />
               </div>
               <div class="card-content">
                 <p>123</p>
@@ -110,9 +168,177 @@
           </div>
         </div>
       </div>
+      <!-- TODO 获取数据添加container -->
+      <div class="container white z-depth-1">
+        <h4>1F 戏剧达人</h4>
+        <div class="row">
+          <div class="col l6">
+            <div class="card horizontal">
+              <div class="card-image">
+                <img src="../images/image-15.png" alt="" />
+              </div>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <p>麦戏聚│孟京辉戏剧作品《一 个陌生女人的来信》深圳站</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col l6">
+            <div class="card horizontal">
+              <div class="card-image">
+                <img src="../images/image-15.png" alt="" />
+              </div>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <p>麦戏聚│孟京辉戏剧作品《一 个陌生女人的来信》深圳站</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col l6">
+            <div class="card horizontal">
+              <div class="card-image">
+                <img src="../images/image-15.png" alt="" />
+              </div>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <p>麦戏聚│孟京辉戏剧作品《一 个陌生女人的来信》深圳站</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col l6">
+            <div class="card horizontal">
+              <div class="card-image">
+                <img src="../images/image-15.png" alt="" />
+              </div>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <p>麦戏聚│孟京辉戏剧作品《一 个陌生女人的来信》深圳站</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 注册模态框 -->
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <h4>注册</h4>
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="userName" type="text" class="validate" />
+                  <label for="userName">账号</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="userPass" type="text" class="validate" />
+                  <label for="userPass">密码</label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a
+            href="#!"
+            class="modal-action modal-close waves-effect waves-green btn-flat"
+            >完成注册</a
+          >
+        </div>
+      </div>
+      <!-- 登录模态框 -->
+      <div id="modal2" class="modal">
+        <div class="modal-content">
+          <h4>登录</h4>
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="inputUser" type="text" class="validate" />
+                  <label for="inputUser">账号</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="inputPass" type="text" class="validate" />
+                  <label for="inputPass">密码</label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a
+            href="#!"
+            class="modal-action modal-close waves-effect waves-green btn-flat"
+            >登录</a
+          >
+        </div>
+      </div>
+      <!-- 订单模态框 -->
+      <div id="modal3" class="modal">
+        <div class="modal-content">
+          <h4>订单管理</h4>
+          <div class="row">
+            <div class="col s12">
+              <table class="bordered highlight responsive-table">
+                <thead>
+                  <tr>
+                    <td>项目名称</td>
+                    <td>票价</td>
+                    <td>数量</td>
+                    <td>售后</td>
+                    <td>订单金额</td>
+                    <td>交易状态</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                  </tr>
+                  <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>4</td>
+                    <td>5</td>
+                    <td>6</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a
+            href="#!"
+            class="modal-action modal-close waves-effect waves-green btn-flat"
+            >确认</a
+          >
+        </div>
+      </div>
     </main>
 
-    <footer class="page-footer">
+    <footer class="page-footer deep-purple">
       <div class="container">
         <div class="row">
           <div class="col l6 s12">
@@ -144,6 +370,7 @@
     <script>
       $(document).ready(function () {
         $(".button-collapse").sideNav();
+        $(".modal").modal();
         $(".carousel").carousel({
           full_width: true,
           indicators: true,
