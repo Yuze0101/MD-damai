@@ -1,40 +1,13 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
-<<<<<<< HEAD
- * @LastEditTime: 2021-05-20 23:25:22
+ * @LastEditTime: 2021-05-20 23:33:25
  * @LastEditors: GengYuan
-=======
- * @LastEditTime: 2021-05-20 23:14:33
- * @LastEditors: Please set LastEditors
->>>>>>> origin/leihao
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\index.html
 -->
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--Import Google Icon Font-->
-    <link
-      href="http://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="../util/materialize/css/materialize.min.css"
-      media="screen,projection"
-    />
-    <link rel="stylesheet" href="../css/index.min.css" />
-    <title>DaiMaiWang</title>
-    <style></style>
-  </head>
-=======
->>>>>>> origin/leihao
 
 <head>
   <meta charset="UTF-8" />
@@ -333,17 +306,17 @@
             <div class="row">
               <div class="input-field col s12">
                 <div class="row">
-                  <select class="col s5">
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="1">选项 1</option>
-                    <option value="2">选项 2</option>
-                    <option value="3">选项 3</option>
+                  <select class="col s6">
+                    <option value="" disabled selected>省</option>
+                    <option value="1">四川</option>
+                    <option value="2">河南</option>
+                    <option value="3">山东</option>
                   </select>
-                  <select class="col s5">
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="1">选项 1</option>
-                    <option value="2">选项 2</option>
-                    <option value="3">选项 3</option>
+                  <select class="col s6">
+                    <option value="" disabled selected>市</option>
+                    <option value="1">成都</option>
+                    <option value="2">郑州</option>
+                    <option value="3">济南</option>
                   </select>
                   <label>选择您的地址</label>
                 </div>
@@ -474,7 +447,7 @@
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 15 // Creates a dropdown of 15 years to control year
       });
-
+      $('ul.tabs').tabs();
       $('select').material_select();
     });
 
