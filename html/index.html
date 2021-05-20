@@ -1,7 +1,7 @@
 <!--
  * @Author: GengYuan
  * @Date: 2021-05-20 12:07:11
- * @LastEditTime: 2021-05-20 13:51:26
+ * @LastEditTime: 2021-05-20 14:31:43
  * @LastEditors: GengYuan
  * @Description: 
  * @FilePath: \MD-DaiMai\MD-damai\html\index.html
@@ -9,13 +9,55 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html> 
+    <!--Import Google Icon Font-->
+    <link
+      href="http://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <!--Import materialize.css-->
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="../util/materialize/css/materialize.min.css"
+      media="screen,projection"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="nav-wrapper deep-purple">
+          <a href="#!" class="brand-logo">Logo</a>
+          <a href="#" data-activates="mobile-demo" class="button-collapse"
+            ><i class="material-icons">menu</i></a
+          >
+          <ul class="right hide-on-med-and-down">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">组件</a></li>
+            <li><a href="collapsible.html">Javascript</a></li>
+            <li><a href="mobile.html">手机</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+            <li><a href="sass.html">Sass</a></li>
+            <li><a href="badges.html">组件</a></li>
+            <li><a href="collapsible.html">Javascript</a></li>
+            <li><a href="mobile.html">手机</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main></main>
+    <footer></footer>
+    <script src="../util/jquery-3.5.1.min.js"></script>
+    <script src="../util/materialize/js/materialize.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".button-collapse").sideNav();
+      });
+    </script>
+  </body>
+</html>
