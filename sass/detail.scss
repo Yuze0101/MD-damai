@@ -1,0 +1,10 @@
+@import "./global";
+main {
+  #progress {
+    display: flex;
+    text-align: center;
+    li {
+      width: 25%;
+    }
+  }
+}
