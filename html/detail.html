@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-21 16:24:13
+ * @LastEditTime: 2021-05-21 16:41:21
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\detail.html
@@ -30,15 +30,15 @@
 
         <!-- 手机左侧导航栏部分 -->
         <ul class="side-nav fixed z-depth-3" id="mobile-demo">
-          <li class="cyan">
+          <li class="deep-purple">
             <div class="userView">
               <div class="background"></div>
               <!-- <a href="#!user"
                   ><img class="circle" src="../images/user.jpg"
                 /></a> -->
               <!-- TODO 未登录更换字样 -->
-              <a class="waves-effect waves-light btn" href="#modal1">注册</a>
-              <a class="waves-effect waves-light btn" href="#modal2">登录</a>
+              <a class="waves-effect waves-light btn  hoverable" href="#modal1">注册</a>
+              <a class="waves-effect waves-light btn  hoverable" href="#modal2">登录</a>
 
               <!-- Modal Structure -->
               <div id="modal1" class="modal bottom-sheet">
@@ -59,7 +59,7 @@
             </div>
           </li>
           <!-- TODO 更换登录链接 -->
-          <li>
+          <li class="hoverable">
             <form class="center">
               <div class="input-field">
                 <input id="search" type="search" required />
@@ -68,21 +68,18 @@
               </div>
             </form>
           </li>
-          <li>
+          <li class="hoverable">
             <a class="waves-effect" href="#!" class="hide-on-large-only">首页</a>
           </li>
-          <li>
+          <li class="hoverable">
             <a class="waves-effect" href="#!" class="hide-on-large-only">体育</a>
           </li>
-          <li>
+          <li class="hoverable">
             <a class="waves-effect" href="#!" class="hide-on-large-only">剧院</a>
           </li>
-          <li><a class="subheader">账户中心</a></li>
-          <li><a class="waves-effect" href="#modal3">个人中心</a></li>
-          <li>
-            <a class="waves-effect" href="#!">购物车</a>
-          </li>
-          <li><a class="waves-effect" href="#modal4">订单管理</a></li>
+          <li><div class="divider"></div><a class="subheader">账户中心</a></li>
+          <li><a class="waves-effect  hoverable" href="#modal3">个人中心</a></li>
+          <li><a class="waves-effect  hoverable" href="#modal4">订单管理</a></li>
         </ul>
       </div>
     </nav>
