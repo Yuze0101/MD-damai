@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-21 09:25:52
+ * @LastEditTime: 2021-05-21 11:02:17
  * @LastEditors: GengYuan
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\detail.html
@@ -240,14 +240,122 @@
             <div class="row">
               <div class="col s2"></div>
               <div class="col s10">
-                <button class="btn waves-effect center">选座购买</button>
+                <a class="btn waves-effect center" href="#modal5">选座购买</a>
               </div>
             </div>
           </div>
         </div>
       </div>
       <!-- 演出信息模块 -->
-      <div class="container white z-depth-1"></div>
+      <div class="container white z-depth-1">
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs">
+              <li class="tab col s3"><a class="black-text" href="#test1">演出信息</a></li>
+              <li class="tab col s3"><a class="black-text" href="#test2">精彩剧评</a></li>
+              <li class="tab col s3"><a class="black-text" href="#test3">购买说明</a></li>
+              <li class="tab col s3"><a class="black-text" href="#test4">付款方式</a></li>
+            </ul>
+          </div>
+          <div id="showInfo" class="col s12">
+            <h5>基本信息</h5>
+            <table class="striped z-depth-1">
+              <thead class="col s4">
+                <tr class="right">
+                  <td>演出时间</td>
+                  <td>演出时常</td>
+                  <td>限购</td>
+                  <td>付款时效提醒</td>
+                  <td>发票说明</td>
+                  <td>演出场馆</td>
+                  <td>入场时间</td>
+                  <td>儿童入场提示</td>
+                  <td>缺货登记提醒</td>
+                </tr>
+              </thead>
+              <tbody class="col s8">
+                <tr>
+                  <td>2017.12.23-12.23</td>
+                  <td>约70分钟</td>
+                  <td>选作购买每单限4张</td>
+                  <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+                  <td>演出结束后主办方开具</td>
+                  <td>中国儿童中心剧院</td>
+                  <td>约演演出前30分钟</td>
+                  <td>儿童凭票入场</td>
+                  <td>ytyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+            <div class="row">
+              <h5>项目概况</h5>
+              <div class="col s12">
+                <div class="card">
+                  <div class="card-content">
+                    <p>
+                      爱丽丝梦游仙境： 彩虹岛本是一个神秘莫测的童话世界，
+                      这个世界里，红桃皇后的魔力控制了一切，无数百姓成为了
+                      她们的奴隶。童话王国即将毁于一旦，而穿越到这个世界的爱丽丝，她是否有勇气战胜
+                      王后的魔法水晶和恶龙沙克，是否可以跟小伙伴们恢复童话王国往日的幸福与快乐?让我们与白兔酷比和爱
+                      丽丝一起走进那个神奇的树洞，共同穿越到凶险的童话王国，帮助爱丽丝打败可恶的红桃皇后和恶龙沙克吧!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 评论 -->
+          <div id="comment" class="col s12">
+            <div class="row">
+              <h5>写剧评</h5>
+              <div class="col s12">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="row">
+                      <h5>打分：</h5>
+                      <i class="material-icons">grade</i
+                      ><i class="material-icons">grade</i
+                      ><i class="material-icons">grade</i
+                      ><i class="material-icons">grade</i
+                      ><i class="material-icons">grade</i>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <textarea
+                          id="textarea1"
+                          class="materialize-textarea"
+                        ></textarea>
+                        <label for="textarea1">写下你的评论</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <div class="card horizontal">
+                  <div class="card-stacked">
+                    <div class="card-content">
+                      <p> <div class="chip">
+                        <img src="../images/user.jpg" alt="Contact Person" />
+                        Nevermore
+                      </div>
+                      我是评论</p>
+                    </div>
+                    <div class="card-action">
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="test3" class="col s12">测试 3</div>
+          <div id="test4" class="col s12">测试 4</div>
+        </div>
+      </div>
       <!-- 注册模态框 -->
       <div id="modal1" class="modal">
         <div class="modal-content">
@@ -486,7 +594,43 @@
       </div>
       <!-- 选座购买模态框 -->
       <div id="modal5" class="modal">
-        
+        <div class="modal-content">
+          <h4>选择座位</h4>
+          <div class="row">
+            <div class="col s12">
+              <div class="cyan lighten-3 center-align">大荧幕</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <!-- 座位模块 -->
+              <div id="sits">
+                <!-- 每行的个数 -->
+                <div class="row center-align">
+                  <i class="small material-icons col s1">perm_identity</i>
+                  <i class="small material-icons col s1">perm_identity</i>
+                  <i class="small material-icons col s1">perm_identity</i>
+                  <i class="small material-icons col s1">perm_identity</i>
+                  <i class="small material-icons col s1">perm_identity</i>
+                  <i class="small material-icons col s1">perm_identity</i>
+                  <i class="small material-icons col s1">perm_identity</i>
+                  <i class="small material-icons col s1">perm_identity</i>
+                  <i class="small material-icons col s1">perm_identity</i>
+                  <i class="small material-icons col s1">perm_identity</i>
+                  <i class="small material-icons col s1">perm_identity</i>
+                  <i class="small material-icons col s1">perm_identity</i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a
+            href="#!"
+            class="modal-action modal-close waves-effect waves-green btn-flat"
+            >确认购买</a
+          >
+        </div>
       </div>
     </main>
 
@@ -535,6 +679,12 @@
         $("ul.tabs").tabs();
         $("select").material_select();
       });
+
+      function creatSit(row,col){
+        for(let i=1;i<=row;i++){
+
+        }
+      }
     </script>
   </body>
 </html>
