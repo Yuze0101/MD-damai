@@ -75,3 +75,33 @@ main #progress {
 main #progress li {
   width: 25%;
 }
+
+main #sits ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main #sits ul li {
+  width: 100%;
+}
+
+main #sits ul li i {
+  border: 1px solid #ccc;
+}
+
+main #showInfo table {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main #showInfo table tr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}

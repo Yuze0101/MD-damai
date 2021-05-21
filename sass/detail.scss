@@ -7,4 +7,26 @@ main {
       width: 25%;
     }
   }
+  #sits {
+    ul{
+      display: flex;
+      li{
+        width: 100%;
+        i{
+          border: 1px solid #ccc;
+        }
+        
+      }
+    }
+  }
+  #showInfo{
+    table{
+      display: flex;
+      tr{
+        
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
 }
