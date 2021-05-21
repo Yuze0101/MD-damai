@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-21 09:25:52
+ * @LastEditTime: 2021-05-21 14:49:46
  * @LastEditors: GengYuan
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\detail.html
@@ -240,14 +240,159 @@
             <div class="row">
               <div class="col s2"></div>
               <div class="col s10">
-                <button class="btn waves-effect center">选座购买</button>
+                <a class="btn waves-effect center" href="#modal5">选座购买</a>
               </div>
             </div>
           </div>
         </div>
       </div>
       <!-- 演出信息模块 -->
-      <div class="container white z-depth-1"></div>
+      <div class="container white z-depth-1">
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs">
+              <li class="tab col s4">
+                <a class="black-text" href="#showInfo">演出信息</a>
+              </li>
+              <li class="tab col s4">
+                <a class="black-text" href="#comment">精彩剧评</a>
+              </li>
+              <li class="tab col s4">
+                <a class="black-text" href="#buying">购买说明</a>
+              </li>
+            </ul>
+          </div>
+          <!-- 演出信息 -->
+          <div id="showInfo" class="col s12">
+            <div class="row">
+              <h5>基本信息</h5>
+              <table class="striped z-depth-1">
+                <thead class="col s4">
+                  <tr class="right">
+                    <td>演出时间</td>
+                    <td>演出时常</td>
+                    <td>限购</td>
+                    <td>付款时效提醒</td>
+                    <td>发票说明</td>
+                    <td>演出场馆</td>
+                    <td>入场时间</td>
+                    <td>儿童入场提示</td>
+                    <td>缺货登记提醒</td>
+                  </tr>
+                </thead>
+                <tbody class="col s8">
+                  <tr>
+                    <td>2017.12.23-12.23</td>
+                    <td>约70分钟</td>
+                    <td>选作购买每单限4张</td>
+                    <td>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</td>
+                    <td>演出结束后主办方开具</td>
+                    <td>中国儿童中心剧院</td>
+                    <td>约演演出前30分钟</td>
+                    <td>儿童凭票入场</td>
+                    <td>ytyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="row">
+              <h5>项目概况</h5>
+              <div class="col s12">
+                <div class="card">
+                  <div class="card-content">
+                    <p>
+                      爱丽丝梦游仙境： 彩虹岛本是一个神秘莫测的童话世界，
+                      这个世界里，红桃皇后的魔力控制了一切，无数百姓成为了
+                      她们的奴隶。童话王国即将毁于一旦，而穿越到这个世界的爱丽丝，她是否有勇气战胜
+                      王后的魔法水晶和恶龙沙克，是否可以跟小伙伴们恢复童话王国往日的幸福与快乐?让我们与白兔酷比和爱
+                      丽丝一起走进那个神奇的树洞，共同穿越到凶险的童话王国，帮助爱丽丝打败可恶的红桃皇后和恶龙沙克吧!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 评论 -->
+          <div id="comment" class="col s12">
+            <div class="row">
+              <h5>写剧评</h5>
+              <div class="col s12">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="row">
+                      <h5>打分：</h5>
+                      <span>
+                        <i class="material-icons">grade</i
+                          ><i class="material-icons">grade</i
+                          ><i class="material-icons">grade</i
+                          ><i class="material-icons">grade</i
+                          ><i class="material-icons">grade</i>
+                      </span>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <textarea
+                          id="textarea1"
+                          class="materialize-textarea"
+                        ></textarea>
+                        <label for="textarea1">写下你的评论</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <div class="card horizontal">
+                  <div class="card-stacked">
+                    <div class="card-content">
+                      <p> <div class="chip">
+                        <img src="../images/user.jpg" alt="Contact Person" />
+                        Nevermore
+                      </div>
+                      我是评论</p>
+                    </div>
+                    <div class="card-action">
+                      <span>
+                        <i class="material-icons">grade</i
+                          ><i class="material-icons">grade</i
+                          ><i class="material-icons">grade</i
+                          ><i class="material-icons">grade</i
+                          ><i class="material-icons">grade</i>
+                      </span>
+                      <span class="right">我是日期</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 购买说明 -->
+          <div id="buying" class="col s12">
+            <div class="row">
+             <div class="col s12">
+               <div class="card">
+                 <div class="card-content">
+                  <h5>售前提示</h5>
+                  <ul>
+                    <li>1.为避免快递配送不能及时送达，演出距开场时间少于3天时不提供【快递配送】服务，请您谅解！您可以选择电子票或在线支
+                      付后上门自取纸质票。 点击查看上门<a href="">取票地址>></a></li>
+                      <li>2.凡演出票类商品，开票时间一般为演出前二到四周，正式开票后会第一时间短信通知您，请注意接收。</li>
+                      <li> 3.如您不是通过“选座购买”通道进行的票品购买，最终票品数量视项目主办方及场馆情况而定，正式开票后大麦网将根据用户付款先后顺序依次配票，可能存在票品不足不能为您配票的风险，如最终未能配票，大麦网承诺全额退款，但不承担其他损失。
+                        </li>
+                  </ul>
+                  <h5>支付方式</h5>
+                  <p>网上银行（招商银行等） 支付平台（支付宝等） 转账汇款(招商银行等)<a href="">查看详情>></a></p>
+                  <h5>退/换货说明</h5>
+                  <p>针对不可抗力和非不可抗力的退/换票情况和处理，请点击查阅大麦网退<a href="">换货说明>></a></p>
+                 </div>
+               </div>
+             </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- 注册模态框 -->
       <div id="modal1" class="modal">
         <div class="modal-content">
@@ -486,7 +631,94 @@
       </div>
       <!-- 选座购买模态框 -->
       <div id="modal5" class="modal">
-        
+        <div class="modal-content">
+          <h4>选择座位</h4>
+          <!--座位生成 -->
+          <div class="row">
+            <div class="col s12">
+              <div class="cyan lighten-3 center-align">大荧幕</div>
+              <!-- 座位模块 -->
+              <div id="sits">
+                <!-- 每行的个数 -->
+                <ul class="center">
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                </ul>
+                <ul class="center">
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                </ul>
+                <ul class="center">
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                  <li><i class="material-icons">perm_identity</i></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!-- 已选座位 -->
+          <div class="row">
+            <div class="col s2">
+              <p class="right">已选座位：</p>
+            </div>
+            <div class="col s10">
+              <div class="row">
+                <div class="col l3 m6 s12">
+                  <div class="card">
+                    <div class="card-content">
+                      <p>已选座位信息</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col l3 m6 s12">
+                  <div class="card">
+                    <div class="card-content">
+                      <p>已选座位信息</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col l3 m6 s12">
+                  <div class="card">
+                    <div class="card-content">
+                      <p>已选座位信息</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col l3 m6 s12">
+                  <div class="card">
+                    <div class="card-content">
+                      <p>已选座位信息</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <a
+            href="#!"
+            class="modal-action modal-close waves-effect waves-green btn-flat"
+            >确认购买</a
+          >
+        </div>
       </div>
     </main>
 
@@ -534,7 +766,15 @@
         });
         $("ul.tabs").tabs();
         $("select").material_select();
+        // 初始化文本域
+        $("#textarea1").val("");
+        $("#textarea1").trigger("autoresize");
       });
+
+      // TODO 生成座位列表
+      function creatSit(row, col) {
+        for (let i = 1; i <= row; i++) {}
+      }
     </script>
   </body>
 </html>
