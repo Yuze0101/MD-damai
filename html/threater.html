@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-21 15:12:17
+ * @LastEditTime: 2021-05-21 15:04:02
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\index.html
@@ -16,7 +16,7 @@
   <!--Import Google Icon Font-->
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link type="text/css" rel="stylesheet" href="../util/materialize/css/materialize.min.css" media="screen,projection" />
-  <link rel="stylesheet" href="../css/index.min.css" />
+  <link rel="stylesheet" href="../css/threater.min.css" />
   <title>Document</title>
   <style></style>
 </head>
@@ -61,8 +61,8 @@
           <!-- TODO 更换登录链接 -->
           <li>
             <form class="center">
-              <div class="input-field">
-                <input id="search" type="search" required />
+              <div class="input-field z-depth-1 hoverable">
+                <input id="search" type="search"required />
                 <label class="label-icon" for="search"><i class="material-icons" id="search-icon">search</i></label>
                 <i class="material-icons">close</i>
               </div>
@@ -89,138 +89,111 @@
   </header>
 
   <main>
-    <!-- 轮播图模块 -->
-    <div class="carousel">
-      <img src="../images/lbt-1.png" class="carousel-item" />
-      <img src="../images/lbt-2.png" class="carousel-item" />
-      <img src="../images/lbt-1.png" class="carousel-item" />
-      <img src="../images/lbt-2.png" class="carousel-item" />
-    </div>
-    <!-- 内容流 -->
-    <div class="container white z-depth-1">
-      <h4>热门推荐</h4>
-      <div class="row">
-        <!-- TODO 获取文档流编辑 -->
-        <div class="col l3 s6">
-          <div class="card">
-            <div class="card-image">
-              <img src="../images/image-1.png" alt="" />
-            </div>
-            <div class="card-content">
-              <p>123</p>
-            </div>
-          </div>
-        </div>
-        <div class="col l3 s6">
-          <div class="card">
-            <div class="card-image">
-              <img src="../images/image-1.png" alt="" />
-            </div>
-            <div class="card-content">
-              <p>123</p>
-            </div>
-          </div>
-        </div>
-        <div class="col l3 s6">
-          <div class="card">
-            <div class="card-image">
-              <img src="../images/image-1.png" alt="" />
-            </div>
-            <div class="card-content">
-              <p>123</p>
-            </div>
-          </div>
-        </div>
-        <div class="col l3 s6">
-          <div class="card">
-            <div class="card-image">
-              <img src="../images/image-1.png" alt="" />
-            </div>
-            <div class="card-content">
-              <p>123</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- TODO 获取数据添加container -->
-    <div class="container white z-depth-1">
-      <h4>1F 戏剧达人</h4>
-      <div class="row">
-        <div class="col l6">
-          <div class="card horizontal">
-            <div class="card-image">
-              <img src="../images/image-15.png" alt="" />
-            </div>
-            <div class="card-stacked">
-              <div class="card-content">
-                <p>麦戏聚│孟京辉戏剧作品《一 个陌生女人的来信》深圳站</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col l6">
-          <div class="card horizontal">
-            <div class="card-image">
-              <img src="../images/image-15.png" alt="" />
-            </div>
-            <div class="card-stacked">
-              <div class="card-content">
-                <p>麦戏聚│孟京辉戏剧作品《一 个陌生女人的来信》深圳站</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col l6">
-          <div class="card horizontal">
-            <div class="card-image">
-              <img src="../images/image-15.png" alt="" />
-            </div>
-            <div class="card-stacked">
-              <div class="card-content">
-                <p>麦戏聚│孟京辉戏剧作品《一 个陌生女人的来信》深圳站</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col l6">
-          <div class="card horizontal">
-            <div class="card-image">
-              <img src="../images/image-15.png" alt="" />
-            </div>
-            <div class="card-stacked">
-              <div class="card-content">
-                <p>麦戏聚│孟京辉戏剧作品《一 个陌生女人的来信》深圳站</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 注册模态框 -->
-    <div id="modal1" class="modal">
-      <div class="modal-content">
-        <h4>注册</h4>
+    <!-- 正在热映 -->
+    <div class="container">
+      <div class="row" id="main-item">
         <div class="row">
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="userName" type="text" class="validate" />
-                <label for="userName">账号</label>
+          <h5 class="header center">正在演出</h5>
+          <div class="col l2 m3 s6 main-card">
+            <div class="card hoverable">
+              <div class="card-image">
+                <img src="../images/sports/ty-img-01.jpg">
+              </div>
+              <div class="card-content">
+                <p>2018中国杯国际足球锦标赛</p>
               </div>
             </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <input id="userPass" type="text" class="validate" />
-                <label for="userPass">密码</label>
+          </div>
+          <div class="col l2 m3 s6 main-card">
+            <div class="card  hoverable">
+              <div class="card-image">
+                <img src="../images/sports/ty-img-01.jpg">
+              </div>
+              <div class="card-content">
+                <p>2018中国杯国际足球锦标赛</p>
               </div>
             </div>
-          </form>
+          </div>
+          <div class="col l2 m3 s6 main-card">
+            <div class="card  hoverable">
+              <div class="card-image">
+                <img src="../images/sports/ty-img-01.jpg">
+              </div>
+              <div class="card-content">
+                <p>2018中国杯国际足球锦标赛</p>
+              </div>
+            </div>
+          </div>
+          <div class="col l2 m3 s6 main-card">
+            <div class="card  hoverable">
+              <div class="card-image">
+                <img src="../images/sports/ty-img-01.jpg">
+              </div>
+              <div class="card-content">
+                <p>2018中国杯国际足球锦标赛</p>
+              </div>
+            </div>
+          </div>
+          <div class="col l2 m3 s6 main-card">
+            <div class="card  hoverable">
+              <div class="card-image">
+                <img src="../images/sports/ty-img-01.jpg">
+              </div>
+              <div class="card-content">
+                <p>2018中国杯国际足球锦标赛</p>
+              </div>
+            </div>
+          </div>
+          <div class="col l2 m3 s6 main-card">
+            <div class="card  hoverable">
+              <div class="card-image">
+                <img src="../images/sports/ty-img-01.jpg">
+              </div>
+              <div class="card-content">
+                <p>2018中国杯国际足球锦标赛</p>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">完成注册</a>
+        <div class="row" id="threater">
+          <h5 class="header center">超级剧场</h5>
+          <div class="col s12 m12">
+            <div class="card horizontal hoverable">
+              <div class="card-image">
+                <img src="../images/image-1.png">
+              </div>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <p><span>地址：</span>广东省佛上市季华七路19号</p>
+                  <p><span>电话：</span>0757-82002275 0757-83962110</p>
+                  <p><span>交通路线：</span>地铁1号线芳村站B1出口上右转30米</p>
+                </div>
+                <div class="card-action">
+                  <span>星星国际会展中心</span>
+                  <a href="#" class="right deep-purple-text">立即购票</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col s12 m12">
+            <div class="card horizontal hoverable">
+              <div class="card-image">
+                <img src="../images/image-1.png">
+              </div>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <p><span>地址：</span>广东省佛上市季华七路19号</p>
+                  <p><span>电话：</span>0757-82002275 0757-83962110</p>
+                  <p><span>交通路线：</span>地铁1号线芳村站B1出口上右转30米</p>
+                </div>
+                <div class="card-action">
+                  <span>星星国际会展中心</span>
+                  <a href="#" class="right  deep-purple-text">立即购票</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- 登录模态框 -->
@@ -354,12 +327,12 @@
       </div>
     </div>
     <!-- 订单模态框 -->
-    <div id="modal4" class="modal bottom-sheet">
+    <div id="modal4" class="modal">
       <div class="modal-content">
         <h4>订单管理</h4>
         <div class="row">
           <div class="col s12">
-            <table class="bordered highlight">
+            <table class="bordered highlight responsive-table">
               <thead>
                 <tr>
                   <td>项目名称</td>
@@ -368,7 +341,6 @@
                   <td>售后</td>
                   <td>订单金额</td>
                   <td>交易状态</td>
-                  <td>操作</td>
                 </tr>
               </thead>
               <tbody>
@@ -379,7 +351,6 @@
                   <td>4</td>
                   <td>5</td>
                   <td>6</td>
-                  <td>删除</td>
                 </tr>
                 <tr>
                   <td>1</td>
@@ -388,7 +359,6 @@
                   <td>4</td>
                   <td>5</td>
                   <td>6</td>
-                  <td>删除</td>
                 </tr>
                 <tr>
                   <td>1</td>
@@ -397,7 +367,6 @@
                   <td>4</td>
                   <td>5</td>
                   <td>6</td>
-                  <td>删除</td>
                 </tr>
               </tbody>
             </table>

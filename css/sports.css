@@ -59,3 +59,8 @@ main .carousel .carousel-item {
   width: 100%;
   height: auto;
 }
+
+main .container {
+  padding: 1rem;
+  margin-top: 1rem;
+}
