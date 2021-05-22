@@ -10,6 +10,10 @@ body {
           flex-direction: column;
 }
 
+body .bold {
+  font-weight: bold;
+}
+
 header,
 main,
 footer {

@@ -3,6 +3,9 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  .bold{
+    font-weight: bold;
+  }
 }
 header,
 main,
@@ -49,6 +52,7 @@ main {
     }
   }
   .container{
+    // opacity: 0;
     padding: 1rem;
     margin-top: 1rem;
   }

@@ -1,7 +1,7 @@
 /*
  * @Author: GengYuan
  * @Date: 2021-05-20 12:06:18
- * @LastEditTime: 2021-05-22 18:08:37
+ * @LastEditTime: 2021-05-23 01:11:38
  * @LastEditors: GengYuan
  * @Description: fucntion库 所有功能集合
  * @FilePath: \MD-DaiMai\MD-damai\js\function.js
@@ -39,7 +39,7 @@ export function getRegister() {
   registerUser = {
     userName: tempName,
     userPass: tempPass,
-    userID: tempID
+    userID: tempID,
   };
   if (tempName != "" && tempPass != "") {
     register(registerUser);
@@ -103,18 +103,110 @@ function login(loginUser) {
     Materialize.toast("您还未注册，请先注册", 4000);
     return false;
   } else {
-    let result = tempArr.find((x)=>{
-      return (x.userName ==loginUser.userName && x.userPass == loginUser.userPass)
-    })
-    if(result == undefined){
-      Materialize.toast('账号密码错误',4000);
+    let result = tempArr.find((x) => {
+      return (
+        x.userName == loginUser.userName && x.userPass == loginUser.userPass
+      );
+    });
+    if (result == undefined) {
+      Materialize.toast("账号密码错误", 4000);
       return false;
-    }else{
-      Materialize.toast('登录成功',4000);
+    } else {
+      Materialize.toast("登录成功", 4000);
       let timer = setTimeout(() => {
         location.reload();
       }, 2000);
       return true;
     }
+  }
+}
+
+/**
+ * @description: 获取演绎数据到临时存储
+ * @param {object} data
+ * @return {*}
+ */
+export function getData(data) {
+  $.ajax({
+    url: data.playList,
+    success: function (response) {
+      let tempStr = JSON.stringify(response);
+      sessionStorage.setItem("playList", tempStr);
+    },
+  });
+  $.ajax({
+    url: data.theaterList,
+    success: function (response) {
+      let tempStr = JSON.stringify(response);
+      sessionStorage.setItem("theaterList", tempStr);
+    },
+  });
+  $.ajax({
+    url: data.typeList,
+    success: function (response) {
+      let tempStr = JSON.stringify(response);
+      sessionStorage.setItem("typeList", tempStr);
+    },
+  });
+  $.ajax({
+    url: data.cityList,
+    success: function (response) {
+      let tempStr = JSON.stringify(response);
+      sessionStorage.setItem("cityList", tempStr);
+    },
+  });
+}
+
+export function creatContainer() {
+  let tempPlaylist = JSON.parse(sessionStorage.getItem("playList")).goods;
+  let tempTypelist = JSON.parse(sessionStorage.getItem("typeList")).types;
+  let tempCitieslist = JSON.parse(sessionStorage.getItem("cityList")).citys;
+  let tempTheaterlist = JSON.parse(
+    sessionStorage.getItem("cityList")
+  ).theaterList;
+  for (let i = 0; i < tempTypelist.length; i++) {
+    let type = tempTypelist[i];
+    $("main").append(`
+    <div class="container white z-depth-1 hide">
+      <h4>${type.id}F ${type.name}</h4>
+      <div class="row">
+      </div>
+    </div>`);
+  }
+  for (let i = 0; i < tempPlaylist.length; i++) {
+    let element = tempPlaylist[i];
+    if (i < 4) {
+      $("#firstContainer .row").append(`
+        <div class="col l3 s6">
+            <div class="card hoverable">
+              <div class="card-image">
+                <img src=${element.img_src} />
+                 <span class="card-title">${element.good_name}</span>
+              </div>
+              <div class="card-content">
+                <p class="truncate bold">${element.place}</p>
+                <p class="truncate">${element.play_time}</p>
+              </div>
+            </div>
+          </div>`);
+    }
+    $("main .container h4").each(function () {
+      let num = Number($(this).text().match(/[0-9]/));
+      if (num == element.type) {
+        $(this).next().append(`
+        <div class="col l3 s6">
+            <div class="card hoverable">
+              <div class="card-image">
+                <img src=${element.img_src} />
+                 <span class="card-title">${element.good_name}</span>
+              </div>
+              <div class="card-content">
+                <p class="truncate bold">${element.place}</p>
+                <p class="truncate">${element.play_time}</p>
+              </div>
+            </div>
+          </div>`);
+      }
+    });
   }
 }
