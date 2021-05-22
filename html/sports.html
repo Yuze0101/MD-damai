@@ -1,261 +1,930 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-21 17:29:36
- * @LastEditors: GengYuan
+ * @LastEditTime: 2021-05-22 17:30:16
+ * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
- * @FilePath: \MD-DaiMai\MD-damai\html\sports.html
+ * @FilePath: \MD-DaiMai\MD-damai\html\index.html
 -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--Import Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link type="text/css" rel="stylesheet" href="../util/materialize/css/materialize.min.css"
-        media="screen,projection" />
-    <link rel="stylesheet" href="../css/sports.min.css" />
-    <title>Document</title>
-    <style></style>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--Import Google Icon Font-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link type="text/css" rel="stylesheet" href="../util/materialize/css/materialize.min.css" media="screen,projection" />
+  <link rel="stylesheet" href="../css/index.min.css" />
+  <title>Document</title>
+  <style></style>
 </head>
 
 <body>
-    <header>
-        <nav>
-          <div class="nav-wrapper deep-purple">
-            <img src="../images/logo_cyan_1.png" class="brand-logo right" />
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-    
-            <!-- 手机左侧导航栏部分 -->
-            <ul class="side-nav fixed z-depth-3" id="mobile-demo">
-              <li class="deep-purple">
-                <div class="userView">
-                  <div class="background"></div>
-                  <!-- <a href="#!user"
-                      ><img class="circle" src="../images/user.jpg"
-                    /></a> -->
-                  <!-- TODO 未登录更换字样 -->
-                  <a class="waves-effect waves-light btn  hoverable" href="#modal1">注册</a>
-                  <a class="waves-effect waves-light btn  hoverable" href="#modal2">登录</a>
-    
-                  <!-- Modal Structure -->
-                  <div id="modal1" class="modal bottom-sheet">
-                    <div class="modal-content">
-                      <h4>模态标题</h4>
-                      <p>一堆文本</p>
-                    </div>
-                    <div class="modal-footer">
-                      <a href="#!" class="
-                            modal-action modal-close
-                            waves-effect waves-green
-                            btn-flat
-                          ">同意</a>
-                    </div>
-                  </div>
-                  <a href="#!name"><span class="white-text name">张三</span></a>
-                  <a href="#!email"><span class="white-text email">jdandturk@sina.com</span></a>
-                </div>
+  <header>
+    <nav>
+      <div class="nav-wrapper deep-purple">
+        <img src="../images/logo_cyan_1.png" class="brand-logo right" />
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+
+        <!-- 手机左侧导航栏部分 -->
+        <ul class="side-nav fixed z-depth-3" id="mobile-demo">
+          <li class="deep-purple">
+            <div class="userView">
+              <div class="background" id="next_is_user_img"></div>
+              <!-- <a href="#!user"
+                    ><img class="circle" src="../images/user.jpg"
+                  /></a> -->
+              <!-- TODO 未登录更换字样 -->
+              <a class="waves-effect waves-light btn  hoverable log-in-btn" href="#modal1">注册</a>
+              <a class="waves-effect waves-light btn  hoverable sign-in-btn" href="#modal2">登录</a>
+
+              <!-- 登录后显示 -->
+              <a href="#!name">
+                <span class="white-text name">
+                  <!-- 张三 -->
+                </span>
+              </a>
+              <a href="#!email" id="next_is_sign_out">
+                <span class="white-text email">
+                  <!-- demo@gmail.com -->
+                </span>
+              </a>
+              <!-- <a href="#!signOUT" class="right-align">
+                <span class="white-text signOUT">
+                  注销
+                </span>
+              </a> -->
+            </div>
+          </li>
+          <!-- TODO 更换登录链接 -->
+          <li class="hoverable">
+            <form class="center">
+              <div class="input-field">
+                <input id="search" type="search" required />
+                <label class="label-icon" for="search"><i class="material-icons" id="search-icon">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
+          </li>
+          <li class="hoverable">
+            <a class="waves-effect" href="#!" class="hide-on-large-only">首页</a>
+          </li>
+          <li class="hoverable">
+            <a class="waves-effect" href="#!" class="hide-on-large-only">体育</a>
+          </li>
+          <li class="hoverable">
+            <a class="waves-effect" href="#!" class="hide-on-large-only">剧院</a>
+          </li>
+          <li>
+            <div class="divider"></div><a class="subheader">账户中心</a>
+          </li>
+          <li><a class="waves-effect  hoverable" href="#modal3">个人中心</a></li>
+          <li><a class="waves-effect  hoverable" href="#modal4">订单管理</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 轮播图模块 -->
+    <div class="carousel">
+      <img src="../images/sports/lbt-ty-1.jpg" class="carousel-item" />
+      <img src="../images/sports/lbt-ty-2.png" class="carousel-item" />
+    </div>
+    <!-- 内容流 -->
+    <div class="row" id="main-item">
+      <div class="row">
+        <h5 class="header center">猜你喜欢</h5>
+        <div class="col l2 m3 s6 main-card">
+          <div class="card">
+            <div class="card-image">
+              <img src="../images/sports/ty-img-01.jpg">
+            </div>
+            <div class="card-content">
+              <p>2018中国杯国际足球锦标赛</p>
+            </div>
+          </div>
+        </div>
+        <div class="col l2 m3 s6 main-card">
+          <div class="card">
+            <div class="card-image">
+              <img src="../images/sports/ty-img-01.jpg">
+            </div>
+            <div class="card-content">
+              <p>2018中国杯国际足球锦标赛</p>
+            </div>
+          </div>
+        </div>
+        <div class="col l2 m3 s6 main-card">
+          <div class="card">
+            <div class="card-image">
+              <img src="../images/sports/ty-img-01.jpg">
+            </div>
+            <div class="card-content">
+              <p>2018中国杯国际足球锦标赛</p>
+            </div>
+          </div>
+        </div>
+        <div class="col l2 m3 s6 main-card">
+          <div class="card">
+            <div class="card-image">
+              <img src="../images/sports/ty-img-01.jpg">
+            </div>
+            <div class="card-content">
+              <p>2018中国杯国际足球锦标赛</p>
+            </div>
+          </div>
+        </div>
+        <div class="col l2 m3 s6 main-card">
+          <div class="card">
+            <div class="card-image">
+              <img src="../images/sports/ty-img-01.jpg">
+            </div>
+            <div class="card-content">
+              <p>2018中国杯国际足球锦标赛</p>
+            </div>
+          </div>
+        </div>
+        <div class="col l2 m3 s6 main-card">
+          <div class="card">
+            <div class="card-image">
+              <img src="../images/sports/ty-img-01.jpg">
+            </div>
+            <div class="card-content">
+              <p>2018中国杯国际足球锦标赛</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <h5 class="header center">精彩聚集</h5>
+        <div class="col l3 m6 s12 main-card">
+          <div class="card">
+            <div class="card-image">
+              <img src="../images/sports/ty-img-01.jpg">
+            </div>
+          </div>
+        </div>
+        <div class="col l3 m6 s12 main-card">
+          <div class="card">
+            <div class="card-image">
+              <img src="../images/sports/ty-img-01.jpg">
+            </div>
+          </div>
+        </div>
+        <div class="col l3 m6 s12 main-card">
+          <div class="card">
+            <div class="card-image">
+              <img src="../images/sports/ty-img-01.jpg">
+            </div>
+          </div>
+        </div>
+        <div class="col l3 m6 s12 main-card">
+          <div class="card">
+            <div class="card-image">
+              <img src="../images/sports/ty-img-01.jpg">
+            </div>
+          </div>
+        </div>
+        <div class="col l3 m6 s12 main-card">
+          <div class="card">
+            <div class="card-image">
+              <img src="../images/sports/ty-img-01.jpg">
+            </div>
+          </div>
+        </div>
+        <div class="col l3 m6 s12 main-card">
+          <div class="card">
+            <div class="card-image">
+              <img src="../images/sports/ty-img-01.jpg">
+            </div>
+          </div>
+        </div>
+        <div class="col l3 m6 s12 main-card">
+          <div class="card">
+            <div class="card-image">
+              <img src="../images/sports/ty-img-01.jpg">
+            </div>
+          </div>
+        </div>
+        <div class="col l3 m6 s12 main-card">
+          <div class="card">
+            <div class="card-image">
+              <img src="../images/sports/ty-img-01.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 注册模态框 -->
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>注册</h4>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="userName" type="text" class="validate" name="userName" length="16" />
+                <label for="userName">用户名</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="userPhone" type="text" class="validate" name="userPhone" />
+                <label for="userPhone">手机</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="userEmail" type="email" class="validate" name="userEmail" />
+                <label for="userEmail">邮箱</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="userPass" type="password" class="validate" name="userPass" />
+                <label for="userPass">设置密码</label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" id="update_user" class="modal-action modal-close waves-effect waves-green btn-flat">完成注册</a>
+      </div>
+    </div>
+    <!-- 登录模态框 -->
+    <div id="modal2" class="modal">
+      <div class="modal-content">
+        <h4>登录</h4>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="inputUser" type="text" class="validate" />
+                <label for="inputUser">用户名</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="inputPass" type="text" class="validate" />
+                <label for="inputPass">密码</label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" id="sign_check" class="modal-action modal-close waves-effect waves-green btn-flat">登录</a>
+      </div>
+    </div>
+    <!-- 个人中心模态框 -->
+    <div id="modal3" class="modal">
+      <div class="modal-content">
+        <h4>个人中心</h4>
+        <div class="row">
+          <div class="col l12 s12">
+            <ul class="tabs">
+              <li class="tab col s6">
+                <a href="#test1" class="deep-purple-text">完善个人信息</a>
               </li>
-              <!-- TODO 更换登录链接 -->
-              <li class="hoverable">
-                <form class="center">
-                  <div class="input-field">
-                    <input id="search" type="search" required />
-                    <label class="label-icon" for="search"><i class="material-icons" id="search-icon">search</i></label>
-                    <i class="material-icons">close</i>
-                  </div>
-                </form>
+              <li class="tab col s6">
+                <a href="#test2" class="deep-purple-text">修改密码</a>
               </li>
-              <li class="hoverable">
-                <a class="waves-effect" href="#!" class="hide-on-large-only">首页</a>
-              </li>
-              <li class="hoverable">
-                <a class="waves-effect" href="#!" class="hide-on-large-only">体育</a>
-              </li>
-              <li class="hoverable">
-                <a class="waves-effect" href="#!" class="hide-on-large-only">剧院</a>
-              </li>
-              <li><div class="divider"></div><a class="subheader">账户中心</a></li>
-              <li><a class="waves-effect  hoverable" href="#modal3">个人中心</a></li>
-              <li><a class="waves-effect  hoverable" href="#modal4">订单管理</a></li>
             </ul>
           </div>
-        </nav>
-      </header>
-
-    <main>
-        <!-- 轮播图模块 -->
-        <div class="carousel">
-            <img src="../images/sports/lbt-ty-1.jpg" class="carousel-item" />
-            <img src="../images/sports/lbt-ty-2.png" class="carousel-item" />
-        </div>
-        <!-- 内容流 -->
-        <div class="row" id="main-item">
-                <div class="row">
-                    <h5 class="header center">猜你喜欢</h5>
-                    <div class="col l2 m3 s6 main-card">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="../images/sports/ty-img-01.jpg">
-                            </div>
-                            <div class="card-content">
-                                <p>2018中国杯国际足球锦标赛</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col l2 m3 s6 main-card">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="../images/sports/ty-img-01.jpg">
-                            </div>
-                            <div class="card-content">
-                                <p>2018中国杯国际足球锦标赛</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col l2 m3 s6 main-card">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="../images/sports/ty-img-01.jpg">
-                            </div>
-                            <div class="card-content">
-                                <p>2018中国杯国际足球锦标赛</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col l2 m3 s6 main-card">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="../images/sports/ty-img-01.jpg">
-                            </div>
-                            <div class="card-content">
-                                <p>2018中国杯国际足球锦标赛</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col l2 m3 s6 main-card">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="../images/sports/ty-img-01.jpg">
-                            </div>
-                            <div class="card-content">
-                                <p>2018中国杯国际足球锦标赛</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col l2 m3 s6 main-card">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="../images/sports/ty-img-01.jpg">
-                            </div>
-                            <div class="card-content">
-                                <p>2018中国杯国际足球锦标赛</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <h5 class="header center">精彩聚集</h5>
-                        <div class="col l3 m6 s12 main-card">
-                            <div class="card">
-                                <div class="card-image">
-                                    <img src="../images/sports/ty-img-01.jpg">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col l3 m6 s12 main-card">
-                            <div class="card">
-                                <div class="card-image">
-                                    <img src="../images/sports/ty-img-01.jpg">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col l3 m6 s12 main-card">
-                            <div class="card">
-                                <div class="card-image">
-                                    <img src="../images/sports/ty-img-01.jpg">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col l3 m6 s12 main-card">
-                            <div class="card">
-                                <div class="card-image">
-                                    <img src="../images/sports/ty-img-01.jpg">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col l3 m6 s12 main-card">
-                            <div class="card">
-                                <div class="card-image">
-                                    <img src="../images/sports/ty-img-01.jpg">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col l3 m6 s12 main-card">
-                            <div class="card">
-                                <div class="card-image">
-                                    <img src="../images/sports/ty-img-01.jpg">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col l3 m6 s12 main-card">
-                            <div class="card">
-                                <div class="card-image">
-                                    <img src="../images/sports/ty-img-01.jpg">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col l3 m6 s12 main-card">
-                            <div class="card">
-                                <div class="card-image">
-                                    <img src="../images/sports/ty-img-01.jpg">
-                                </div>
-                            </div>
-                        </div>
+          <div id="test1" class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">account_circle</i>
+                <input id="icon_prefix" type="text" class="validate" />
+                <label for="icon_prefix">姓名</label>
+              </div>
             </div>
-        </div>
-    </main>
-    <footer class="page-footer deep-purple">
-        <div class="container">
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">phone</i>
+                <input id="icon_telephone" type="tel" class="validate" />
+                <label for="icon_telephone">电话</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input id="icon_sex_man" type="radio" class="validate" name="sex" />
+                <label for="icon_sex_man">男</label>
+                <input id="icon_sex_woman" type="radio" class="validate" name="sex" />
+                <label for="icon_sex_woman">女</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">email</i>
+                <input id="icon_email" type="email" class="validate" />
+                <label for="icon_email">邮箱</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="material-icons prefix">today</i>
+                <input id="icon_date" type="date" class="datepicker" />
+                <label for="icon_date">生日</label>
+              </div>
+            </div>
+          </div>
           <div class="row">
-            <div class="col l6 s12">
-              <h5 class="white-text">页脚内容</h5>
-              <p class="grey-text text-lighten-4">
-                你可以用行和列来组织你的页脚内容。
-              </p>
+            <div class="input-field col s12">
+              <div class="row">
+                <select class="col s6">
+                  <option value="" disabled selected>省</option>
+                  <option value="1">四川</option>
+                  <option value="2">河南</option>
+                  <option value="3">山东</option>
+                </select>
+                <select class="col s6">
+                  <option value="" disabled selected>市</option>
+                  <option value="1">成都</option>
+                  <option value="2">郑州</option>
+                  <option value="3">济南</option>
+                </select>
+                <label>选择您的地址</label>
+              </div>
             </div>
-            <div class="col l4 offset-l2 s12">
-              <h5 class="white-text">链接</h5>
-              <ul>
-                <li><a class="grey-text text-lighten-3" href="#!">链接 1</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">链接 2</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">链接 3</a></li>
-                <li><a class="grey-text text-lighten-3" href="#!">链接 4</a></li>
+          </div>
+        </div>
+        <div id="test2" class="col s12">
+          <div class="row">
+            <div class="col s12">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="inputOldPass" type="text" class="validate" />
+                  <label for="inputOldPass">请输入原密码</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="inputNewPass" type="text" class="validate" />
+                  <label for="inputNewPass">请输入新密码</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="inputReNewPass" type="text" class="validate" />
+                  <label for="inputReNewPass">请确认新密码</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">保存</a>
+      </div>
+    </div>
+
+    </div>
+    <!-- 订单模态框 -->
+    <div id="modal4" class="modal">
+      <div class="modal-content">
+        <h4>订单管理</h4>
+        <div class="row">
+          <div class="col s12">
+            <table class="bordered highlight responsive-table">
+              <thead>
+                <tr>
+                  <td>项目名称</td>
+                  <td>票价</td>
+                  <td>数量</td>
+                  <td>售后</td>
+                  <td>订单金额</td>
+                  <td>交易状态</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>4</td>
+                  <td>5</td>
+                  <td>6</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">确认</a>
+      </div>
+    </div>
+    <!-- 选座购买模态框 -->
+    <div id="modal5" class="modal">
+      <div class="modal-content">
+        <h4>选择座位</h4>
+        <!--座位生成 -->
+        <div class="row">
+          <div class="col s12">
+            <div class="cyan lighten-3 center-align">大荧幕</div>
+            <!-- 座位模块 -->
+            <div id="sits">
+              <!-- 每行的个数 -->
+              <ul class="center">
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+              </ul>
+              <ul class="center">
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+              </ul>
+              <ul class="center">
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
+                <li><i class="material-icons">perm_identity</i></li>
               </ul>
             </div>
           </div>
         </div>
-        <div class="footer-copyright">
-          <div class="container">
-            © 2014 Copyright 文本
-            <a class="grey-text text-lighten-4 right" href="#!">更多链接</a>
+        <!-- 已选座位 -->
+        <div class="row">
+          <div class="col s2">
+            <p class="right">已选座位：</p>
+          </div>
+          <div class="col s10">
+            <div class="row">
+              <div class="col l3 m6 s12">
+                <div class="card">
+                  <div class="card-content">
+                    <p>已选座位信息</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col l3 m6 s12">
+                <div class="card">
+                  <div class="card-content">
+                    <p>已选座位信息</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col l3 m6 s12">
+                <div class="card">
+                  <div class="card-content">
+                    <p>已选座位信息</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col l3 m6 s12">
+                <div class="card">
+                  <div class="card-content">
+                    <p>已选座位信息</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </footer>
-    <script src="../util/jquery-3.5.1.min.js"></script>
-    <script src="../util/materialize/js/materialize.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $(".button-collapse").sideNav();
-            $(".carousel").carousel({
-                full_width: true,
-                indicators: true,
-            });
-        });
-    </script>
+      </div>
+      <div class="modal-footer">
+        <a href="#modal6" class="modal-action modal-close waves-effect waves-green btn-flat">确认购买</a>
+      </div>
+    </div>
+    <!-- 订单确认模态框 -->
+    <div id="modal6" class="modal modal-fixed-footer">
+      <div class="modal-content">
+        <h4>确认订单</h4>
+        <ul class="collapsible  popout" data-collapsible="accordion">
+          <!-- 提示 -->
+          <li>
+            <div class="collapsible-header red lighten-4"><i
+                class="material-icons deep-purple-text">info</i>请于15分钟内支付，剩余<span>15</span>分钟</div>
+          </li>
+          <!-- 邮寄地址 -->
+          <li>
+            <div class="collapsible-header active"><i class="material-icons">location_on</i>邮寄地址</div>
+            <div class="collapsible-body">
+              <div class="row">
+                <div class="col s12 m12 l6">
+                  <div class="card">
+                    <div class="card-content">
+                      添加百度地图api
+                      <span class="card-title">地址：</span>
+                    </div>
+                    <div class="card-content">
+                      <p>四川省成都市武侯区孵化园5栋301室</p>
+                    </div>
+                    <div class="card-action">
+                      <p>
+                        <input class="with-gap" name="group1" type="radio" id="location1" />
+                        <label for="location1">选择该地址</label>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col s12 m12 l6">
+                  <div class="card">
+                    <div class="card-content">
+                      添加百度地图api
+                      <span class="card-title">地址：</span>
+                    </div>
+                    <div class="card-content">
+                      <p>四川省成都市武侯区孵化园5栋301室</p>
+                    </div>
+                    <div class="card-action">
+                      <p>
+                        <input class="with-gap" name="group1" type="radio" id="location2" />
+                        <label for="location2">选择该地址</label>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- 付款方式 -->
+          <li>
+            <div class="collapsible-header"><i class="material-icons">payment</i>付款方式</div>
+            <div class="collapsible-body">
+              <div class="row">
+                <div class="col s12 m6">
+                  <div class="card horizontal">
+                    <div class="card-image">
+                      <img src="../images/wechat.png">
+                    </div>
+                    <div class="card-stacked">
+                      <div class="card-content">
+                        <h5>推荐使用微信支付</h5>
+                      </div>
+                      <div class="card-action">
+                        <input class="with-gap" name="group2" type="radio" id="payment1" />
+                        <label for="payment1">选择微信支付</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col s12 m6">
+                  <div class="card horizontal">
+                    <div class="card-image">
+                      <img src="../images/alipay.png">
+                    </div>
+                    <div class="card-stacked">
+                      <div class="card-content">
+                        <h5>使用其他支付</h5>
+                      </div>
+                      <div class="card-action">
+                        <input class="with-gap" name="group2" type="radio" id="payment2" />
+                        <label for="payment2">选择支付宝支付</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+          <!-- 商品清单 -->
+          <li>
+            <div class="collapsible-header"><i class="material-icons">shopping_cart</i>商品清单</div>
+            <div class="collapsible-body">
+              <div class="row">
+                <div class="col s12 m12">
+                  <div class="card horizontal">
+                    <div class="card-image">
+                      <img src="../images/image-1.png">
+                    </div>
+                    <div class="card-stacked">
+                      <div class="card-content">
+                        <table class="bordered highlight responsive-table">
+                          <thead>
+                            <tr>
+                              <td>项目名称</td>
+                              <td>票价</td>
+                              <td>数量</td>
+                              <td>售后</td>
+                              <td>订单金额</td>
+                              <td>交易状态</td>
+                              <td>操作</td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>1</td>
+                              <td>2</td>
+                              <td>3</td>
+                              <td>4</td>
+                              <td>5</td>
+                              <td>6</td>
+                              <td>删除</td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>2</td>
+                              <td>3</td>
+                              <td>4</td>
+                              <td>5</td>
+                              <td>6</td>
+                              <td>删除</td>
+                            </tr>
+                            <tr>
+                              <td>1</td>
+                              <td>2</td>
+                              <td>3</td>
+                              <td>4</td>
+                              <td>5</td>
+                              <td>6</td>
+                              <td>删除</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="card-action">
+                        <p class="right red-text darken-4">总价共计：<span>00</span>元</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <a href="#modal4"
+          class="modal-action modal-close waves-effect waves-light btn-flat white-text deep-purple">立即支付</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="page-footer deep-purple">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">DaMai</h5>
+          <p class="grey-text text-lighten-4">DaMai provide you the best.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">链接</h5>
+          <ul>
+            <li>
+              <a class="grey-text text-lighten-3" href="#!">大麦网微信</a>
+            </li>
+            <li>
+              <a class="grey-text text-lighten-3" href="#!">大麦网触屏版</a>
+            </li>
+            <li>
+              <a class="grey-text text-lighten-3" href="#!">了解更多</a>
+            </li>
+            <li>
+              <a class="grey-text text-lighten-3" href="#!">加入我们 </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+        © 2021 Copyright damai
+        <a class="grey-text text-lighten-4 right" href="#!">More</a>
+      </div>
+    </div>
+  </footer>
+  <script src="../util/jquery-3.5.1.min.js"></script>
+  <script src="../util/materialize/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".button-collapse").sideNav();
+      $(".modal").modal();
+      $(".carousel").carousel({
+        full_width: true,
+        indicators: true,
+      });
+      $(".datepicker").pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15, // Creates a dropdown of 15 years to control year
+      });
+      $("ul.tabs").tabs();
+      $("select").material_select();
+    });
+  </script>
+  <script>
+    //NOTE  页面启动时检查登录状态从而启用部分元素和功能
+    let doSignin = sessionStorage.getItem('signin');
+    //默认登录状态为false
+    if (doSignin == null) {
+      signin_judge = 'false';
+      sessionStorage.setItem('signin', signin_judge);
+    } else if (doSignin == 'true') {
+      showUserInfo();
+    }
+    login();
+    signin();
+    //NOTE 注册功能
+    function login() {
+      let nameright = false;
+      let phoneright = false;
+      let emailright = false;
+      let passright = false;
+      let RepeatPass = false;
+      $('main').on('keyup', '#userName', function () {
+        let text = $('#userName').val();
+        let username = /^[a-zA-Z][a-zA-Z0-9_]{4,15}$/;
+        if (username.test(text)) {
+          nameright = true;
+          $('#userName').removeClass('invalid');
+        } else {
+          $('#userName').addClass('invalid');
+        }
+      });
+      $('main').on('keyup', '#userPhone', function () {
+        let text = $('#userPhone').val();
+        let phone = /^1[3-9][0-9]{9}$/;
+        if (phone.test(text)) {
+          phoneright = true;
+          $('#userPhone').removeClass('invalid');
+        } else {
+          $('#userPhone').addClass('invalid');
+        }
+      });
+      $('main').on('keyup', '#userEmail', function () {
+        let text = $('#userEmail').val();
+        let email = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+        if (email.test(text)) {
+          emailright = true;
+          $('#userEmail').removeClass('invalid');
+        } else {
+          $('#userEmail').addClass('invalid');
+        }
+      });
+      $('main').on('keyup', '#userPass', function () {
+        let text = $('#userPass').val();
+        let pass = /^[A-Z][0-9a-zA-Z]{6,16}$/;
+        if (pass.test(text)) {
+          passright = true;
+          $('#userPass').removeClass('invalid');
+        } else {
+          $('#userPass').addClass('invalid');
+        }
+      });
+      $('main').on('click', '#update_user', function () {
+        RepeatPass = false;
+        ifNameRepeat();
+        if (nameright && phoneright && emailright && passright && RepeatPass) {
+          let userBankStr = localStorage.getItem('userBankJSON');
+          let UserObj = {
+            name: $('#userName').val(),
+            phone: $('#userPhone').val(),
+            email: $('#userEmail').val(),
+            pass: $('#userPass').val()
+          }
+          if (userBankStr == null) {
+            let userBankArr = [];
+            userBankArr.push(UserObj);
+            userBankStr = JSON.stringify(userBankArr);
+            localStorage.setItem('userBankJSON', userBankStr);
+          } else {
+            let userBankArr = JSON.parse(userBankStr);
+            userBankArr.push(UserObj);
+            userBankStr = JSON.stringify(userBankArr);
+            localStorage.setItem('userBankJSON', userBankStr);
+          }
+          alert('注册成功');
+        }
+      });
+      //NOTE 用户名重复性检查
+      function ifNameRepeat() {
+        let userBankStr = localStorage.getItem('userBankJSON');
+        if (userBankStr == null) {
+          RepeatPass = true;
+        } else {
+          let userBankArr = JSON.parse(userBankStr);
+          let judge = 0
+          for (let i = 0; i < userBankArr.length; i++) {
+            if (userBankArr[i].name == $('#userName').val()) {
+              judge = 1;
+            } else {
+              judge = 0;
+            }
+          }
+          if (judge == 1) {
+            alert('用户名重复，请更改用户名');
+          } else {
+            RepeatPass = true;
+          }
+        }
+      }
+    }
+    //NOTE 登录功能
+    function signin() {
+      let nameright = false;
+      let passright = false;
+      $('main').on('keyup', '#inputUser', function () {
+        let text = $('#inputUser').val();
+        let username = /^[a-zA-Z][a-zA-Z0-9_]{4,15}$/;
+        if (username.test(text)) {
+          nameright = true;
+          $('#inputUser').removeClass('invalid');
+        } else {
+          $('#inputUser').addClass('invalid');
+        }
+      });
+      $('main').on('keyup', '#inputPass', function () {
+        let text = $('#inputPass').val();
+        let pass = /^[A-Z][0-9a-zA-Z]{6,16}$/;
+        if (pass.test(text)) {
+          passright = true;
+          $('#inputPass').removeClass('invalid');
+        } else {
+          $('#inputPass').addClass('invalid');
+        }
+      });
+      $('main').on('click', '#sign_check', function () {
+        if (nameright && passright) {
+          let $inputUser = $('#inputUser').val();
+          let $inputPass = $('#inputPass').val();
+          let userBankStr = localStorage.getItem('userBankJSON');
+          if (userBankStr == null) {
+            alert('请注册');
+          } else {
+            let userBankArr = JSON.parse(userBankStr);
+            let judge = 0
+            for (let i = 0; i < userBankArr.length; i++) {
+              if (userBankArr[i].name == $inputUser) {
+                if (userBankArr[i].pass == $inputPass) {
+                  alert('登录成功');
+                  sessionStorage.setItem('signin', 'true');
+                  sessionStorage.setItem('user', userBankArr[i].name);
+                  sessionStorage.setItem('email', userBankArr[i].email);
+                  judge = 1;
+                  window.location.reload();
+                  break;
+                }
+              }
+            }
+            if (judge == 0) {
+              alert('用户名或密码错误请重试');
+            }
+          }
+        }
+      });
+    }
+    //NOTE 登录后添加页面元素（用户头像，用户名，邮箱，注销按钮）
+    function showUserInfo() {
+      $('.userView .btn').remove();
+      let userimg = `<a href="#!user" id="nav_user_img"><img class="circle" src="../images/user.jpg"/></a>`;
+      $('#next_is_user_img').after(userimg);
+      let username = sessionStorage.getItem('user');
+      let useremail = sessionStorage.getItem('email');
+      $('.userView span.name').text(username);
+      $('.userView span.email').text(useremail);
+      $('#next_is_sign_out').after(`<a href="#!signOUT" class="right-align" id='sign_out_link'>
+                <span class="white-text signOUT">
+                  注销
+                </span>
+              </a>`);
+    }
+    //NOTE 注销事件功能
+    $('nav').on('click', '#sign_out_link', function () {
+      alert('注销成功')
+      sessionStorage.setItem('signin', 'false');
+      sessionStorage.setItem('user', null);
+      sessionStorage.setItem('email', null);
+      window.location.reload();
+    });
+  </script>
 </body>
 
 </html>

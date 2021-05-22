@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-22 16:56:41
+ * @LastEditTime: 2021-05-22 17:28:29
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\index.html
@@ -357,9 +357,9 @@
           </div>
         </div>
       </div>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">保存</a>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">保存</a>
+      </div>
     </div>
     </div>
     <!-- 订单模态框 -->
@@ -718,43 +718,17 @@
     });
   </script>
   <script>
+    //NOTE  页面启动时检查登录状态从而启用部分元素和功能
     let doSignin = sessionStorage.getItem('signin');
+    //默认登录状态为false
     if (doSignin == null) {
       signin_judge = 'false';
       sessionStorage.setItem('signin', signin_judge);
     } else if (doSignin == 'true') {
       showUserInfo();
     }
-    $('nav').on('click', '#sign_out_link', function () {
-      alert('注销成功')
-      sessionStorage.setItem('signin', 'false');
-      sessionStorage.setItem('user', null);
-      sessionStorage.setItem('email', null);
-      window.location.reload();
-    })
-    function showUserInfo() {
-      $('.userView .btn').remove();
-      let userimg = `<a href="#!user" id="nav_user_img"><img class="circle" src="../images/user.jpg"/></a>`;
-      $('#next_is_user_img').after(userimg);
-      let username = sessionStorage.getItem('user');
-      let useremail = sessionStorage.getItem('email');
-      $('.userView span.name').text(username);
-      $('.userView span.email').text(useremail);
-      $('#next_is_sign_out').after(`<a href="#!signOUT" class="right-align" id='sign_out_link'>
-                <span class="white-text signOUT">
-                  注销
-                </span>
-              </a>`);
-    }
-    function hideUserInfo() {
-      $('#nav_user_img').remove();
-      $('#sign_out_link').remove();
-      $('.userView span.name').text('');
-      $('.userView span.email').text('');
-      let signin = `<a class="waves-effect waves-light btn  hoverable log-in-btn" href="#modal1">注册</a><a class="waves-effect waves-light btn  hoverable sign-in-btn" href="#modal2">登录</a>`;
-      $('#next_is_user_img').after(signin);
-    }
     login();
+    signin();
     //NOTE 注册功能
     function login() {
       let nameright = false;
@@ -827,7 +801,7 @@
           alert('注册成功');
         }
       });
-      //用户名重复性检查
+      //NOTE 用户名重复性检查
       function ifNameRepeat() {
         let userBankStr = localStorage.getItem('userBankJSON');
         if (userBankStr == null) {
@@ -850,8 +824,7 @@
         }
       }
     }
-    //TODO登录功能
-    signin();
+    //NOTE 登录功能
     function signin() {
       let nameright = false;
       let passright = false;
@@ -905,6 +878,29 @@
         }
       });
     }
+    //NOTE 登录后添加页面元素（用户头像，用户名，邮箱，注销按钮）
+    function showUserInfo() {
+      $('.userView .btn').remove();
+      let userimg = `<a href="#!user" id="nav_user_img"><img class="circle" src="../images/user.jpg"/></a>`;
+      $('#next_is_user_img').after(userimg);
+      let username = sessionStorage.getItem('user');
+      let useremail = sessionStorage.getItem('email');
+      $('.userView span.name').text(username);
+      $('.userView span.email').text(useremail);
+      $('#next_is_sign_out').after(`<a href="#!signOUT" class="right-align" id='sign_out_link'>
+                <span class="white-text signOUT">
+                  注销
+                </span>
+              </a>`);
+    }
+    //NOTE 注销事件功能
+    $('nav').on('click', '#sign_out_link', function () {
+      alert('注销成功')
+      sessionStorage.setItem('signin', 'false');
+      sessionStorage.setItem('user', null);
+      sessionStorage.setItem('email', null);
+      window.location.reload();
+    });
   </script>
 </body>
 
