@@ -1,1 +1,117 @@
 @import "./global";
+
+main {
+    #hotList {
+        .card-content {
+            .font-weight-bolder {
+                font-size: medium;
+                font-weight: bolder;
+            }
+
+            .pl-10 {
+                padding-left: 10px;
+            }
+        }
+    }
+
+    .catalog-box {
+        .card-content {
+            .font-weight-bolder {
+                font-size: medium;
+                font-weight: bolder;
+            }
+
+            .pl-10 {
+                padding-left: 10px;
+            }
+        }
+    }
+
+    //剧院page
+    #page2 {
+        .container {
+            #threater {
+                .threater_item_box {
+                    height: 400px;
+                    .card-image {
+                        overflow: hidden;
+                        display: flex;
+                        align-items: center;
+                    }
+                    .card-content {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                    }
+                    .card-action {
+                        span {
+                            font-size: 20px;
+                            line-height: 20px;
+                            font-weight: bolder;
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+
+    //商品详情page
+    #progress {
+        display: flex;
+        text-align: center;
+
+        li {
+            width: 25%;
+        }
+    }
+
+    #sits {
+        ul {
+            display: flex;
+            justify-content: center;
+
+            li {
+                // width: 100%;
+                padding: 5px;
+                i {
+                    border: 1px solid #ccc;
+                }
+
+            }
+        }
+    }
+
+    #showInfo {
+        table {
+            display: flex;
+
+            tr {
+
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+
+    #page3 {
+        .container {
+
+            .goods-show-time,
+            .goods-sells-price {
+                margin-bottom: 0;
+
+                .card-content {
+                    padding: 5px;
+                    text-align: left;
+
+                    p {
+                        padding-left: 10px;
+                    }
+                }
+
+            }
+        }
+    }
+}

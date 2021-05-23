@@ -1,7 +1,7 @@
 /*
  * @Author: leihao
  * @Date: 2021-05-20 12:06:18
- * @LastEditTime: 2021-05-22 20:24:26
+ * @LastEditTime: 2021-05-23 21:06:23
  * @LastEditors: Please set LastEditors
  * @Description: 
  * @FilePath: \MD-DaiMai\MD-damai\js\function.js
@@ -43,7 +43,7 @@ $.ajax({
 let doSignin = sessionStorage.getItem('signin');
 //默认登录状态为false
 if (doSignin == null) {
-  signin_judge = 'false';
+  let signin_judge = 'false';
   sessionStorage.setItem('signin', signin_judge);
 } else if (doSignin == 'true') {
   showUserInfo();

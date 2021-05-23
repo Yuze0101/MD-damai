@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-23 10:26:59
+ * @LastEditTime: 2021-05-24 00:56:31
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\index.html
@@ -69,13 +69,13 @@
             </form>
           </li>
           <li class="hoverable">
-            <a class="waves-effect" href="./index.html" class="hide-on-large-only">首页</a>
+            <a class="waves-effect" class="hide-on-large-only" id="page1_tab">首页</a>
           </li>
           <li class="hoverable">
-            <a class="waves-effect" href="./sports.html" class="hide-on-large-only">体育</a>
+            <a class="waves-effect" class="hide-on-large-only" id="page4_tab">全部商品</a>
           </li>
           <li class="hoverable">
-            <a class="waves-effect" href="./threater.html" class="hide-on-large-only">剧院</a>
+            <a class="waves-effect" class="hide-on-large-only" id="page2_tab">剧院</a>
           </li>
           <li>
             <div class="divider"></div><a class="subheader">账户中心</a>
@@ -88,58 +88,247 @@
   </header>
 
   <main>
-    <!-- 轮播图模块 -->
-    <div class="carousel">
-      <img src="../images/lbt-1.png" class="carousel-item" />
-      <img src="../images/lbt-2.png" class="carousel-item" />
-      <img src="../images/lbt-1.png" class="carousel-item" />
-      <img src="../images/lbt-2.png" class="carousel-item" />
-    </div>
-    <!-- 内容流 -->
-    <div class="container white z-depth-1">
-      <h4>热门推荐</h4>
-      <div class="row hotList" id="hotList">
-        <!-- TODO 获取文档流编辑 -->
-        <!-- STUB - 批量产生热门卡片 -->
+    <!-- NOTE 首页内容 -->
+    <div class="page-block" id="page1">
+      <!-- 轮播图模块 -->
+      <div class="carousel">
+        <img src="../images/lbt-1.png" class="carousel-item" />
+        <img src="../images/lbt-2.png" class="carousel-item" />
+        <img src="../images/lbt-1.png" class="carousel-item" />
+        <img src="../images/lbt-2.png" class="carousel-item" />
+      </div>
+      <!-- 内容流 -->
+      <div class="container white z-depth-1">
+        <h4>热门推荐</h4>
+        <div class="row hotList" id="hotList">
+          <!-- TODO 获取文档流编辑 -->
+          <!-- STUB - 批量产生热门卡片 -->
+        </div>
+      </div>
+      <!-- TODO 获取数据添加container -->
+      <div class="container white z-depth-1 hide catalog-box hoverable" id="showMusic">
+        <h4>1F 音乐会</h4>
+        <div class="row">
+        </div>
+      </div>
+      <div class="container white z-depth-1 hide catalog-box hoverable" id="showLive">
+        <h4>2F 演唱会</h4>
+        <div class="row">
+        </div>
+      </div>
+      <div class="container white z-depth-1 hide catalog-box hoverable" id="showOpera">
+        <h4>3F 歌剧话剧</h4>
+        <div class="row">
+        </div>
+      </div>
+      <div class="container white z-depth-1 hide  catalog-box hoverable" id="showSport">
+        <h4>4F 体育</h4>
+        <div class="row">
+        </div>
+      </div>
+      <div class="container white z-depth-1 hide  catalog-box hoverable" id="showOthers">
+        <h4>5F 其他</h4>
+        <div class="row">
+        </div>
+      </div>
+      <div class="container white z-depth-1 hide  catalog-box hoverable" id="showChild">
+        <h4>6F 儿童亲子</h4>
+        <div class="row">
+        </div>
+      </div>
+      <div class="container white z-depth-1 hide  catalog-box hoverable" id="showTrivial">
+        <h4>7F 旅游演艺</h4>
+        <div class="row">
+        </div>
       </div>
     </div>
-    <!-- TODO 获取数据添加container -->
-    <div class="container white z-depth-1 hide catalog-box" id="showMusic">
-      <h4>1F 音乐会</h4>
-      <div class="row">
+    <!-- NOTE 剧院详情 -->
+    <div class="page-block hide" id="page2">
+      <!-- 正在热映 -->
+      <div class="container">
+        <div class="row" id="main-item">
+          <div class="row film_on_show">
+            <h5 class="header center">正在演出</h5>
+          </div>
+          <div class="row" id="threater">
+            <h5 class="header center">超级剧场</h5>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="container white z-depth-1 hide catalog-box" id="showLive">
-      <h4>2F 演唱会</h4>
-      <div class="row">
+    <!-- NOTE 商品详情页 -->
+    <div class="page-block hide" id="page3">
+      <!-- 商品详情模块 -->
+      <div class="container white z-depth-1">
+        <div class="row">
+          <div class="col l4 m4 s12">
+            <img src="" class="carousel-item responsive-img goods-title-img" alt="loading..." />
+          </div>
+          <div class="col l8 m8 s12 goods-item-right-block">
+            <h4 class="goods-show-title">标题</h4>
+            <p class="goods-show-name">商品名称</p>
+            <!-- NOTE 商品销售进度 -->
+            <ul id="progress">
+              <li>项目待定</li>
+              <li>预售</li>
+              <li>售票中</li>
+              <li>演出开始</li>
+            </ul>
+            <div class="progress">
+              <div class="determinate" style="width: 70%"></div>
+            </div>
+            <div class="row">
+              <div class="col s2">
+                <p class="right-align">演出时间：</p>
+              </div>
+              <div class="col s10">
+                <div class="row goods-show-time">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s2">
+                <p class="right-align">票价：</p>
+              </div>
+              <div class="col s10">
+                <div class="row goods-sells-price">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s2"></div>
+              <div class="col s10">
+                <a class="btn waves-effect center white-text disabled" href="#modal5" id="go_to_select_seat">选座购买</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 演出信息模块 -->
+      <div class="container white z-depth-1">
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs">
+              <li class="tab col s4">
+                <a class="black-text" href="#showInfo">演出信息</a>
+              </li>
+              <li class="tab col s4">
+                <a class="black-text" href="#comment">精彩剧评</a>
+              </li>
+              <li class="tab col s4">
+                <a class="black-text" href="#buying">购买说明</a>
+              </li>
+            </ul>
+          </div>
+          <!-- 演出信息 -->
+          <div id="showInfo" class="col s12">
+            <div class="row">
+              <h5>项目概况</h5>
+              <div class="col s12">
+                <div class="card">
+                  <div class="card-content">
+                    <p>
+                      爱丽丝梦游仙境： 彩虹岛本是一个神秘莫测的童话世界，
+                      这个世界里，红桃皇后的魔力控制了一切，无数百姓成为了
+                      她们的奴隶。童话王国即将毁于一旦，而穿越到这个世界的爱丽丝，她是否有勇气战胜
+                      王后的魔法水晶和恶龙沙克，是否可以跟小伙伴们恢复童话王国往日的幸福与快乐?让我们与白兔酷比和爱
+                      丽丝一起走进那个神奇的树洞，共同穿越到凶险的童话王国，帮助爱丽丝打败可恶的红桃皇后和恶龙沙克吧!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 评论 -->
+          <div id="comment" class="col s12">
+            <div class="row">
+              <h5>写剧评</h5>
+              <div class="col s12">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="row">
+                      <h5>打分：</h5>
+                      <span>
+                        <i class="material-icons">grade</i><i class="material-icons">grade</i><i
+                          class="material-icons">grade</i><i class="material-icons">grade</i><i
+                          class="material-icons">grade</i>
+                      </span>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label for="textarea1">写下你的评论</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <div class="card horizontal">
+                  <div class="card-stacked">
+                    <div class="card-content">
+                      <p>
+                      <div class="chip">
+                        <img src="../images/user.jpg" alt="Contact Person" />
+                        Nevermore
+                      </div>
+                      我是评论</p>
+                    </div>
+                    <div class="card-action">
+                      <span>
+                        <i class="material-icons">grade</i>
+                        <i class="material-icons">grade</i>
+                        <i class="material-icons">grade</i>
+                        <i class="material-icons">grade</i>
+                        <i class="material-icons">grade</i>
+                      </span>
+                      <span class="right">我是日期</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 购买说明 -->
+          <div id="buying" class="col s12">
+            <div class="row">
+              <div class="col s12">
+                <div class="card">
+                  <div class="card-content">
+                    <h5>售前提示</h5>
+                    <ul>
+                      <li>1.为避免快递配送不能及时送达，演出距开场时间少于3天时不提供【快递配送】服务，请您谅解！您可以选择电子票或在线支
+                        付后上门自取纸质票。 点击查看上门<a href="">取票地址>></a></li>
+                      <li>2.凡演出票类商品，开票时间一般为演出前二到四周，正式开票后会第一时间短信通知您，请注意接收。</li>
+                      <li>
+                        3.如您不是通过“选座购买”通道进行的票品购买，最终票品数量视项目主办方及场馆情况而定，正式开票后大麦网将根据用户付款先后顺序依次配票，可能存在票品不足不能为您配票的风险，如最终未能配票，大麦网承诺全额退款，但不承担其他损失。
+                      </li>
+                    </ul>
+                    <h5>支付方式</h5>
+                    <p>网上银行（招商银行等） 支付平台（支付宝等） 转账汇款(招商银行等)<a href="">查看详情>></a></p>
+                    <h5>退/换货说明</h5>
+                    <p>针对不可抗力和非不可抗力的退/换票情况和处理，请点击查阅大麦网退<a href="">换货说明>></a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="container white z-depth-1 hide catalog-box" id="showOpera">
-      <h4>3F 歌剧话剧</h4>
-      <div class="row">
+    <!-- NOTE 全部商品+搜索功能 -->
+    <div class="page-block hide" id="page4">
+    </div>
+    <!-- NOTE 剧院详情页实时渲染 -->
+    <div class="page-block hide" id="page5">
+      <div class="container white z-depth-1 catalog-box hoverable" id="show_this_threater_goods">
+        <h4>本剧院热销</h4>
+        <div class="row this_threater_goods">
+        </div>
       </div>
     </div>
-    <div class="container white z-depth-1 hide  catalog-box" id="showSport">
-      <h4>4F 体育</h4>
-      <div class="row">
-      </div>
-    </div>
-    <div class="container white z-depth-1 hide  catalog-box" id="showOthers">
-      <h4>5F 其他</h4>
-      <div class="row">
-      </div>
-    </div>
-    <div class="container white z-depth-1 hide  catalog-box" id="showChild">
-      <h4>6F 儿童亲子</h4>
-      <div class="row">
-      </div>
-    </div>
-    <div class="container white z-depth-1 hide  catalog-box" id="showTrivial">
-      <h4>7F 旅游演艺</h4>
-      <div class="row">
-      </div>
-    </div>
-
     <!-- 注册模态框 -->
     <div id="modal1" class="modal">
       <div class="modal-content">
@@ -402,10 +591,10 @@
         </div>
         <!-- 已选座位 -->
         <div class="row">
-          <div class="col s2">
-            <p class="right">已选座位：</p>
+          <div class="col s12 m2">
+            <h5 class="center">已选</h5>
           </div>
-          <div class="col s10">
+          <div class="col s12 m10">
             <div class="row">
               <div class="col l3 m6 s12">
                 <div class="card">
@@ -661,12 +850,29 @@
     });
   </script>
   <script src="../js/Universal_function.js"></script>
-   <script>
+  <script>
+    //NOTE 导航栏标签页切换功能
+    $('#mobile-demo').on('click', '#page1_tab', function () {
+      $('#page2,#page3,#page4,#page5').addClass('hide');
+      $('#page1').removeClass('hide');
+    });
+    $('#mobile-demo').on('click', '#page4_tab', function () {
+      $('#page1,#page2,#page3,#page5').addClass('hide');
+      $('#page4').removeClass('hide');
+    });
+    $('#mobile-demo').on('click', '#page2_tab', function () {
+      $('#page1,#page3,#page4,#page5').addClass('hide');
+      $('#page2').removeClass('hide');
+    });
+
+
+    //NOTE 由获取演艺数据而衍生出的相关功能
     $.ajax({
       "url": "https://www.fastmock.site/mock/40e170f960701a834866a0bc956002f6/tickets/getAllArts",
       "success": function (data) {
         //定义新数组接收数据
         let goodsArr = data.goods;
+        //ANCHOR 首页热门推荐
         for (let i = 0; i < 4; i++) {
           let good = goodsArr[i];
           //热门推荐位为前四个商品
@@ -706,13 +912,131 @@
 
           }
         }
+        //剧院页热门推荐
+        for (let i = 0; i < 6; i++) {
+          let good = goodsArr[i];
+          //热门推荐位为前六个商品
+          showHotDataInThreater(good);
+        }
+        //商品详情页实时渲染
+        $('.page-block').on('click', '.goods_item', function (e) {
+          $('#page1,#page2,#page4,#page5').addClass('hide');
+          $('#page3').removeClass('hide');
+          let good_id_num = Number($(this).attr('num'));
+          let good = goodsArr[good_id_num - 1]
+          $('.goods-title-img').prop('src', `${good.img_src}`);
+          $('.goods-show-title').text(`${good.good_name}`);
+          $('.goods-show-name').text(`${good.place}`);
+          $('.goods-show-name .right').text(`${good.play_time}`);
+          console.log(good.play_time);
+          $('.goods-show-time').empty();
+          $('.goods-sells-price').empty();
+          let timeArr = good.times
+          for (let i = 0; i < timeArr.length; i++) {
+            let showTime = timeArr[i];
+            let newTimeCard = `
+              <div class="col s4">
+                    <div class="card">
+                      <div class="card-content goods_time_card">
+                        <p>${showTime}</p>
+                      </div>
+                    </div>
+                  </div>
+              `;
+            $('.goods-item-right-block .goods-show-time').append(newTimeCard);
+          }
+          if (Array.isArray(good.price)) {
+            let showPriceArr = good.price;
+            for (let i = 0; i < showPriceArr.length; i++) {
+              let showPrice = showPriceArr[i];
+              let newPriceCard = `
+              <div class="col s4">
+                    <div class="card">
+                      <div class="card-content goods_price_card">
+                        <p>${showPrice}</p>
+                      </div>
+                    </div>
+                  </div>
+              `;
+              $('.goods-item-right-block .goods-sells-price').append(newPriceCard);
+            }
+          } else {
+            let newPriceCard = `
+              <div class="col s4">
+                    <div class="card">
+                      <div class="card-content goods_price_card">
+                        <p>${good.price}</p>
+                      </div>
+                    </div>
+                  </div>
+              `;
+            $('.goods-item-right-block .goods-sells-price').append(newPriceCard);
+          }
+        })
+        //剧院详情页实时渲染
+        $('.page-block').on('click', '.threater-buy-ticket', function (e) {
+          $('#page1,#page2,#page3,#page4').addClass('hide');
+          $('#page5').removeClass('hide');
+          let good_id_Str_from_threater = $(this).attr('goods_num');
+          var good_id_Arr_from_threater = good_id_Str_from_threater.split(",");
+          for (let i = 0; i < good_id_Arr_from_threater.length; i++) {
+            let good_id_from_threater = Number(good_id_Arr_from_threater[i]);
+            let good = goodsArr[good_id_from_threater - 1];
+            showGoodsInThreater(good);
+          }
+        });
+        //NOTE 商品选座，添加购物车
+        //NOTE 选择商品规格
+        let can_go_to_choose_seat_time=false;
+        let can_go_to_choose_seat_price=false;
+        $('.page-block').on('click', '.goods_time_card', function (e) {
+          $('.goods_time_card').removeClass('white-text deep-purple goods_time_card_selected');
+          $(this).addClass('white-text deep-purple goods_time_card_selected');
+          can_go_to_choose_seat_time=true;
+          if (can_go_to_choose_seat_price&& can_go_to_choose_seat_time) {
+            $('#go_to_select_seat').removeClass('disabled');
+          }
+        });
+        $('.page-block').on('click', '.goods_price_card', function (e) {
+          $('.goods_price_card').removeClass('white-text deep-purple goods_price_card_selected');
+          $(this).addClass('white-text deep-purple goods_price_card_selected');
+          can_go_to_choose_seat_price=true;
+          if (can_go_to_choose_seat_price&& can_go_to_choose_seat_time) {
+            $('#go_to_select_seat').removeClass('disabled');
+          }
+        });
+        //NOTE 进入选座页面
+        $('.page-block').on('click', '#go_to_select_seat', function (e) {
+          console.log('get');
+          let doSignin = sessionStorage.getItem('signin');
+          console.log(doSignin);
+          if (doSignin=='false') {
+            console.log('false');
+            $('#go_to_select_seat').prop('href','#modal2');
+          } else if (doSignin == 'true') {
+            $('#go_to_select_seat').prop('href',"#modal5");
+          } else if (doSignin == null) {
+            $('#go_to_select_seat').prop('href','#modal1');
+          }
+        });
       }
     });
-
+    //NOTE 由获取影院数据而衍生出的相关功能
+    $.ajax({
+      'url': 'https://www.fastmock.site/mock/40e170f960701a834866a0bc956002f6/tickets/getAllTheatres',
+      'success': function (data) {
+        let threaterArr = data.places;
+        for (let i = 0; i < threaterArr.length; i++) {
+          let threater = threaterArr[i];
+          showThreater(threater);
+        }
+      }
+    });
+    //NOTE showXX为在页面上生成相应内容的功能
     function showHotData(good) {
       let newCard = `
       <div class="col l3 s6">
-          <div class="card  hoverable">
+          <div class="card  hoverable goods_item" num="${good.id}">
             <div class="card-image">
               <img src="${good.img_src}"/>
             </div>
@@ -725,10 +1049,26 @@
       `;
       $('.hotList').append(newCard);
     }
+    function showHotDataInThreater(good) {
+      let newCard = `
+      <div class="col l2 m3 s6">
+          <div class="card  hoverable goods_item" num="${good.id}">
+            <div class="card-image">
+              <img src="${good.img_src}"/>
+            </div>
+            <div class="card-content">
+              <p class="truncate font-weight-bolder">${good.good_name}</p>
+              <p class="truncate pl-10">${good.place}</p>
+            </div>
+          </div>
+        </div>
+      `;
+      $('#page2 #main-item .film_on_show').append(newCard);
+    }
     function showMusic(good) {
-      let newCard=`
+      let newCard = `
       <div class="col l3 s6">
-          <div class="card  hoverable">
+          <div class="card  hoverable goods_item" num="${good.id}">
             <div class="card-image">
               <img src="${good.img_src}"/>
             </div>
@@ -742,9 +1082,9 @@
       $('#showMusic .row').append(newCard);
     }
     function showLive(good) {
-      let newCard=`
+      let newCard = `
       <div class="col l3 s6">
-          <div class="card  hoverable">
+          <div class="card  hoverable goods_item" num="${good.id}">
             <div class="card-image">
               <img src="${good.img_src}"/>
             </div>
@@ -758,9 +1098,9 @@
       $('#showLive .row').append(newCard);
     }
     function showOpera(good) {
-      let newCard=`
+      let newCard = `
       <div class="col l3 s6">
-          <div class="card  hoverable">
+          <div class="card  hoverable goods_item" num="${good.id}">
             <div class="card-image">
               <img src="${good.img_src}"/>
             </div>
@@ -774,9 +1114,9 @@
       $('#showOpera .row').append(newCard);
     }
     function showSport(good) {
-      let newCard=`
+      let newCard = `
       <div class="col l3 s6">
-          <div class="card  hoverable">
+          <div class="card  hoverable goods_item" num="${good.id}">
             <div class="card-image">
               <img src="${good.img_src}"/>
             </div>
@@ -790,9 +1130,9 @@
       $('#showSport .row').append(newCard);
     }
     function showOthers(good) {
-      let newCard=`
+      let newCard = `
       <div class="col l3 s6">
-          <div class="card  hoverable">
+          <div class="card  hoverable goods_item" num="${good.id}">
             <div class="card-image">
               <img src="${good.img_src}"/>
             </div>
@@ -806,9 +1146,9 @@
       $('#showOthers .row').append(newCard);
     }
     function showChild(good) {
-      let newCard=`
+      let newCard = `
       <div class="col l3 s6">
-          <div class="card  hoverable">
+          <div class="card  hoverable goods_item" num="${good.id}">
             <div class="card-image">
               <img src="${good.img_src}"/>
             </div>
@@ -822,9 +1162,9 @@
       $('#showChild .row').append(newCard);
     }
     function showTrivial(good) {
-      let newCard=`
+      let newCard = `
       <div class="col l3 s6">
-          <div class="card  hoverable">
+          <div class="card  hoverable goods_item" num="${good.id}">
             <div class="card-image">
               <img src="${good.img_src}"/>
             </div>
@@ -837,6 +1177,56 @@
       `;
       $('#showTrivial .row').append(newCard);
     }
+    function showThreater(threater) {
+      let threater_tel_Arr = threater.phone;
+      let threater_tel = ``;
+      for (let i = 0; i < threater_tel_Arr.length; i++) {
+        threater_tel = threater_tel + threater_tel_Arr[i] + ' ';
+      }
+      let goods = threater.goods
+      let newCard = `
+      <div class="col s12 m6">
+              <div class="card horizontal hoverable  threater_item_box">
+                <div class="card-image grey lighten-3">
+                  <img src="${threater.img_src}" class='z-depth-3'>
+                </div>
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <p class='hoverable'>地址：<span>${threater.address}</span></p>
+                    <p class='hoverable'>电话：<span>${threater_tel}</span></p>
+                    <p class="deep-purple-text hoverable">评分：<span>${threater.mark}</span></p>
+                  </div>
+                  <div class="card-action">
+                    <span>${threater.name}</span>
+                    <p><a href="#"  goods_num='${goods}' class="right white-text deep-purple btn threater-buy-ticket">进入剧院</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+      `;
+      $('#threater').append(newCard);
+    }
+    function showGoodsInThreater(good) {
+      let newCard = `
+      <div class="col l3 s6">
+          <div class="card  hoverable goods_item" num="${good.id}">
+            <div class="card-image">
+              <img src="${good.img_src}"/>
+            </div>
+            <div class="card-content">
+              <p class="truncate font-weight-bolder">${good.good_name}</p>
+              <p class="truncate pl-10">${good.place}</p>
+            </div>
+          </div>
+        </div>
+      `;
+      $('#show_this_threater_goods .this_threater_goods').append(newCard);
+    }
+
+
+
+
+
   </script>
 </body>
 
