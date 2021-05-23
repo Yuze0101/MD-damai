@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-22 23:46:58
+ * @LastEditTime: 2021-05-24 00:19:49
  * @LastEditors: GengYuan
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\index.html
@@ -81,7 +81,7 @@
               >
             </li>
             <li class="hoverable">
-              <a class="waves-effect" href="../html/threater.html" class="hide-on-large-only"
+              <a class="waves-effect"  class="hide-on-large-only" id="theater"
                 >剧院</a
               >
             </li>
@@ -101,27 +101,165 @@
     </header>
 
     <main>
-      <!-- 轮播图模块 -->
+      <!-- ANCHOR 轮播图模块 -->
       <div class="carousel">
         <img src="../images/lbt-1.png" class="carousel-item" />
         <img src="../images/lbt-2.png" class="carousel-item" />
         <img src="../images/lbt-1.png" class="carousel-item" />
         <img src="../images/lbt-2.png" class="carousel-item" />
       </div>
-      <!-- 内容流 -->
+      <!-- ANCHOR 点击商品显示 -->
+         <!-- ANCHOR 商品详情模块 -->
+     <div class="container hoverable white z-depth-1 buy hide" id="detail">
+      <div class="row">
+        <div class="col l4 m4 s12">
+          <img src="../images/image-1.png" class="responsive-img" id="good_img"/>
+        </div>
+        <div class="col l8 m8 s12">
+          <h4 id="title">标题</h4>
+          <p id="place">商品名称</p>
+          <ul id="progress">
+            <li>项目待定</li>
+            <li>预售</li>
+            <li>售票中</li>
+            <li>演出开始</li>
+          </ul>
+          <div class="progress">
+            <div class="determinate" style="width: 70%"></div>
+          </div>
+          <div class="row">
+            <div class="col s2">
+              <p class="right-align">演出时间：</p>
+            </div>
+            <div class="col s10">
+              <div class="row" id="time">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s2">
+              <p class="right-align">票价：</p>
+            </div>
+            <div class="col s10">
+              <div class="row" id="price">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s2"></div>
+            <div class="col s10">
+              <a class="btn waves-effect center" href="#modal5">选座购买</a>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+     <!-- ANCHOR 演出信息模块 -->
+     <div class="container hoverable white z-depth-1 buy hide" id="info">
+      <div class="row">
+        <div class="col s12">
+          <ul class="tabs">
+            <li class="tab col s4">
+              <a class="black-text" href="#showInfo">演出信息</a>
+            </li>
+            <li class="tab col s4">
+              <a class="black-text" href="#comment">精彩剧评</a>
+            </li>
+            <li class="tab col s4">
+              <a class="black-text" href="#buying">购买说明</a>
+            </li>
+          </ul>
+        </div>
+        <!-- 演出信息 -->
+        <div id="showInfo" class="col s12">
+        </div>
+        <!-- 评论 -->
+        <div id="comment" class="col s12">
+          <div class="row">
+            <h5>写剧评</h5>
+            <div class="col s12">
+              <div class="card">
+                <div class="card-content">
+                  <div class="row">
+                    <h5>打分：</h5>
+                    <span class="grey-text">
+                      <i class="material-icons">grade</i><i class="material-icons">grade</i><i
+                        class="material-icons">grade</i><i class="material-icons">grade</i><i
+                        class="material-icons">grade</i>
+                    </span>
+                  </div>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <textarea id="textarea1" class="materialize-textarea"></textarea>
+                      <label for="textarea1">写下你的评论</label>
+                    </div>
+                  </div>
+                  <div class="row right-align">
+                    <button class="btn waves-effect">提交评论</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12" id="comment">
+              <div class="card horizontal">
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <p>
+                    <div class="chip">
+                      <img src="../images/user.jpg" alt="Contact Person" />
+                      Nevermore
+                    </div>
+                    我是评论</p>
+                  </div>
+                  <div class="card-action">
+                    <span>
+                      <i class="material-icons">grade</i><i class="material-icons">grade</i><i
+                        class="material-icons">grade</i><i class="material-icons">grade</i><i
+                        class="material-icons">grade</i>
+                    </span>
+                    <span class="right">我是日期</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 购买说明 -->
+        <div id="buying" class="col s12">
+          <div class="row">
+            <div class="col s12">
+              <div class="card">
+                <div class="card-content">
+                  <h5>售前提示</h5>
+                  <ul>
+                    <li>1.为避免快递配送不能及时送达，演出距开场时间少于3天时不提供【快递配送】服务，请您谅解！您可以选择电子票或在线支
+                      付后上门自取纸质票。 点击查看上门<a href="">取票地址>></a></li>
+                    <li>2.凡演出票类商品，开票时间一般为演出前二到四周，正式开票后会第一时间短信通知您，请注意接收。</li>
+                    <li>
+                      3.如您不是通过“选座购买”通道进行的票品购买，最终票品数量视项目主办方及场馆情况而定，正式开票后大麦网将根据用户付款先后顺序依次配票，可能存在票品不足不能为您配票的风险，如最终未能配票，大麦网承诺全额退款，但不承担其他损失。
+                    </li>
+                  </ul>
+                  <h5>支付方式</h5>
+                  <p>网上银行（招商银行等） 支付平台（支付宝等） 转账汇款(招商银行等)<a href="">查看详情>></a></p>
+                  <h5>退/换货说明</h5>
+                  <p>针对不可抗力和非不可抗力的退/换票情况和处理，请点击查阅大麦网退<a href="">换货说明>></a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+      </>
+      <!-- ANCHOR 内容流 -->
       <div class="container white z-depth-1" id="firstContainer">
         <h4>热门推荐</h4>
         <div class="row">
         </div>
       </div>
-      <!-- TODO 获取数据添加container -->
-      <!-- <div class="container white z-depth-1" id="secondContainer">
-        <h4>1F 戏剧达人</h4>
-        <div class="row">
-        </div>
-      </div> -->
-
-      <!-- 注册模态框 -->
+      <!-- ANCHOR 注册模态框 -->
       <div id="modal1" class="modal">
         <div class="modal-content">
           <h4>注册</h4>
@@ -161,7 +299,7 @@
           >
         </div>
       </div>
-      <!-- 登录模态框 -->
+      <!-- ANCHOR 登录模态框 -->
       <div id="modal2" class="modal">
         <div class="modal-content">
           <h4>登录</h4>
@@ -191,7 +329,7 @@
           >
         </div>
       </div>
-      <!-- 个人中心模态框 -->
+      <!-- ANCHOR 个人中心模态框 -->
       <div id="modal3" class="modal">
         <div class="modal-content">
           <h4>个人中心</h4>
@@ -314,7 +452,7 @@
           >
         </div>
       </div>
-      <!-- 订单模态框 -->
+      <!-- ANCHOR 订单模态框 -->
       <div id="modal4" class="modal">
         <div class="modal-content">
           <h4>订单管理</h4>
@@ -369,7 +507,7 @@
           >
         </div>
       </div>
-      <!-- 选座购买模态框 -->
+      <!-- ANCHOR 选座购买模态框 -->
       <div id="modal5" class="modal">
         <div class="modal-content">
           <h4>选择座位</h4>
@@ -460,7 +598,7 @@
           >
         </div>
       </div>
-      <!-- 订单确认模态框 -->
+      <!-- ANCHOR 订单确认模态框 -->
       <div id="modal6" class="modal modal-fixed-footer">
         <div class="modal-content">
           <h4>确认订单</h4>
@@ -662,7 +800,7 @@
           >
         </div>
       </div>
-      <!-- 加载页面动画 -->
+      <!-- ANCHOR 加载页面动画 -->
       <!-- <div id="modal7" class="modal">
         <div class="modal-content">
           <h4>验证中</h4>

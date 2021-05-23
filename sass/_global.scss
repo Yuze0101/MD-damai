@@ -3,7 +3,7 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  .bold{
+  .bold {
     font-weight: bold;
   }
 }
@@ -33,7 +33,7 @@ header {
   .brand-logo {
     height: 100%;
   }
-  #search-icon{
+  #search-icon {
     line-height: 50px;
     color: #ccc;
   }
@@ -43,6 +43,33 @@ header {
   }
 }
 main {
+  #progress {
+    display: flex;
+    text-align: center;
+    li {
+      width: 25%;
+    }
+  }
+  #sits {
+    ul {
+      display: flex;
+      li {
+        width: 100%;
+        i {
+          border: 1px solid #ccc;
+        }
+      }
+    }
+  }
+  #showInfo {
+    table {
+      display: flex;
+      tr {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
   flex: 1 0 auto;
   .carousel {
     .carousel-item {
@@ -51,7 +78,10 @@ main {
       height: auto;
     }
   }
-  .container{
+  .container {
+    .goods{
+      cursor: pointer;
+    }
     // opacity: 0;
     padding: 1rem;
     margin-top: 1rem;

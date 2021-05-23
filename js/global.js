@@ -1,7 +1,7 @@
 /*
  * @Author: GengYuan
  * @Date: 2021-05-22 21:02:08
- * @LastEditTime: 2021-05-23 01:00:39
+ * @LastEditTime: 2021-05-23 10:25:42
  * @LastEditors: GengYuan
  * @Description: 
  * @FilePath: \MD-DaiMai\MD-damai\js\global.js
@@ -13,4 +13,3 @@ export const data = {
     typeList : "https://www.fastmock.site/mock/40e170f960701a834866a0bc956002f6/tickets/getAllTypes",
     cityList : "https://www.fastmock.site/mock/40e170f960701a834866a0bc956002f6/tickets/getAllCiyies"
 }
-export let isFinishGetData = false;

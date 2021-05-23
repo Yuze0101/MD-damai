@@ -58,6 +58,47 @@ main {
           flex: 1 0 auto;
 }
 
+main #progress {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+}
+
+main #progress li {
+  width: 25%;
+}
+
+main #sits ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main #sits ul li {
+  width: 100%;
+}
+
+main #sits ul li i {
+  border: 1px solid #ccc;
+}
+
+main #showInfo table {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+main #showInfo table tr {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
 main .carousel .carousel-item {
   cursor: pointer;
   width: 100%;
@@ -67,6 +108,10 @@ main .carousel .carousel-item {
 main .container {
   padding: 1rem;
   margin-top: 1rem;
+}
+
+main .container .goods {
+  cursor: pointer;
 }
 
 main .container #threater .card-action span {

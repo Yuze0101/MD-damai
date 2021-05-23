@@ -1,7 +1,7 @@
 /*
  * @Author: GengYuan
  * @Date: 2021-05-20 12:06:18
- * @LastEditTime: 2021-05-23 01:11:38
+ * @LastEditTime: 2021-05-24 00:38:23
  * @LastEditors: GengYuan
  * @Description: fucntion库 所有功能集合
  * @FilePath: \MD-DaiMai\MD-damai\js\function.js
@@ -156,18 +156,18 @@ export function getData(data) {
     },
   });
 }
-
+//
 export function creatContainer() {
   let tempPlaylist = JSON.parse(sessionStorage.getItem("playList")).goods;
   let tempTypelist = JSON.parse(sessionStorage.getItem("typeList")).types;
   let tempCitieslist = JSON.parse(sessionStorage.getItem("cityList")).citys;
   let tempTheaterlist = JSON.parse(
-    sessionStorage.getItem("cityList")
+    sessionStorage.getItem("theaterList")
   ).theaterList;
   for (let i = 0; i < tempTypelist.length; i++) {
     let type = tempTypelist[i];
     $("main").append(`
-    <div class="container white z-depth-1 hide">
+    <div class="container white z-depth-1 goodList">
       <h4>${type.id}F ${type.name}</h4>
       <div class="row">
       </div>
@@ -178,7 +178,7 @@ export function creatContainer() {
     if (i < 4) {
       $("#firstContainer .row").append(`
         <div class="col l3 s6">
-            <div class="card hoverable">
+            <div class="card hoverable goods" num=${element.id}>
               <div class="card-image">
                 <img src=${element.img_src} />
                  <span class="card-title">${element.good_name}</span>
@@ -195,7 +195,7 @@ export function creatContainer() {
       if (num == element.type) {
         $(this).next().append(`
         <div class="col l3 s6">
-            <div class="card hoverable">
+            <div class="card hoverable goods" num=${element.id}>
               <div class="card-image">
                 <img src=${element.img_src} />
                  <span class="card-title">${element.good_name}</span>
@@ -208,5 +208,23 @@ export function creatContainer() {
           </div>`);
       }
     });
+  }
+}
+
+export function creatComment() {
+  let commentArr = [];
+  let tempPlaylist = JSON.parse(sessionStorage.getItem("playList")).goods;
+  let tempCommentStr = localStorage.getItem("comment");
+  if (tempCommentStr == null) {
+    for (let i = 0; i < tempPlaylist.length; i++) {
+      let comment = {
+        playID : i,
+        userID : [],
+        str : []
+      }
+      commentArr.push(comment);
+    }
+    tempCommentStr = JSON.stringify(commentArr);
+    localStorage.setItem('comment',tempCommentStr); 
   }
 }
