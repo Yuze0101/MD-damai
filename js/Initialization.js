@@ -1,7 +1,7 @@
 /*
  * @Author: GengYuan
  * @Date: 2021-05-22 10:40:51
- * @LastEditTime: 2021-05-24 00:30:14
+ * @LastEditTime: 2021-05-24 18:01:32
  * @LastEditors: GengYuan
  * @Description:
  * @FilePath: \MD-DaiMai\MD-damai\js\Initialization.js
@@ -63,8 +63,10 @@ $(document).ready(function () {
     $("header #loginName").text("你好，" + tempID);
     $("header #loginEmail").text(tempName);
     $("header #loginImg").removeClass("hide");
+    $("#buySit").attr("href", "#modal5");
   } else {
     $("header .unLogin").removeClass("hide");
+    $("#buySit").attr("href", "#modal2");
   }
 });
 // NOTE 所有ajax请求完成后执行新建container
@@ -183,31 +185,127 @@ $("main").on("click", ".goods", function () {
           </div>
   `);
   $("main .buy").find("#showInfo img").addClass("responsive-img");
-
-  let tempComment = JSON.parse(localStorage.getItem('comment'));
-  let thisComent = tempComment.find((el)=>{return el.playID == tempID});
-  $("main .buy").find("#comment").append(`
+  // 评分星星点击事件
+  let commentScore = 0;
+  $("main .buy")
+    .find("#score")
+    .on("click", "i", function () {
+      $(this).addClass("red-text");
+      $(this).prevAll().addClass("red-text");
+      $(this).nextAll().removeClass("red-text");
+      commentScore = $("main .buy #score i").index($(this)) + 1;
+      console.log(commentScore);
+    });
+  // 评论区加载
+  let tempComment = JSON.parse(localStorage.getItem("comment"));
+  let thisComment = tempComment.find((el) => {
+    return el.playID == tempID;
+  });
+  for (let i = 0; i < thisComment.userComment.length; i++) {
+    let target = thisComment.userComment[i];
+    let isLogin = sessionStorage.getItem("isLogin");
+    $("main .buy").find("#comment").append(` <div class="card horizontal">
+    <div class="card-stacked">
+      <div class="card-content">
+        <p>
+        <div class="chip">
+          <img src="../images/user.jpg" alt="Contact Person" />
+          ${target.userName}
+        </div>
+        ${target.str}</p>
+      </div>
+      <div class="card-content">
+         <button id="clean${target.num}${target.userName}" objname="${target.num}${target.userName}" class="btn waves-effect right delbtn disabled">删除</button>
+      </div>
+      <div class="card-action">
+        <span id="commentScore${target.num}${target.userName}">
+        </span>
+        <span class="right">${target.time}</span>
+      </div>
+    </div>
+  </div>`);
+    if (isLogin == "true") {
+      let tempArr = func.getLocalStorage("userlist");
+      let onLogin = sessionStorage.getItem("onLogin");
+      let userID = tempArr.find((el) => {
+        return el.userName == onLogin;
+      }).userID;
+      if (userID == target.userName) {
+        $("main .buy")
+          .find(`#clean${target.num}${target.userName}`)
+          .removeClass("disabled");
+      }
+    }
+    for (let j = 1; j <= target.score; j++) {
+      $("main .buy").find(`#commentScore${target.num}${target.userName}`)
+        .append(`
+      <i class="material-icons">grade</i>`);
+    }
+  }
+  // 评论区功能
+  let x = 0;
+  $("main .buy").on("click", "#goComment", function () {
+    let isLogin = sessionStorage.getItem("isLogin");
+    if (isLogin == "true") {
+      x++;
+      let str = sessionStorage.getItem("onLogin");
+      let tempArr = func.getLocalStorage("userlist");
+      let commentID = tempArr.find((user) => {
+        return user.userName == str;
+      }).userID;
+      let commentStr = $("main .buy #textarea1").val();
+      let commentTime = Date();
+      thisComment.userComment.push({
+        userName: commentID,
+        str: commentStr,
+        num: x,
+        time: commentTime,
+        score: commentScore,
+      });
+      $("main .buy").find("#comment").append(`
   <div class="card horizontal">
   <div class="card-stacked">
     <div class="card-content">
       <p>
       <div class="chip">
         <img src="../images/user.jpg" alt="Contact Person" />
-        Nevermore
+        ${commentID}
       </div>
-      我是评论</p>
+      ${commentStr}</p>
+    </div>
+    <div class="card-content">
+        <button id="clean${x}${commentID}" objname="${x}${commentID}" class="btn waves-effect right delbtn">删除</button>
     </div>
     <div class="card-action">
-      <span>
-        <i class="material-icons">grade</i><i class="material-icons">grade</i><i
-          class="material-icons">grade</i><i class="material-icons">grade</i><i
-          class="material-icons">grade</i>
+    <span id="commentScore${x}${commentID}">
       </span>
-      <span class="right">我是日期</span>
+      <span class="right">${commentTime}</span>
     </div>
   </div>
 </div>
   `);
+      for (let i = 1; i <= commentScore; i++) {
+        $("main .buy").find(`#commentScore${x}${commentID}`).append(`
+    <i class="material-icons">grade</i>`);
+      }
+      localStorage.setItem("comment", JSON.stringify(tempComment));
+      Materialize.toast("提交评论成功", 4000);
+    } else {
+      Materialize.toast("请您先登录", 4000);
+    }
+  });
+  $("main .buy").on("click", ".delbtn", function () {
+    $(this).parents(".horizontal").remove();
+    let str = $(this).attr("objname");
+    let index = 0;
+    thisComment.userComment.forEach((element) => {
+      if (element.num + element.userName != str) {
+        index++;
+      }
+    });
+    thisComment.userComment.splice(index, 1);
+    localStorage.setItem("comment", JSON.stringify(tempComment));
+  });
 });
 // NOTE 剧院点击事件
 $("header").on("click", "#theater", function () {
@@ -276,4 +374,60 @@ $("header").on("click", "#theater", function () {
           </div>`);
     }
   });
+});
+// NOTE 座位生成
+$("main .buy").on("click", "#buySit", function (event) {
+  let isLogin = sessionStorage.getItem("isLogin");
+  if (isLogin) {
+    $('#modal5 #sits').html('');
+    $('#modal5 #chooseSit').html('');
+    for (let i = 1; i <= 5; i++) {
+      $("#modal5 #sits").append(`<ul class="center r${i}"></ul>`);
+      for (let j = 1; j <= 8; j++) {
+        $(`#modal5 #sits .r${i}`).append(
+          `<li><i class="material-icons c${j}" position="${i}排${j}座">perm_identity</i></li>`
+        );
+      }
+    }
+
+    let num = 0;
+    $("#modal5 #sits i").on("click", function () {
+      if ($(this).hasClass("cyan-text")) {
+        $(this).removeClass("cyan-text");
+        let str = $(this).attr('position');
+        $('#modal5 #chooseSit .col').each(function(){
+          if($(this).find('p').text() == str){
+            $(this).remove();
+          }
+        })
+        num--;
+      } else {
+        if(num == 4){
+          Materialize.toast('您只能选择4个座位',4000);
+          return;
+        }
+        $(this).addClass("cyan-text");
+        $('#modal5 #chooseSit').append(`
+        <div class="col l3 m6 s12">
+        <div class="card">
+          <div class="card-content white-text cyan">
+            <p>${$(this).attr('position')}</p>
+          </div>
+        </div>
+      </div>
+        `)
+        num++;
+      }
+      if(num == 0){
+        $('#modal5 .modal-footer a').addClass('disabled');
+      }else{
+        $('#modal5 .modal-footer a').removeClass('disabled');
+        $('#modal5 .modal-footer a').on('click',function(){
+          alert('zhixing');
+        })
+      }
+    });
+  } else {
+    Materialize.toast("请您先登录", 4000);
+  }
 });

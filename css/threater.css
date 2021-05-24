@@ -80,6 +80,7 @@ main #sits ul li {
 }
 
 main #sits ul li i {
+  cursor: pointer;
   border: 1px solid #ccc;
 }
 

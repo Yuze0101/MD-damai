@@ -1,7 +1,7 @@
 /*
  * @Author: GengYuan
  * @Date: 2021-05-20 12:06:18
- * @LastEditTime: 2021-05-24 00:38:23
+ * @LastEditTime: 2021-05-24 09:48:03
  * @LastEditors: GengYuan
  * @Description: fucntion库 所有功能集合
  * @FilePath: \MD-DaiMai\MD-damai\js\function.js
@@ -216,11 +216,10 @@ export function creatComment() {
   let tempPlaylist = JSON.parse(sessionStorage.getItem("playList")).goods;
   let tempCommentStr = localStorage.getItem("comment");
   if (tempCommentStr == null) {
-    for (let i = 0; i < tempPlaylist.length; i++) {
+    for (let i = 1; i <= tempPlaylist.length; i++) {
       let comment = {
         playID : i,
-        userID : [],
-        str : []
+        userComment : []
       }
       commentArr.push(comment);
     }

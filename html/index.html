@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-24 00:19:49
+ * @LastEditTime: 2021-05-24 17:47:07
  * @LastEditors: GengYuan
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\index.html
@@ -148,7 +148,7 @@
           <div class="row">
             <div class="col s2"></div>
             <div class="col s10">
-              <a class="btn waves-effect center" href="#modal5">选座购买</a>
+              <a class="btn waves-effect center" href="#modal5" id="buySit">选座购买</a>
             </div>
           </div>
         </div>
@@ -182,7 +182,7 @@
                 <div class="card-content">
                   <div class="row">
                     <h5>打分：</h5>
-                    <span class="grey-text">
+                    <span class="grey-text hoverable" id="score">
                       <i class="material-icons">grade</i><i class="material-icons">grade</i><i
                         class="material-icons">grade</i><i class="material-icons">grade</i><i
                         class="material-icons">grade</i>
@@ -195,7 +195,7 @@
                     </div>
                   </div>
                   <div class="row right-align">
-                    <button class="btn waves-effect">提交评论</button>
+                    <button class="btn waves-effect" id="goComment">提交评论</button>
                   </div>
                 </div>
               </div>
@@ -209,9 +209,12 @@
                     <p>
                     <div class="chip">
                       <img src="../images/user.jpg" alt="Contact Person" />
-                      Nevermore
+                      菜鸡前端工程师
                     </div>
-                    我是评论</p>
+                    乃哥啥时候请吃饭？？？</p>
+                  </div>
+                  <div class="card-content">
+                    <button class="btn waves-effect right disabled delbtn">删除</button>
                   </div>
                   <div class="card-action">
                     <span>
@@ -219,7 +222,7 @@
                         class="material-icons">grade</i><i class="material-icons">grade</i><i
                         class="material-icons">grade</i>
                     </span>
-                    <span class="right">我是日期</span>
+                    <span class="right">日期不详</span>
                   </div>
                 </div>
               </div>
@@ -518,36 +521,6 @@
               <!-- 座位模块 -->
               <div id="sits">
                 <!-- 每行的个数 -->
-                <ul class="center">
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                </ul>
-                <ul class="center">
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                </ul>
-                <ul class="center">
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                  <li><i class="material-icons">perm_identity</i></li>
-                </ul>
               </div>
             </div>
           </div>
@@ -557,31 +530,10 @@
               <p class="right">已选座位：</p>
             </div>
             <div class="col s10">
-              <div class="row">
+              <div class="row" id="chooseSit">
                 <div class="col l3 m6 s12">
                   <div class="card">
-                    <div class="card-content">
-                      <p>已选座位信息</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col l3 m6 s12">
-                  <div class="card">
-                    <div class="card-content">
-                      <p>已选座位信息</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col l3 m6 s12">
-                  <div class="card">
-                    <div class="card-content">
-                      <p>已选座位信息</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col l3 m6 s12">
-                  <div class="card">
-                    <div class="card-content">
+                    <div class="card-content white-text cyan">
                       <p>已选座位信息</p>
                     </div>
                   </div>
@@ -593,7 +545,7 @@
         <div class="modal-footer">
           <a
             href="#modal6"
-            class="modal-action modal-close waves-effect waves-green btn-flat"
+            class="modal-action modal-close waves-effect waves-green btn-flat disabled"
             >确认购买</a
           >
         </div>
@@ -725,9 +677,6 @@
                 <div class="row">
                   <div class="col s12 m12">
                     <div class="card horizontal">
-                      <div class="card-image">
-                        <img src="../images/image-1.png" />
-                      </div>
                       <div class="card-stacked">
                         <div class="card-content">
                           <table class="bordered highlight responsive-table">

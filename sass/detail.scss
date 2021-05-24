@@ -8,21 +8,20 @@ main {
     }
   }
   #sits {
-    ul{
+    ul {
       display: flex;
-      li{
+      li {
         width: 100%;
-        i{
+        i {
           border: 1px solid #ccc;
         }
-        
       }
     }
   }
-  #showInfo{
-    table{
+  #showInfo {
+    table {
       display: flex;
-      tr{
+      tr {
         display: flex;
         flex-direction: column;
       }
