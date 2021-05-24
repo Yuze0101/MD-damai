@@ -1,7 +1,7 @@
 /*
  * @Author: GengYuan
  * @Date: 2021-05-22 10:40:51
- * @LastEditTime: 2021-05-24 19:42:37
+ * @LastEditTime: 2021-05-25 01:11:31
  * @LastEditors: GengYuan
  * @Description:
  * @FilePath: \MD-DaiMai\MD-damai\js\Initialization.js
@@ -131,6 +131,7 @@ $("main").on("click", ".goods", function () {
     return el.id == tempID;
   });
   $("main .container").addClass("hide");
+  $("main .buy").attr("playNum", target.id);
   $("main .buy")
     .removeClass("hide")
     .find("#good_img")
@@ -148,6 +149,7 @@ $("main").on("click", ".goods", function () {
               </div>
       `);
   }
+  $("main .buy").find("#time .card").eq(0).addClass("cyan");
   let isArray = Array.isArray(target.price);
   if (isArray) {
     for (let i = 0; i < target.price.length; i++) {
@@ -172,6 +174,7 @@ $("main").on("click", ".goods", function () {
                   </div>
     `);
   }
+  $("main .buy").find("#price .card").eq(0).addClass("cyan");
   $("main .buy").find("#showInfo").append(`
           <div class="row">
             <div class="col s12">
@@ -306,6 +309,14 @@ $("main").on("click", ".goods", function () {
     thisComment.userComment.splice(index, 1);
     localStorage.setItem("comment", JSON.stringify(tempComment));
   });
+  console.log($("main #detail #price .card,main #detail #time .card"));
+  $("main #detail #price .col,main #detail #time .col").on(
+    "click",
+    function () {
+      $(this).siblings().children(".card").removeClass("cyan");
+      $(this).children(".card").addClass("cyan");
+    }
+  );
 });
 // NOTE 剧院点击事件
 $("header").on("click", "#theater", function () {
@@ -379,8 +390,8 @@ $("header").on("click", "#theater", function () {
 $("main .buy").on("click", "#buySit", function (event) {
   let isLogin = sessionStorage.getItem("isLogin");
   if (isLogin) {
-    $('#modal5 #sits').html('');
-    $('#modal5 #chooseSit').html('');
+    $("#modal5 #sits").html("");
+    $("#modal5 #chooseSit").html("");
     for (let i = 1; i <= 5; i++) {
       $("#modal5 #sits").append(`<ul class="center r${i}"></ul>`);
       for (let j = 1; j <= 8; j++) {
@@ -394,40 +405,74 @@ $("main .buy").on("click", "#buySit", function (event) {
     $("#modal5 #sits i").on("click", function () {
       if ($(this).hasClass("cyan-text")) {
         $(this).removeClass("cyan-text");
-        let str = $(this).attr('position');
-        $('#modal5 #chooseSit .col').each(function(){
-          if($(this).find('p').text() == str){
+        let str = $(this).attr("position");
+        $("#modal5 #chooseSit .col").each(function () {
+          if ($(this).find("p").text() == str) {
             $(this).remove();
           }
-        })
+        });
         num--;
       } else {
-        if(num == 4){
-          Materialize.toast('您只能选择4个座位',4000);
+        if (num == 4) {
+          Materialize.toast("您只能选择4个座位", 4000);
           return;
         }
         $(this).addClass("cyan-text");
-        $('#modal5 #chooseSit').append(`
+        $("#modal5 #chooseSit").append(`
         <div class="col l3 m6 s12">
         <div class="card">
           <div class="card-content white-text cyan">
-            <p>${$(this).attr('position')}</p>
+            <p class="readyChoose">${$(this).attr("position")}</p>
           </div>
         </div>
       </div>
-        `)
+        `);
         num++;
       }
-      if(num == 0){
-        $('#modal5 .modal-footer a').addClass('disabled');
-      }else{
-        $('#modal5 .modal-footer a').removeClass('disabled');
-        $('#modal5 .modal-footer a').on('click',function(){
-          // 获取数据
-        })
+      if (num == 0) {
+        $("#modal5 .modal-footer a").addClass("disabled");
+      } else {
+        $("#modal5 .modal-footer a").removeClass("disabled");
       }
     });
+    
   } else {
     Materialize.toast("请您先登录", 4000);
   }
 });
+
+// NOTE 选座完成后购买按钮
+$("#modal5 .modal-footer a").on("click", function () {
+  // 获取数据
+  let playID = $("main #detail").attr("playNum");
+  let str = sessionStorage.getItem("onLogin");
+  let tempArr = func.getLocalStorage("userlist");
+  let loginUser = tempArr.find((user) => {
+    return user.userName == str;
+  });
+  let sitArr = [];
+  if (loginUser.buySit == undefined) {
+    loginUser.buySit = [];
+  }
+  $("#modal5 #sits .cyan-text").each(function (index, el) {
+    sitArr.push($(el).attr("position"));
+  });
+  let price = $("main .buy #price .cyan").find("p").text();
+  let time = $("main .buy #time .cyan").find("p").text();
+  loginUser.buySit.push({
+    playID: playID,
+    price: price,
+    time: time,
+    sit: sitArr,
+  });
+  for(let i=0;i<tempArr.length;i++){
+    if(tempArr[i].userName == loginUser.userName){
+      console.log(i);
+      tempArr.splice(i,1);
+      tempArr.push(loginUser);
+      break;
+    }
+  }
+  localStorage.setItem("userlist", JSON.stringify(tempArr));
+});
+// NOTE
