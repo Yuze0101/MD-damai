@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-24 00:56:31
+ * @LastEditTime: 2021-05-24 11:18:59
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\index.html
@@ -36,7 +36,7 @@
               <!-- <a href="#!user"
                     ><img class="circle" src="../images/user.jpg"
                   /></a> -->
-              <!-- TODO 未登录更换字样 -->
+              <!-- NOTE 未登录更换字样 -->
               <a class="waves-effect waves-light btn  hoverable log-in-btn" href="#modal1">注册</a>
               <a class="waves-effect waves-light btn  hoverable sign-in-btn" href="#modal2">登录</a>
 
@@ -58,7 +58,7 @@
               </a> -->
             </div>
           </li>
-          <!-- TODO 更换登录链接 -->
+          <!-- NOTE 更换登录链接 -->
           <li class="hoverable">
             <form class="center">
               <div class="input-field">
@@ -101,11 +101,11 @@
       <div class="container white z-depth-1">
         <h4>热门推荐</h4>
         <div class="row hotList" id="hotList">
-          <!-- TODO 获取文档流编辑 -->
+          <!-- NOTE 获取文档流编辑 -->
           <!-- STUB - 批量产生热门卡片 -->
         </div>
       </div>
-      <!-- TODO 获取数据添加container -->
+      <!-- NOTE 获取数据添加container -->
       <div class="container white z-depth-1 hide catalog-box hoverable" id="showMusic">
         <h4>1F 音乐会</h4>
         <div class="row">
@@ -554,38 +554,8 @@
           <div class="col s12">
             <div class="cyan lighten-3 center-align">大荧幕</div>
             <!-- 座位模块 -->
-            <div id="sits">
+            <div id="sits" class="container z-depth-3 hoverable">
               <!-- 每行的个数 -->
-              <ul class="center">
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-              </ul>
-              <ul class="center">
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-              </ul>
-              <ul class="center">
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-              </ul>
             </div>
           </div>
         </div>
@@ -595,41 +565,13 @@
             <h5 class="center">已选</h5>
           </div>
           <div class="col s12 m10">
-            <div class="row">
-              <div class="col l3 m6 s12">
-                <div class="card">
-                  <div class="card-content">
-                    <p>已选座位信息</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col l3 m6 s12">
-                <div class="card">
-                  <div class="card-content">
-                    <p>已选座位信息</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col l3 m6 s12">
-                <div class="card">
-                  <div class="card-content">
-                    <p>已选座位信息</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col l3 m6 s12">
-                <div class="card">
-                  <div class="card-content">
-                    <p>已选座位信息</p>
-                  </div>
-                </div>
-              </div>
+            <div class="row select_seat_info">
             </div>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <a href="#modal6" class="modal-action modal-close waves-effect waves-green btn-flat">确认购买</a>
+        <a href="#modal6" id="go_to_check_out" class="modal-action modal-close waves-effect waves-green btn-flat deep-purple white-text disabled">确认购买</a>
       </div>
     </div>
     <!-- 订单确认模态框 -->
@@ -833,6 +775,7 @@
   </footer>
   <script src="../util/jquery-3.5.1.min.js"></script>
   <script src="../util/materialize/js/materialize.js"></script>
+  <!-- //NOTE 页面效果功能组 -->
   <script>
     $(document).ready(function () {
       $(".button-collapse").sideNav();
@@ -987,21 +930,21 @@
         });
         //NOTE 商品选座，添加购物车
         //NOTE 选择商品规格
-        let can_go_to_choose_seat_time=false;
-        let can_go_to_choose_seat_price=false;
+        let can_go_to_choose_seat_time = false;
+        let can_go_to_choose_seat_price = false;
         $('.page-block').on('click', '.goods_time_card', function (e) {
           $('.goods_time_card').removeClass('white-text deep-purple goods_time_card_selected');
           $(this).addClass('white-text deep-purple goods_time_card_selected');
-          can_go_to_choose_seat_time=true;
-          if (can_go_to_choose_seat_price&& can_go_to_choose_seat_time) {
+          can_go_to_choose_seat_time = true;
+          if (can_go_to_choose_seat_price && can_go_to_choose_seat_time) {
             $('#go_to_select_seat').removeClass('disabled');
           }
         });
         $('.page-block').on('click', '.goods_price_card', function (e) {
           $('.goods_price_card').removeClass('white-text deep-purple goods_price_card_selected');
           $(this).addClass('white-text deep-purple goods_price_card_selected');
-          can_go_to_choose_seat_price=true;
-          if (can_go_to_choose_seat_price&& can_go_to_choose_seat_time) {
+          can_go_to_choose_seat_price = true;
+          if (can_go_to_choose_seat_price && can_go_to_choose_seat_time) {
             $('#go_to_select_seat').removeClass('disabled');
           }
         });
@@ -1010,15 +953,72 @@
           console.log('get');
           let doSignin = sessionStorage.getItem('signin');
           console.log(doSignin);
-          if (doSignin=='false') {
+          if (doSignin == 'false') {
             console.log('false');
-            $('#go_to_select_seat').prop('href','#modal2');
+            $('#go_to_select_seat').prop('href', '#modal2');
           } else if (doSignin == 'true') {
-            $('#go_to_select_seat').prop('href',"#modal5");
+            $('#go_to_select_seat').prop('href', "#modal5");
           } else if (doSignin == null) {
-            $('#go_to_select_seat').prop('href','#modal1');
+            $('#go_to_select_seat').prop('href', '#modal1');
           }
         });
+        //NOTE 生成座位列表
+        for (let i = 1; i <= 8; i++) {
+          $('#sits').append(`<ul class='center row_of_sits row${i}' seat_row='${i}'></ul>`);
+          for (let j = 1; j <= 8; j++) {
+            $(`.row${i}`).append(`<li class='col_of_sits' position='${i}排${j}列' seat_checked='false' seat_col='${j}'><i class="material-icons hoverable">perm_identity</i></li>`);
+          }
+        }
+        //NOTE 开始选座
+        let seat_count = 0;
+        $('main').on('click', 'ul li', function (e) {
+          console.log(111);
+          if ($(this).attr('seat_checked') == 'false') {
+            if (seat_count == 4) {
+              alert('单个订单最多只能购买4张票');
+            } else {
+              seat_count++;
+              $('#go_to_check_out').removeClass('disabled');
+              $(this).children().text('done');
+              $(this).children().addClass('white-text');
+              $(this).children().addClass('deep-purple');
+              $(this).attr('seat_checked','true');
+              let seat_txt=$(this).attr('position');
+              let newSeatInfo = `
+              <div class="col l3 m6 s12 SeatInfo_box" position='${seat_txt}'>
+                <div class="card">
+                  <div class="card-content deep-purple">
+                    <p class='white-text'>${seat_txt}</p>
+                  </div>
+                </div>
+              </div>
+              `;
+              $('.select_seat_info').append(newSeatInfo);
+            }
+          } else if($(this).attr('seat_checked') == 'true') {
+            seat_count--;
+            $(this).children().text('perm_identity');
+            $(this).children().removeClass('white-text');
+            $(this).children().removeClass('deep-purple');
+            $(this).attr('seat_checked','false');
+            let seat_txt=$(this).attr('position');
+            $(`.SeatInfo_box`).each(function(e) {
+              if ($(this).attr('position')==seat_txt) {
+                $(this).remove();
+              }
+              if (seat_count ==0) {
+                $('#go_to_check_out').addClass('disabled');
+              }
+            });
+
+
+          } else if ($(this).attr('seat_checked') == 'lock') {
+            $(this).children().text('lock');
+            $(this).children().addClass('white-text');
+            $(this).children().addClass('red darken-4');
+          }
+        });
+        //TODO 获取后台数据锁定已选座位
       }
     });
     //NOTE 由获取影院数据而衍生出的相关功能
@@ -1222,11 +1222,6 @@
       `;
       $('#show_this_threater_goods .this_threater_goods').append(newCard);
     }
-
-
-
-
-
   </script>
 </body>
 
