@@ -1,7 +1,7 @@
 /*
  * @Author: leihao
  * @Date: 2021-05-20 12:06:18
- * @LastEditTime: 2021-05-23 21:06:23
+ * @LastEditTime: 2021-05-24 15:04:43
  * @LastEditors: Please set LastEditors
  * @Description: 
  * @FilePath: \MD-DaiMai\MD-damai\js\function.js
@@ -106,7 +106,8 @@ function login() {
         name: $('#userName').val(),
         phone: $('#userPhone').val(),
         email: $('#userEmail').val(),
-        pass: $('#userPass').val()
+        pass: $('#userPass').val(),
+        order:[],
       }
       if (userBankStr == null) {
         let userBankArr = [];

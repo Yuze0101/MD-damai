@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-24 11:18:59
+ * @LastEditTime: 2021-05-24 20:38:54
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\index.html
@@ -157,7 +157,7 @@
       </div>
     </div>
     <!-- NOTE 商品详情页 -->
-    <div class="page-block hide" id="page3">
+    <div class="page-block hide" id="page3" good_id="">
       <!-- 商品详情模块 -->
       <div class="container white z-depth-1">
         <div class="row">
@@ -225,16 +225,8 @@
             <div class="row">
               <h5>项目概况</h5>
               <div class="col s12">
-                <div class="card">
-                  <div class="card-content">
-                    <p>
-                      爱丽丝梦游仙境： 彩虹岛本是一个神秘莫测的童话世界，
-                      这个世界里，红桃皇后的魔力控制了一切，无数百姓成为了
-                      她们的奴隶。童话王国即将毁于一旦，而穿越到这个世界的爱丽丝，她是否有勇气战胜
-                      王后的魔法水晶和恶龙沙克，是否可以跟小伙伴们恢复童话王国往日的幸福与快乐?让我们与白兔酷比和爱
-                      丽丝一起走进那个神奇的树洞，共同穿越到凶险的童话王国，帮助爱丽丝打败可恶的红桃皇后和恶龙沙克吧!
-                    </p>
-                  </div>
+                <div class="container" id="play_details">
+
                 </div>
               </div>
             </div>
@@ -571,7 +563,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <a href="#modal6" id="go_to_check_out" class="modal-action modal-close waves-effect waves-green btn-flat deep-purple white-text disabled">确认购买</a>
+        <a href="#modal6" id="go_to_check_out"
+          class="modal-action modal-close waves-effect waves-green btn-flat deep-purple white-text disabled">确认购买</a>
       </div>
     </div>
     <!-- 订单确认模态框 -->
@@ -581,8 +574,8 @@
         <ul class="collapsible  popout" data-collapsible="accordion">
           <!-- 提示 -->
           <li>
-            <div class="collapsible-header red lighten-4"><i
-                class="material-icons deep-purple-text">info</i>请于15分钟内支付，剩余<span>15</span>分钟</div>
+            <div class="collapsible-header red lighten-4"><i class="material-icons deep-purple-text">info</i>请于15分钟内支付
+            </div>
           </li>
           <!-- 邮寄地址 -->
           <li>
@@ -673,56 +666,31 @@
               <div class="row">
                 <div class="col s12 m12">
                   <div class="card horizontal">
-                    <div class="card-image">
-                      <img src="../images/image-1.png">
-                    </div>
                     <div class="card-stacked">
                       <div class="card-content">
-                        <table class="bordered highlight responsive-table">
+                        <table class="bordered highlight responsive-table" id="shopping_car">
                           <thead>
                             <tr>
-                              <td>项目名称</td>
-                              <td>票价</td>
+                              <td>商品名称</td>
+                              <td>单价</td>
                               <td>数量</td>
-                              <td>售后</td>
                               <td>订单金额</td>
-                              <td>交易状态</td>
                               <td>操作</td>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <td>1</td>
-                              <td>2</td>
-                              <td>3</td>
-                              <td>4</td>
-                              <td>5</td>
-                              <td>6</td>
-                              <td>删除</td>
-                            </tr>
-                            <tr>
-                              <td>1</td>
-                              <td>2</td>
-                              <td>3</td>
-                              <td>4</td>
-                              <td>5</td>
-                              <td>6</td>
-                              <td>删除</td>
-                            </tr>
-                            <tr>
-                              <td>1</td>
-                              <td>2</td>
-                              <td>3</td>
-                              <td>4</td>
-                              <td>5</td>
-                              <td>6</td>
-                              <td>删除</td>
+                              <td class="selected_good_name"></td>
+                              <td class="selected_good_price"></td>
+                              <td class="selected_seat_count"></td>
+                              <td class='sum_price_of_shoppingcar'></td>
+                              <td class="del_this_goods">取消</td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
                       <div class="card-action">
-                        <p class="right red-text darken-4">总价共计：<span>00</span>元</p>
+                        <p class="right red-text darken-4">总价共计：<span id="sum_all_price_in_spc">00</span>元</p>
                       </div>
                     </div>
                   </div>
@@ -734,7 +702,7 @@
         </ul>
       </div>
       <div class="modal-footer">
-        <a href="#modal4"
+        <a href="#modal4" id="go_to_order_page"
           class="modal-action modal-close waves-effect waves-light btn-flat white-text deep-purple">立即支付</a>
       </div>
     </div>
@@ -866,12 +834,12 @@
           $('#page1,#page2,#page4,#page5').addClass('hide');
           $('#page3').removeClass('hide');
           let good_id_num = Number($(this).attr('num'));
-          let good = goodsArr[good_id_num - 1]
+          let good = goodsArr[good_id_num - 1];
           $('.goods-title-img').prop('src', `${good.img_src}`);
           $('.goods-show-title').text(`${good.good_name}`);
           $('.goods-show-name').text(`${good.place}`);
           $('.goods-show-name .right').text(`${good.play_time}`);
-          console.log(good.play_time);
+          $('#page3').attr('good_id', `${good_id_num}`);
           $('.goods-show-time').empty();
           $('.goods-sells-price').empty();
           let timeArr = good.times
@@ -880,7 +848,7 @@
             let newTimeCard = `
               <div class="col s4">
                     <div class="card">
-                      <div class="card-content goods_time_card">
+                      <div class="card-content hoverable goods_time_card">
                         <p>${showTime}</p>
                       </div>
                     </div>
@@ -907,7 +875,7 @@
             let newPriceCard = `
               <div class="col s4">
                     <div class="card">
-                      <div class="card-content goods_price_card">
+                      <div class="card-content hoverable goods_price_card">
                         <p>${good.price}</p>
                       </div>
                     </div>
@@ -915,6 +883,9 @@
               `;
             $('.goods-item-right-block .goods-sells-price').append(newPriceCard);
           }
+          $(`#play_details`).empty();
+          $(`#play_details`).append(`${good.details}`);
+          $(`#play_details img`).addClass(`responsive-img`);
         })
         //剧院详情页实时渲染
         $('.page-block').on('click', '.threater-buy-ticket', function (e) {
@@ -928,6 +899,8 @@
             showGoodsInThreater(good);
           }
         });
+
+
         //NOTE 商品选座，添加购物车
         //NOTE 选择商品规格
         let can_go_to_choose_seat_time = false;
@@ -950,29 +923,40 @@
         });
         //NOTE 进入选座页面
         $('.page-block').on('click', '#go_to_select_seat', function (e) {
-          console.log('get');
           let doSignin = sessionStorage.getItem('signin');
-          console.log(doSignin);
           if (doSignin == 'false') {
-            console.log('false');
             $('#go_to_select_seat').prop('href', '#modal2');
           } else if (doSignin == 'true') {
             $('#go_to_select_seat').prop('href', "#modal5");
           } else if (doSignin == null) {
             $('#go_to_select_seat').prop('href', '#modal1');
           }
-        });
-        //NOTE 生成座位列表
-        for (let i = 1; i <= 8; i++) {
-          $('#sits').append(`<ul class='center row_of_sits row${i}' seat_row='${i}'></ul>`);
-          for (let j = 1; j <= 8; j++) {
-            $(`.row${i}`).append(`<li class='col_of_sits' position='${i}排${j}列' seat_checked='false' seat_col='${j}'><i class="material-icons hoverable">perm_identity</i></li>`);
+          //NOTE 生成座位列表
+          for (let i = 1; i <= 8; i++) {
+            $('#sits').append(`<ul class='center row_of_sits row${i}' seat_row='${i}'></ul>`);
+            for (let j = 1; j <= 8; j++) {
+              $(`.row${i}`).append(`<li class='col_of_sits' position='${i}排${j}列' seat_checked='false' seat_col='${j}'><i class="material-icons hoverable">perm_identity</i></li>`);
+            }
           }
-        }
+          //TODO 获取后台数据锁定已选座位
+          let orderBankStr = localStorage.getItem('orderBankJSON');
+
+          if (orderBankStr !== null) {
+            let orderBankArr = JSON.parse(orderBankStr);
+            let good_id_num = $('#page3').attr('good_id');
+            for (let i = 0; i < orderBankArr.length; i++) {
+              for (let j = 0; j < orderBankArr[i].user_order.length; j++) {
+                if (orderBankArr[i].user_order[j].play_id == $('#page3').attr('good_id')) {
+                  console.log(orderBankArr[i].user_order[j].play_choosedSeat);
+                }
+              }
+            }
+          }
+        });
         //NOTE 开始选座
         let seat_count = 0;
+        let seat_txt = ``;
         $('main').on('click', 'ul li', function (e) {
-          console.log(111);
           if ($(this).attr('seat_checked') == 'false') {
             if (seat_count == 4) {
               alert('单个订单最多只能购买4张票');
@@ -982,8 +966,9 @@
               $(this).children().text('done');
               $(this).children().addClass('white-text');
               $(this).children().addClass('deep-purple');
-              $(this).attr('seat_checked','true');
-              let seat_txt=$(this).attr('position');
+              $(this).attr('seat_checked', 'true');
+              seat_txt = $(this).attr('position');
+
               let newSeatInfo = `
               <div class="col l3 m6 s12 SeatInfo_box" position='${seat_txt}'>
                 <div class="card">
@@ -995,18 +980,18 @@
               `;
               $('.select_seat_info').append(newSeatInfo);
             }
-          } else if($(this).attr('seat_checked') == 'true') {
+          } else if ($(this).attr('seat_checked') == 'true') {
             seat_count--;
             $(this).children().text('perm_identity');
             $(this).children().removeClass('white-text');
             $(this).children().removeClass('deep-purple');
-            $(this).attr('seat_checked','false');
-            let seat_txt=$(this).attr('position');
-            $(`.SeatInfo_box`).each(function(e) {
-              if ($(this).attr('position')==seat_txt) {
+            $(this).attr('seat_checked', 'false');
+            let seat_txt = $(this).attr('position');
+            $(`.SeatInfo_box`).each(function (e) {
+              if ($(this).attr('position') == seat_txt) {
                 $(this).remove();
               }
-              if (seat_count ==0) {
+              if (seat_count == 0) {
                 $('#go_to_check_out').addClass('disabled');
               }
             });
@@ -1018,7 +1003,140 @@
             $(this).children().addClass('red darken-4');
           }
         });
-        //TODO 获取后台数据锁定已选座位
+        $('main').on('click', '#go_to_check_out', function (e) {
+          let good_id_num = $('#page3').attr('good_id');
+          let good = goodsArr[good_id_num - 1];
+          let selected_good_price = Number($(`.goods_price_card_selected p`).text().match(/\d{3}/g));
+          let sum_once_price = selected_good_price * seat_count
+          $('#shopping_car tbody .selected_good_name').text(`${good.good_name}`);
+          $('#shopping_car tbody .selected_good_price').text(`${selected_good_price}`);
+          $('#shopping_car tbody .selected_seat_count').text(`${seat_count}`);
+          $('#shopping_car tbody .sum_price_of_shoppingcar').text(`${sum_once_price}`);
+          let sum_price_arr = $('.sum_price_of_shoppingcar');
+          let sum_all_price = 0
+
+          for (let i = 0; i < sum_price_arr.length; i++) {
+            sum_all_price += Number($(sum_price_arr[i]).text());
+          }
+          $('#sum_all_price_in_spc').text(sum_all_price);
+        });
+        $('main').on('click', '.del_this_goods', function (e) {
+          $('#shopping_car tbody .selected_good_name').text(``);
+          $('#shopping_car tbody .selected_good_price').text(``);
+          $('#shopping_car tbody .selected_seat_count').text(``);
+          $('#shopping_car tbody .sum_price_of_shoppingcar').text(``);
+          $('#sum_all_price_in_spc').text("0");
+          $(`#sits ul li`).each(function (e) {
+            if ($(this).attr('seat_checked') == 'true') {
+              $(this).children().text('perm_identity');
+              $(this).children().removeClass('white-text');
+              $(this).children().removeClass('deep-purple');
+              $(this).attr('seat_checked', 'false');
+            }
+            seat_count = 0;
+            $('.select_seat_info').empty();
+            $('.goods_time_card').removeClass('white-text deep-purple goods_time_card_selected');
+            $('.goods_price_card').removeClass('white-text deep-purple goods_price_card_selected');
+          });
+        });
+
+
+
+        //NOTE 订单结算
+        //TODO 地图功能
+        //TODO 支付选择
+        //NOTE 订单存入后台
+        $('main').on('click', '#go_to_order_page', function (e) {
+          let save_seat_info = [];
+          let order_Obj_Arr = [];
+          $(`.SeatInfo_box`).each(function (e) {
+            let selected_seat_info = $(this).attr('position');
+            save_seat_info.push(selected_seat_info);
+          });
+          let orderBankStr = localStorage.getItem('orderBankJSON');
+          if (orderBankStr == null) {
+            let orderBankArr = [];
+            let user_order_Obj = {
+              user_name: sessionStorage.getItem('user'),
+              user_order: order_Obj_Arr
+            }
+            let order_Obj = {
+              play_id: $('#page3').attr('good_id'),
+              play_price: $(`.goods_price_card_selected p`).text().match(/\d{3}/g),
+              play_selected_number: seat_count,
+              play_choosedSeat: save_seat_info,
+              play_time: $(`.goods_time_card_selected p`).text()
+            }
+            order_Obj_Arr.push(order_Obj);
+            orderBankArr.push(user_order_Obj);
+            orderBankStr = JSON.stringify(orderBankArr);
+            localStorage.setItem('orderBankJSON', orderBankStr);
+            console.log(1);
+          } else {
+            let orderBankArr = JSON.parse(orderBankStr);
+            for (let i = 0; i < orderBankArr.length; i++) {
+              if (sessionStorage.getItem('user') == orderBankArr[i].user_name) {
+                let order_Obj = {
+                  play_id: $('#page3').attr('good_id'),
+                  play_price: $(`.goods_price_card_selected p`).text().match(/\d{3}/g),
+                  play_selected_number: seat_count,
+                  play_choosedSeat: save_seat_info,
+                  play_time: $(`.goods_time_card_selected p`).text()
+                }
+                orderBankArr[i].user_order.push(order_Obj);
+                orderBankStr = JSON.stringify(orderBankArr);
+                localStorage.setItem('orderBankJSON', orderBankStr);
+                console.log(2);
+              } else {
+                console.log(3);
+                let user_order_Obj = {
+                  user_name: sessionStorage.getItem('user'),
+                  user_order: order_Obj_Arr
+                }
+                let order_Obj = {
+                  play_id: $('#page3').attr('good_id'),
+                  play_price: $(`.goods_price_card_selected p`).text().match(/\d{3}/g),
+                  play_selected_number: seat_count,
+                  play_choosedSeat: save_seat_info,
+                  play_time: $(`.goods_time_card_selected p`).text()
+                }
+                order_Obj_Arr.push(order_Obj);
+                orderBankArr.push(user_order_Obj);
+                orderBankStr = JSON.stringify(orderBankArr);
+                localStorage.setItem('orderBankJSON', orderBankStr);
+              }
+            }
+
+          }
+          $(`#sits ul li`).each(function (e) {
+            if ($(this).attr('seat_checked') == 'true') {
+              $(this).children().text('perm_identity');
+              $(this).children().removeClass('white-text');
+              $(this).children().removeClass('deep-purple');
+              $(this).attr('seat_checked', 'false');
+            }
+            seat_count = 0;
+            $('.select_seat_info').empty();
+            $('.goods_time_card').removeClass('white-text deep-purple goods_time_card_selected');
+            $('.goods_price_card').removeClass('white-text deep-purple goods_price_card_selected');
+          });
+        });
+        // let seat_txt_ainput='';
+        // $(`.SeatInfo_box`).each(function (e) {
+        //   seat_txt_ainput+=$(this).attr('seat_checked')+',';
+        // });
+        // for (let i=0;i<userBankArr.length;i++) {
+        //   if (userBankArr[i].name== usingName) {
+        //     let orderObj={
+        //       play_id:good_id_num,
+        //       play_price:$(`.goods_price_card_selected p`).text().match(/\d{3}/g),
+        //       play_selected_number:seat_count,
+        //       play_choosedSeat:seat_txt_ainput,
+        //       play_time:$(`.goods_time_card_selected p`).text()
+        //     }
+        //     userBankArr[i].order.push(orderObj);
+        //   }
+        // }
       }
     });
     //NOTE 由获取影院数据而衍生出的相关功能
