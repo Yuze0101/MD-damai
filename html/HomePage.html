@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-24 20:38:54
+ * @LastEditTime: 2021-05-24 23:45:05
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\index.html
@@ -81,7 +81,7 @@
             <div class="divider"></div><a class="subheader">账户中心</a>
           </li>
           <li><a class="waves-effect  hoverable" href="#modal3">个人中心</a></li>
-          <li><a class="waves-effect  hoverable" href="#modal4">订单管理</a></li>
+          <li><a id="see_history_order" class="waves-effect  hoverable" href="#modal4">订单管理</a></li>
         </ul>
       </div>
     </nav>
@@ -495,39 +495,14 @@
             <table class="bordered highlight responsive-table">
               <thead>
                 <tr>
-                  <td>项目名称</td>
+                  <td>商品名称</td>
                   <td>票价</td>
                   <td>数量</td>
-                  <td>售后</td>
                   <td>订单金额</td>
-                  <td>交易状态</td>
+                  <td>删除订单</td>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>4</td>
-                  <td>5</td>
-                  <td>6</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>4</td>
-                  <td>5</td>
-                  <td>6</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>4</td>
-                  <td>5</td>
-                  <td>6</td>
-                </tr>
               </tbody>
             </table>
           </div>
@@ -931,6 +906,7 @@
           } else if (doSignin == null) {
             $('#go_to_select_seat').prop('href', '#modal1');
           }
+          $('#sits').empty();
           //NOTE 生成座位列表
           for (let i = 1; i <= 8; i++) {
             $('#sits').append(`<ul class='center row_of_sits row${i}' seat_row='${i}'></ul>`);
@@ -944,13 +920,25 @@
           if (orderBankStr !== null) {
             let orderBankArr = JSON.parse(orderBankStr);
             let good_id_num = $('#page3').attr('good_id');
+            let lock_seat_arr = [];
             for (let i = 0; i < orderBankArr.length; i++) {
               for (let j = 0; j < orderBankArr[i].user_order.length; j++) {
                 if (orderBankArr[i].user_order[j].play_id == $('#page3').attr('good_id')) {
-                  console.log(orderBankArr[i].user_order[j].play_choosedSeat);
+                  lock_seat_arr = orderBankArr[i].user_order[j].play_choosedSeat;
+                  for (let k = 0; k < lock_seat_arr.length; k++) {
+                    $('.col_of_sits').each(function (e) {
+                      if ($(this).attr('position') == lock_seat_arr[k]) {
+                        $(this).attr('seat_checked', 'lock')
+                        $(this).children().text('lock');
+                        $(this).children().addClass('white-text');
+                        $(this).children().addClass('red darken-4');
+                      }
+                    });
+                  }
                 }
               }
             }
+
           }
         });
         //NOTE 开始选座
@@ -995,18 +983,12 @@
                 $('#go_to_check_out').addClass('disabled');
               }
             });
-
-
-          } else if ($(this).attr('seat_checked') == 'lock') {
-            $(this).children().text('lock');
-            $(this).children().addClass('white-text');
-            $(this).children().addClass('red darken-4');
           }
         });
         $('main').on('click', '#go_to_check_out', function (e) {
           let good_id_num = $('#page3').attr('good_id');
           let good = goodsArr[good_id_num - 1];
-          let selected_good_price = Number($(`.goods_price_card_selected p`).text().match(/\d{3}/g));
+          let selected_good_price = Number($(`.goods_price_card_selected p`).text().match(/\d{3}/));
           let sum_once_price = selected_good_price * seat_count
           $('#shopping_car tbody .selected_good_name').text(`${good.good_name}`);
           $('#shopping_car tbody .selected_good_price').text(`${selected_good_price}`);
@@ -1040,11 +1022,6 @@
           });
         });
 
-
-
-        //NOTE 订单结算
-        //TODO 地图功能
-        //TODO 支付选择
         //NOTE 订单存入后台
         $('main').on('click', '#go_to_order_page', function (e) {
           let save_seat_info = [];
@@ -1062,7 +1039,7 @@
             }
             let order_Obj = {
               play_id: $('#page3').attr('good_id'),
-              play_price: $(`.goods_price_card_selected p`).text().match(/\d{3}/g),
+              play_price: $(`.goods_price_card_selected p`).text().match(/\d{3}/),
               play_selected_number: seat_count,
               play_choosedSeat: save_seat_info,
               play_time: $(`.goods_time_card_selected p`).text()
@@ -1078,7 +1055,7 @@
               if (sessionStorage.getItem('user') == orderBankArr[i].user_name) {
                 let order_Obj = {
                   play_id: $('#page3').attr('good_id'),
-                  play_price: $(`.goods_price_card_selected p`).text().match(/\d{3}/g),
+                  play_price: $(`.goods_price_card_selected p`).text().match(/\d{3}/),
                   play_selected_number: seat_count,
                   play_choosedSeat: save_seat_info,
                   play_time: $(`.goods_time_card_selected p`).text()
@@ -1095,7 +1072,7 @@
                 }
                 let order_Obj = {
                   play_id: $('#page3').attr('good_id'),
-                  play_price: $(`.goods_price_card_selected p`).text().match(/\d{3}/g),
+                  play_price: $(`.goods_price_card_selected p`).text().match(/\d{3}/),
                   play_selected_number: seat_count,
                   play_choosedSeat: save_seat_info,
                   play_time: $(`.goods_time_card_selected p`).text()
@@ -1120,23 +1097,69 @@
             $('.goods_time_card').removeClass('white-text deep-purple goods_time_card_selected');
             $('.goods_price_card').removeClass('white-text deep-purple goods_price_card_selected');
           });
+          $('#modal4 table tbody').empty();
+          orderBankStr = localStorage.getItem('orderBankJSON');
+          let orderBankArr = JSON.parse(orderBankStr);
+          function findUser(orderBankArr_item) {
+            return orderBankArr_item.user_name==sessionStorage.getItem('user');
+          }
+          let userIndex=orderBankArr.findIndex(findUser);
+          let inport_user_order=orderBankArr[userIndex].user_order;
+          for (let i=0;i<inport_user_order.length;i++) {
+            let good = goodsArr[inport_user_order[i].play_id - 1];
+            let single_price=inport_user_order[i].play_price[0];
+            let goods_number=inport_user_order[i].play_selected_number;
+            let sum_price=Number(single_price)*Number(goods_number);
+            let newTR=`
+            <tr>
+                  <td>${good.good_name}</td>
+                  <td>${single_price}</td>
+                  <td>${goods_number}</td>
+                  <td>${sum_price}</td>
+                  <td class='del_this_order'>删除</td>
+                </tr>
+            `;
+            $('#modal4 table tbody').append(newTR);
+          }
         });
-        // let seat_txt_ainput='';
-        // $(`.SeatInfo_box`).each(function (e) {
-        //   seat_txt_ainput+=$(this).attr('seat_checked')+',';
-        // });
-        // for (let i=0;i<userBankArr.length;i++) {
-        //   if (userBankArr[i].name== usingName) {
-        //     let orderObj={
-        //       play_id:good_id_num,
-        //       play_price:$(`.goods_price_card_selected p`).text().match(/\d{3}/g),
-        //       play_selected_number:seat_count,
-        //       play_choosedSeat:seat_txt_ainput,
-        //       play_time:$(`.goods_time_card_selected p`).text()
-        //     }
-        //     userBankArr[i].order.push(orderObj);
-        //   }
-        // }
+        //NOTE 订单管理渲染
+        $('header').on('click','#see_history_order',function(e) {
+          $('#modal4 table tbody').empty();
+          let doSignin = sessionStorage.getItem('signin');
+          if (doSignin == 'false') {
+            $('#see_history_order').prop('href', '#modal2');
+          } else if (doSignin == 'true') {
+            $('#see_history_order').prop('href', "#modal4");
+          } else if (doSignin == null) {
+            $('#see_history_order').prop('href', '#modal1');
+          }
+          let orderBankStr = localStorage.getItem('orderBankJSON');
+          let orderBankArr = JSON.parse(orderBankStr);
+          function findUser(orderBankArr_item) {
+            return orderBankArr_item.user_name==sessionStorage.getItem('user');
+          }
+          let userIndex=orderBankArr.findIndex(findUser);
+          let inport_user_order=orderBankArr[userIndex].user_order;
+          for (let i=0;i<inport_user_order.length;i++) {
+            let good = goodsArr[inport_user_order[i].play_id - 1];
+            let single_price=inport_user_order[i].play_price[0];
+            let goods_number=inport_user_order[i].play_selected_number;
+            let sum_price=Number(single_price)*Number(goods_number);
+            let newTR=`
+            <tr>
+                  <td>${good.good_name}</td>
+                  <td>${single_price}</td>
+                  <td>${goods_number}</td>
+                  <td>${sum_price}</td>
+                  <td class='del_this_order'>删除</td>
+                </tr>
+            `;
+            $('#modal4 table tbody').append(newTR);
+          }
+        })
+        $('main').on('click','#modal4 .del_this_order',function(e) {
+          $(this).parent().remove();
+        })
       }
     });
     //NOTE 由获取影院数据而衍生出的相关功能
