@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-24 23:45:05
+ * @LastEditTime: 2021-05-25 01:06:49
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\index.html
@@ -213,7 +213,7 @@
                 <a class="black-text" href="#showInfo">演出信息</a>
               </li>
               <li class="tab col s4">
-                <a class="black-text" href="#comment">精彩剧评</a>
+                <a class="black-text" href="#comment" id='load_comment'>精彩剧评</a>
               </li>
               <li class="tab col s4">
                 <a class="black-text" href="#buying">购买说明</a>
@@ -239,11 +239,13 @@
                 <div class="card">
                   <div class="card-content">
                     <div class="row">
-                      <h5>打分：</h5>
-                      <span>
-                        <i class="material-icons">grade</i><i class="material-icons">grade</i><i
-                          class="material-icons">grade</i><i class="material-icons">grade</i><i
-                          class="material-icons">grade</i>
+                      <h5>打分</h5>
+                      <span id="input_comment_star">
+                        <i class="material-icons grey-text lighten-2  comment_star" star_num='1'>grade</i>
+                        <i class="material-icons grey-text lighten-2  comment_star" star_num='2'>grade</i>
+                        <i class="material-icons grey-text lighten-2  comment_star" star_num='3'>grade</i>
+                        <i class="material-icons grey-text lighten-2  comment_star" star_num='4'>grade</i>
+                        <i class="material-icons grey-text lighten-2  comment_star" star_num='5'>grade</i>
                       </span>
                     </div>
                     <div class="row">
@@ -251,6 +253,10 @@
                         <textarea id="textarea1" class="materialize-textarea"></textarea>
                         <label for="textarea1">写下你的评论</label>
                       </div>
+                    </div>
+                    <div class="row">
+                      <a id="save_and_show_comment"
+                        class="waves-effect waves-light btn right deep-purple white-text">立即评论</a>
                     </div>
                   </div>
                 </div>
@@ -270,11 +276,11 @@
                     </div>
                     <div class="card-action">
                       <span>
-                        <i class="material-icons">grade</i>
-                        <i class="material-icons">grade</i>
-                        <i class="material-icons">grade</i>
-                        <i class="material-icons">grade</i>
-                        <i class="material-icons">grade</i>
+                        <i class="material-icons comment_star" star_num='1'>grade</i>
+                        <i class="material-icons comment_star" star_num='2'>grade</i>
+                        <i class="material-icons comment_star" star_num='3'>grade</i>
+                        <i class="material-icons comment_star" star_num='4'>grade</i>
+                        <i class="material-icons comment_star" star_num='5'>grade</i>
                       </span>
                       <span class="right">我是日期</span>
                     </div>
@@ -1035,7 +1041,8 @@
             let orderBankArr = [];
             let user_order_Obj = {
               user_name: sessionStorage.getItem('user'),
-              user_order: order_Obj_Arr
+              user_order: order_Obj_Arr,
+              user_comment: []
             }
             let order_Obj = {
               play_id: $('#page3').attr('good_id'),
@@ -1068,7 +1075,8 @@
                 console.log(3);
                 let user_order_Obj = {
                   user_name: sessionStorage.getItem('user'),
-                  user_order: order_Obj_Arr
+                  user_order: order_Obj_Arr,
+                  user_comment: []
                 }
                 let order_Obj = {
                   play_id: $('#page3').attr('good_id'),
@@ -1101,16 +1109,16 @@
           orderBankStr = localStorage.getItem('orderBankJSON');
           let orderBankArr = JSON.parse(orderBankStr);
           function findUser(orderBankArr_item) {
-            return orderBankArr_item.user_name==sessionStorage.getItem('user');
+            return orderBankArr_item.user_name == sessionStorage.getItem('user');
           }
-          let userIndex=orderBankArr.findIndex(findUser);
-          let inport_user_order=orderBankArr[userIndex].user_order;
-          for (let i=0;i<inport_user_order.length;i++) {
+          let userIndex = orderBankArr.findIndex(findUser);
+          let inport_user_order = orderBankArr[userIndex].user_order;
+          for (let i = 0; i < inport_user_order.length; i++) {
             let good = goodsArr[inport_user_order[i].play_id - 1];
-            let single_price=inport_user_order[i].play_price[0];
-            let goods_number=inport_user_order[i].play_selected_number;
-            let sum_price=Number(single_price)*Number(goods_number);
-            let newTR=`
+            let single_price = inport_user_order[i].play_price[0];
+            let goods_number = inport_user_order[i].play_selected_number;
+            let sum_price = Number(single_price) * Number(goods_number);
+            let newTR = `
             <tr>
                   <td>${good.good_name}</td>
                   <td>${single_price}</td>
@@ -1123,7 +1131,7 @@
           }
         });
         //NOTE 订单管理渲染
-        $('header').on('click','#see_history_order',function(e) {
+        $('header').on('click', '#see_history_order', function (e) {
           $('#modal4 table tbody').empty();
           let doSignin = sessionStorage.getItem('signin');
           if (doSignin == 'false') {
@@ -1136,16 +1144,16 @@
           let orderBankStr = localStorage.getItem('orderBankJSON');
           let orderBankArr = JSON.parse(orderBankStr);
           function findUser(orderBankArr_item) {
-            return orderBankArr_item.user_name==sessionStorage.getItem('user');
+            return orderBankArr_item.user_name == sessionStorage.getItem('user');
           }
-          let userIndex=orderBankArr.findIndex(findUser);
-          let inport_user_order=orderBankArr[userIndex].user_order;
-          for (let i=0;i<inport_user_order.length;i++) {
+          let userIndex = orderBankArr.findIndex(findUser);
+          let inport_user_order = orderBankArr[userIndex].user_order;
+          for (let i = 0; i < inport_user_order.length; i++) {
             let good = goodsArr[inport_user_order[i].play_id - 1];
-            let single_price=inport_user_order[i].play_price[0];
-            let goods_number=inport_user_order[i].play_selected_number;
-            let sum_price=Number(single_price)*Number(goods_number);
-            let newTR=`
+            let single_price = inport_user_order[i].play_price[0];
+            let goods_number = inport_user_order[i].play_selected_number;
+            let sum_price = Number(single_price) * Number(goods_number);
+            let newTR = `
             <tr>
                   <td>${good.good_name}</td>
                   <td>${single_price}</td>
@@ -1157,9 +1165,56 @@
             $('#modal4 table tbody').append(newTR);
           }
         })
-        $('main').on('click','#modal4 .del_this_order',function(e) {
+        $('main').on('click', '#modal4 .del_this_order', function (e) {
           $(this).parent().remove();
         })
+        $('main').on('click', '#load_comment', function (e) {
+
+
+        })
+        //打分并获取
+        $('#comment').on('click', '#input_comment_star .comment_star', function () {
+          let comment_star_arr = $('#input_comment_star .comment_star');
+          let star_num = $(this).attr('star_num');
+          for (let i = 0; i < comment_star_arr.length; i++) {
+            $(comment_star_arr[i]).removeClass('deep-purple-text');
+            $(comment_star_arr[i]).addClass('grey-text lighten-2');
+          }
+          for (let i = 0; i < star_num; i++) {
+            $(comment_star_arr[i]).removeClass('grey-text lighten-2');
+            $(comment_star_arr[i]).addClass('deep-purple-text');
+          }
+          $('#input_comment_star').attr('num_check', `${star_num}`);
+        });
+        //将评论写入后台
+        $('#comment').on('click', '#save_and_show_comment', function (e) {
+          let comment_arr = [];
+          let orderBankStr = localStorage.getItem('orderBankJSON');
+          if (orderBankStr == null) {
+            alert('购买后才能评论');
+          } else {
+            let orderBankArr = JSON.parse(orderBankStr);
+            for (let i = 0; i < orderBankArr.length; i++) {
+              if (sessionStorage.getItem('user') == orderBankArr[i].user_name) {
+                let d = new Date();
+                let strDate = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
+                let commentObj = {
+                  play_id: $('#page3').attr('good_id'),
+                  comment_star: $('#input_comment_star').attr('num_check'),
+                  comment: $('#textarea1').val(),
+                  comment_time: `${strDate}`
+                }
+                orderBankArr[i].user_comment.push(commentObj);
+                orderBankStr = JSON.stringify(orderBankArr);
+                localStorage.setItem('orderBankJSON', orderBankStr);
+                console.log(2);
+              } else {
+                alert('购买后才能评论');
+              }
+            }
+          }
+        });
+
       }
     });
     //NOTE 由获取影院数据而衍生出的相关功能
