@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-25 01:06:49
+ * @LastEditTime: 2021-05-25 01:39:23
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\index.html
@@ -262,31 +262,7 @@
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col s12">
-                <div class="card horizontal">
-                  <div class="card-stacked">
-                    <div class="card-content">
-                      <p>
-                      <div class="chip">
-                        <img src="../images/user.jpg" alt="Contact Person" />
-                        Nevermore
-                      </div>
-                      我是评论</p>
-                    </div>
-                    <div class="card-action">
-                      <span>
-                        <i class="material-icons comment_star" star_num='1'>grade</i>
-                        <i class="material-icons comment_star" star_num='2'>grade</i>
-                        <i class="material-icons comment_star" star_num='3'>grade</i>
-                        <i class="material-icons comment_star" star_num='4'>grade</i>
-                        <i class="material-icons comment_star" star_num='5'>grade</i>
-                      </span>
-                      <span class="right">我是日期</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="row" id="add_all_comment_here">
             </div>
           </div>
           <!-- 购买说明 -->
@@ -1169,8 +1145,45 @@
           $(this).parent().remove();
         })
         $('main').on('click', '#load_comment', function (e) {
-
-
+          let orderBankStr = localStorage.getItem('orderBankJSON');
+          let orderBankArr = JSON.parse(orderBankStr);
+          for (let i = 0; i < orderBankArr.length; i++) {
+            for (let j = 0; j < orderBankArr[i].user_order.length; j++) {
+              if (orderBankArr[i].user_comment[j].play_id == $('#page3').attr('good_id')) {
+                let comment_obj=orderBankArr[i].user_comment[j];
+                let newCommentCard=`
+                <div class="col s12">
+                <div class="card horizontal">
+                  <div class="card-stacked">
+                    <div class="card-content">
+                      <p>
+                      <div class="chip">
+                        <img src="../images/user.jpg" alt="Contact Person" />
+                        ${sessionStorage.getItem('user')}
+                      </div>
+                      ${comment_obj.comment}
+                      </p>
+                    </div>
+                    <div class="card-action">
+                      <span class='add_comment_star_here'>
+                      </span>
+                      <span class="right">${comment_obj.comment_time}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                `;
+                let new_star_add=`
+                <i class="material-icons deep-purple-text">grade</i>
+                `;
+              $('#add_all_comment_here').append(newCommentCard);
+              let comment_star_num=Number(comment_obj.comment_star);
+              for (let i=0;i<comment_star_num;i++) {
+                $('.add_comment_star_here').append(new_star_add);
+              }
+              }
+            }
+          }
         })
         //打分并获取
         $('#comment').on('click', '#input_comment_star .comment_star', function () {
