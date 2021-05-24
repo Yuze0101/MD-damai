@@ -1,7 +1,7 @@
 /*
  * @Author: GengYuan
  * @Date: 2021-05-22 10:40:51
- * @LastEditTime: 2021-05-24 18:01:32
+ * @LastEditTime: 2021-05-24 19:42:37
  * @LastEditors: GengYuan
  * @Description:
  * @FilePath: \MD-DaiMai\MD-damai\js\Initialization.js
@@ -423,7 +423,7 @@ $("main .buy").on("click", "#buySit", function (event) {
       }else{
         $('#modal5 .modal-footer a').removeClass('disabled');
         $('#modal5 .modal-footer a').on('click',function(){
-          alert('zhixing');
+          // 获取数据
         })
       }
     });
