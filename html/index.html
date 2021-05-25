@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-24 17:47:07
+ * @LastEditTime: 2021-05-25 16:47:47
  * @LastEditors: GengYuan
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\index.html
@@ -93,7 +93,7 @@
               <a class="waves-effect hoverable" href="#modal3">个人中心</a>
             </li>
             <li>
-              <a class="waves-effect hoverable" href="#modal4">订单管理</a>
+              <a class="waves-effect hoverable" href="#modal4" >订单管理</a>
             </li>
           </ul>
         </div>
@@ -108,7 +108,26 @@
         <img src="../images/lbt-1.png" class="carousel-item" />
         <img src="../images/lbt-2.png" class="carousel-item" />
       </div>
-      <!-- ANCHOR 点击商品显示 -->
+
+      <div class="container" id="loading">
+        <div class="row">
+          <div class="col s12">
+            <div class="row center-align">
+              <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                  <div class="circle-clipper left">
+                    <div class="circle"></div>
+                  </div><div class="gap-patch">
+                    <div class="circle"></div>
+                  </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
          <!-- ANCHOR 商品详情模块 -->
      <div class="container hoverable white z-depth-1 buy hide" id="detail">
       <div class="row">
@@ -669,7 +688,7 @@
               </div>
             </li>
             <!-- 商品清单 -->
-            <li>
+            <li id="shopList">
               <div class="collapsible-header">
                 <i class="material-icons">shopping_cart</i>商品清单
               </div>
@@ -685,40 +704,11 @@
                                 <td>项目名称</td>
                                 <td>票价</td>
                                 <td>数量</td>
-                                <td>售后</td>
                                 <td>订单金额</td>
-                                <td>交易状态</td>
                                 <td>操作</td>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                                <td>删除</td>
-                              </tr>
-                              <tr>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                                <td>删除</td>
-                              </tr>
-                              <tr>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                                <td>6</td>
-                                <td>删除</td>
-                              </tr>
                             </tbody>
                           </table>
                         </div>
@@ -810,6 +800,8 @@
 
     <script src="../util/jquery-3.5.1.min.js"></script>
     <script src="../util/materialize/js/materialize.min.js"></script>
+    <script type="text/javascript"
+    src="//api.map.baidu.com/getscript?type=webgl&v=1.0&ak=367UVQNTqmhfDQOgLnyzWxYIuty8LGT9"></script>
     <script type="module" src="../js/Initialization.js"></script>
     <script type="module" src="../js/index.js"></script>
   </body>

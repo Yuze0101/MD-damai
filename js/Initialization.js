@@ -1,7 +1,7 @@
 /*
  * @Author: GengYuan
  * @Date: 2021-05-22 10:40:51
- * @LastEditTime: 2021-05-25 01:11:31
+ * @LastEditTime: 2021-05-25 17:01:39
  * @LastEditors: GengYuan
  * @Description:
  * @FilePath: \MD-DaiMai\MD-damai\js\Initialization.js
@@ -74,6 +74,7 @@ $(document).ajaxStop(function () {
   // alert('数据加载完成');
   func.creatContainer();
   func.creatComment();
+  $('#loading').addClass('hide');
 });
 // NOTE 滑倒底刷新container模式
 // $(window).scroll(function () {
@@ -336,10 +337,10 @@ $("header").on("click", "#theater", function () {
         </div>
         <div class="card-stacked">
           <div class="card-content">
-            <p><span class="bold">地址：</span>${tempTheaterlist[i].address}</p>
-            <p><span class="bold">电话：</span>${tempTheaterlist[i].phone}</p>
-            <p><span class="bold">交通路线：</span>地铁1号线芳村站B1出口上右转30米</p>
-          </div>
+          <p><span class="bold">地址：</span>${tempTheaterlist[i].address}</p>
+          <p><span class="bold">电话：</span>${tempTheaterlist[i].phone}</p>
+          <p><span class="bold">交通路线：</span>地铁1号线芳村站B1出口上右转30米</p>
+          <div class="" id="map${i}" style="height:70%;"></div>
           <div class="card-action">
             <span class="bold">剧院评分：${tempTheaterlist[i].mark}</span>
             <button class="theaterBuy btn right">立即购票</button>
@@ -350,6 +351,7 @@ $("header").on("click", "#theater", function () {
     </div>
   </div>
     `);
+    func.map(tempTheaterlist[i].address,i);
   }
   // NOTE 剧院立即购票事件
   $("main .theaterList").on("click", ".theaterBuy", function () {
@@ -403,6 +405,9 @@ $("main .buy").on("click", "#buySit", function (event) {
 
     let num = 0;
     $("#modal5 #sits i").on("click", function () {
+      if ($(this).hasClass("red-text")) {
+        return;
+      }
       if ($(this).hasClass("cyan-text")) {
         $(this).removeClass("cyan-text");
         let str = $(this).attr("position");
@@ -435,7 +440,27 @@ $("main .buy").on("click", "#buySit", function (event) {
         $("#modal5 .modal-footer a").removeClass("disabled");
       }
     });
-    
+    let tempArr = func.getLocalStorage("userlist");
+    console.log(tempArr);
+    for (let i = 0; i < tempArr.length; i++) {
+      if (tempArr[i].buySit != undefined) {
+        let target = tempArr[i].buySit.find((e) => {
+          console.log(e.playID);
+          return e.playID == $("main #detail").attr("playnum");
+        });
+        if (target == undefined) {
+          return;
+        } else {
+          for (let i = 0; i < target.sit.length; i++) {
+            $("#modal5 #sits i").each(function (index, e) {
+              if ($(e).attr("position") == target.sit[i]) {
+                $(e).addClass("red-text");
+              }
+            });
+          }
+        }
+      }
+    }
   } else {
     Materialize.toast("请您先登录", 4000);
   }
@@ -445,6 +470,12 @@ $("main .buy").on("click", "#buySit", function (event) {
 $("#modal5 .modal-footer a").on("click", function () {
   // 获取数据
   let playID = $("main #detail").attr("playNum");
+  let playArr = JSON.parse(sessionStorage.getItem("playList")).goods;
+  console.log(playArr);
+  let playName = playArr.find((e) => {
+    return e.id == playID;
+  }).good_name;
+
   let str = sessionStorage.getItem("onLogin");
   let tempArr = func.getLocalStorage("userlist");
   let loginUser = tempArr.find((user) => {
@@ -454,9 +485,12 @@ $("#modal5 .modal-footer a").on("click", function () {
   if (loginUser.buySit == undefined) {
     loginUser.buySit = [];
   }
+  let num = 0;
   $("#modal5 #sits .cyan-text").each(function (index, el) {
     sitArr.push($(el).attr("position"));
+    num = index + 1;
   });
+  console.log(num);
   let price = $("main .buy #price .cyan").find("p").text();
   let time = $("main .buy #time .cyan").find("p").text();
   loginUser.buySit.push({
@@ -465,14 +499,27 @@ $("#modal5 .modal-footer a").on("click", function () {
     time: time,
     sit: sitArr,
   });
-  for(let i=0;i<tempArr.length;i++){
-    if(tempArr[i].userName == loginUser.userName){
+  for (let i = 0; i < tempArr.length; i++) {
+    if (tempArr[i].userName == loginUser.userName) {
       console.log(i);
-      tempArr.splice(i,1);
+      tempArr.splice(i, 1);
       tempArr.push(loginUser);
       break;
     }
   }
   localStorage.setItem("userlist", JSON.stringify(tempArr));
+
+  price = price.match(/\d{3}/);
+  $("#modal6 tbody").append(`
+  <tr>
+  <td>${playName}</td>
+  <td>${price}</td>
+  <td>${num}</td>
+  <td>${price * num}</td>
+  <td><a class="waves-effect waves-light
+  btn-flat">删除</a></td>
+  </tr>
+  `);
+
 });
-// NOTE
+$('header ')

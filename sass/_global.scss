@@ -43,6 +43,10 @@ header {
   }
 }
 main {
+  #map{
+    flex:1;
+    width: 100%;
+  }
   #progress {
     display: flex;
     text-align: center;

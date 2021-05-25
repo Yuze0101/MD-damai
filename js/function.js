@@ -1,7 +1,7 @@
 /*
  * @Author: GengYuan
  * @Date: 2021-05-20 12:06:18
- * @LastEditTime: 2021-05-24 09:48:03
+ * @LastEditTime: 2021-05-25 17:00:09
  * @LastEditors: GengYuan
  * @Description: fucntion库 所有功能集合
  * @FilePath: \MD-DaiMai\MD-damai\js\function.js
@@ -226,4 +226,20 @@ export function creatComment() {
     tempCommentStr = JSON.stringify(commentArr);
     localStorage.setItem('comment',tempCommentStr); 
   }
+}
+
+export function map(position,num) {
+  var map = new BMapGL.Map(`map${num}`);
+  map.centerAndZoom(new BMapGL.Point(116.331398, 39.897445), 12);
+  //创建地址解析器实例
+  var myGeo = new BMapGL.Geocoder();
+  // 将地址解析结果显示在地图上，并调整地图视野
+  myGeo.getPoint(position, function (point) {
+    if (point) {
+      map.centerAndZoom(point, 16);
+      map.addOverlay(new BMapGL.Marker(point, { title: `${position}` }))
+    } else {
+      alert('您选择的地址没有解析到结果！');
+    }
+  }, '北京市')
 }
