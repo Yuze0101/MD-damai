@@ -1,6 +1,9 @@
 @import "./global";
 
 main {
+    #container{
+        height: 400px;
+    }
     #hotList {
         .card-content {
             .font-weight-bolder {

@@ -1,7 +1,7 @@
 /*
  * @Author: leihao
  * @Date: 2021-05-20 12:06:18
- * @LastEditTime: 2021-05-24 15:04:43
+ * @LastEditTime: 2021-05-25 17:59:39
  * @LastEditors: Please set LastEditors
  * @Description: 
  * @FilePath: \MD-DaiMai\MD-damai\js\function.js
@@ -11,31 +11,31 @@
 //获取网络数据
 //获取所有商品数据
 $.ajax({
-    "url": "https://www.fastmock.site/mock/40e170f960701a834866a0bc956002f6/tickets/getAllArts",
-    "getAllArts": function (data) {
-        var ArtsArr = data.goods;
-    }
+  "url": "https://www.fastmock.site/mock/40e170f960701a834866a0bc956002f6/tickets/getAllArts",
+  "getAllArts": function (data) {
+    var ArtsArr = data.goods;
+  }
 });
 //获取所有剧院数据
 $.ajax({
-    'url': "https://www.fastmock.site/mock/40e170f960701a834866a0bc956002f6/tickets/getAllTheatres",
-    "getAllTheatres": function (data) {
-        var Theatres = data.places;
-    }
+  'url': "https://www.fastmock.site/mock/40e170f960701a834866a0bc956002f6/tickets/getAllTheatres",
+  "getAllTheatres": function (data) {
+    var Theatres = data.places;
+  }
 });
 //获取所有演艺种类数据
 $.ajax({
-    'url': "https://www.fastmock.site/mock/40e170f960701a834866a0bc956002f6/tickets/getAllTypes",
-    "getAllType": function (data) {
-        var Type = data.types;
-    }
+  'url': "https://www.fastmock.site/mock/40e170f960701a834866a0bc956002f6/tickets/getAllTypes",
+  "getAllType": function (data) {
+    var Type = data.types;
+  }
 });
 //获取所有的城市数据
 $.ajax({
-    'url': "https://www.fastmock.site/mock/40e170f960701a834866a0bc956002f6/tickets/getAllCiyies",
-    "getAllCities": function (data) {
-        var Cities = data.citys;
-    }
+  'url': "https://www.fastmock.site/mock/40e170f960701a834866a0bc956002f6/tickets/getAllCiyies",
+  "getAllCities": function (data) {
+    var Cities = data.citys;
+  }
 });
 
 
@@ -107,7 +107,7 @@ function login() {
         phone: $('#userPhone').val(),
         email: $('#userEmail').val(),
         pass: $('#userPass').val(),
-        order:[],
+        order: [],
       }
       if (userBankStr == null) {
         let userBankArr = [];
@@ -222,4 +222,79 @@ $('nav').on('click', '#sign_out_link', function () {
   sessionStorage.setItem('user', null);
   sessionStorage.setItem('email', null);
   window.location.reload();
+});
+$('nav').on('click', '#open_user_center', function (e) {
+  let doSignin = sessionStorage.getItem('signin');
+  if (doSignin == 'false') {
+    $('#open_user_center').prop('href', '#modal2');
+  } else if (doSignin == 'true') {
+    $('#open_user_center').prop('href', "#modal3");
+    $('#modal3 #test1 .validate').val('');
+    let userBankStr = localStorage.getItem('userBankJSON');
+    let userBankArr = JSON.parse(userBankStr);
+
+    function check_user_name(userBankArr_item) {
+      return userBankArr_item.name == sessionStorage.getItem('user');
+    }
+    let userIndex = userBankArr.findIndex(check_user_name);
+    let user = userBankArr[userIndex];
+    $('#icon_prefix').val(`${user.name}`);
+    $('#icon_telephone').val(`${user.phone}`);
+    $('#icon_email').val(`${user.email}`);
+  } else if (doSignin == null) {
+    $('#open_user_center').prop('href', '#modal1');
+  }
+})
+$('main').on('click', '#go_to_change_pass_page', function () {
+  $('#modal3  #test2 .validate').val('');
+});
+
+let userBankStr = localStorage.getItem('userBankJSON');
+let userBankArr = JSON.parse(userBankStr);
+function check_user_name(userBankArr_item) {
+  return userBankArr_item.name == sessionStorage.getItem('user');
+}
+let userIndex = userBankArr.findIndex(check_user_name);
+let user = userBankArr[userIndex];
+let passright = false;
+let newPassRight=false;
+let passcheck=false;
+$('main').on('keyup', '#inputOldPass', function () {
+  let oldPass = $('#inputOldPass').val();
+  if (oldPass==user.pass) {
+    passright = true;
+    $('#inputOldPass').removeClass('invalid');
+  } else {
+    $('#inputOldPass').addClass('invalid');
+  }
+});
+$('main').on('keyup', '#inputNewPass', function () {
+  let text = $('#inputNewPass').val();
+  let pass = /^[A-Z][0-9a-zA-Z]{6,16}$/;
+  if (pass.test(text)) {
+    newPassRight = true;
+    $('#inputNewPass').removeClass('invalid');
+  } else {
+    $('#inputNewPass').addClass('invalid');
+  }
+});
+$('main').on('keyup', '#inputReNewPass', function () {
+  let oldText=$('#inputNewPass').val();
+  let text = $('#inputReNewPass').val();
+  if (text==oldText) {
+    passcheck = true;
+    $('#inputReNewPass').removeClass('invalid');
+  } else {
+    $('#inputReNewPass').addClass('invalid');
+  }
+});
+$('main').on('click', '#change_password', function () {
+  console.log(passright,newPassRight,passcheck);
+  if (passright && newPassRight && passcheck) {
+    let $inputNewPass = $('#inputNewPass').val();
+    user.pass=$inputNewPass
+    userBankStr = JSON.stringify(userBankArr);
+    localStorage.setItem('userBankJSON', userBankStr);
+    alert('修改成功，请重新登录');
+  }
 });

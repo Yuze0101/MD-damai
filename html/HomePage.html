@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-25 01:39:23
+ * @LastEditTime: 2021-05-25 18:05:16
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\index.html
@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="../css/index.min.css" />
   <title>首页</title>
   <style></style>
+  <script type="text/javascript"
+    src="//api.map.baidu.com/getscript?type=webgl&v=1.0&ak=Z9qSlnXP4e8ZoHHdDsVeIQjYXMFZ8nF7"></script>
 </head>
 
 <body>
@@ -80,7 +82,7 @@
           <li>
             <div class="divider"></div><a class="subheader">账户中心</a>
           </li>
-          <li><a class="waves-effect  hoverable" href="#modal3">个人中心</a></li>
+          <li><a id="open_user_center" class="waves-effect  hoverable" href="#modal3">个人中心</a></li>
           <li><a id="see_history_order" class="waves-effect  hoverable" href="#modal4">订单管理</a></li>
         </ul>
       </div>
@@ -208,7 +210,7 @@
       <div class="container white z-depth-1">
         <div class="row">
           <div class="col s12">
-            <ul class="tabs">
+            <ul class="tabs" id="play_info_ctrl_tab">
               <li class="tab col s4">
                 <a class="black-text" href="#showInfo">演出信息</a>
               </li>
@@ -301,6 +303,10 @@
         <h4>本剧院热销</h4>
         <div class="row this_threater_goods">
         </div>
+        <h4>本剧院地址</h4>
+        <div id="map">
+          <div id="container"></div>
+        </div>
       </div>
     </div>
     <!-- 注册模态框 -->
@@ -373,67 +379,33 @@
           <div class="col l12 s12">
             <ul class="tabs">
               <li class="tab col s6">
-                <a href="#test1" class="deep-purple-text">完善个人信息</a>
+                <a href="#test1" class="deep-purple-text">个人信息</a>
               </li>
               <li class="tab col s6">
-                <a href="#test2" class="deep-purple-text">修改密码</a>
+                <a href="#test2" id="go_to_change_pass_page" class="deep-purple-text">修改密码</a>
               </li>
             </ul>
           </div>
           <div id="test1" class="col s12">
             <div class="row">
               <div class="input-field col s12">
-                <i class="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" class="validate" />
-                <label for="icon_prefix">姓名</label>
+                <i class="material-icons">account_circle</i>
+                <input id="icon_prefix" type="text"/>
+
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <i class="material-icons prefix">phone</i>
-                <input id="icon_telephone" type="tel" class="validate" />
-                <label for="icon_telephone">电话</label>
+                <i class="material-icons">phone</i>
+                <input id="icon_telephone" type="tel"/>
+
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="icon_sex_man" type="radio" class="validate" name="sex" />
-                <label for="icon_sex_man">男</label>
-                <input id="icon_sex_woman" type="radio" class="validate" name="sex" />
-                <label for="icon_sex_woman">女</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">email</i>
-                <input id="icon_email" type="email" class="validate" />
-                <label for="icon_email">邮箱</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">today</i>
-                <input id="icon_date" type="date" class="datepicker" />
-                <label for="icon_date">生日</label>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <div class="row">
-                <select class="col s6">
-                  <option value="" disabled selected>省</option>
-                  <option value="1">四川</option>
-                  <option value="2">河南</option>
-                  <option value="3">山东</option>
-                </select>
-                <select class="col s6">
-                  <option value="" disabled selected>市</option>
-                  <option value="1">成都</option>
-                  <option value="2">郑州</option>
-                  <option value="3">济南</option>
-                </select>
-                <label>选择您的地址</label>
+                <i class="material-icons">email</i>
+                <input id="icon_email" type="email"/>
+
               </div>
             </div>
           </div>
@@ -443,29 +415,28 @@
             <div class="col s12">
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="inputOldPass" type="text" class="validate" />
+                  <input id="inputOldPass" type="password" class="validate" />
                   <label for="inputOldPass">请输入原密码</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="inputNewPass" type="text" class="validate" />
+                  <input id="inputNewPass" type="password" class="validate" />
                   <label for="inputNewPass">请输入新密码</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="inputReNewPass" type="text" class="validate" />
+                  <input id="inputReNewPass" type="password" class="validate" />
                   <label for="inputReNewPass">请确认新密码</label>
                 </div>
               </div>
+              <a href="#!" id="change_password" class="modal-action modal-close waves-effect deep-purple white-text waves-green btn-flat right">确认</a>
             </div>
           </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">保存</a>
-      </div>
+        
     </div>
     </div>
     <!-- 订单模态框 -->
@@ -542,10 +513,6 @@
                 <div class="col s12 m12 l6">
                   <div class="card">
                     <div class="card-content">
-                      添加百度地图api
-                      <span class="card-title">地址：</span>
-                    </div>
-                    <div class="card-content">
                       <p>四川省成都市武侯区孵化园5栋301室</p>
                     </div>
                     <div class="card-action">
@@ -558,10 +525,6 @@
                 </div>
                 <div class="col s12 m12 l6">
                   <div class="card">
-                    <div class="card-content">
-                      添加百度地图api
-                      <span class="card-title">地址：</span>
-                    </div>
                     <div class="card-content">
                       <p>四川省成都市武侯区孵化园5栋301室</p>
                     </div>
@@ -843,6 +806,8 @@
           $(`#play_details`).empty();
           $(`#play_details`).append(`${good.details}`);
           $(`#play_details img`).addClass(`responsive-img`);
+          $('#play_info_ctrl_tab li a').removeClass('active');
+          $('#play_info_ctrl_tab li:first-child a').addClass('active');
         })
         //剧院详情页实时渲染
         $('.page-block').on('click', '.threater-buy-ticket', function (e) {
@@ -978,11 +943,11 @@
           $('#shopping_car tbody .sum_price_of_shoppingcar').text(`${sum_once_price}`);
           let sum_price_arr = $('.sum_price_of_shoppingcar');
           let sum_all_price = 0
-
           for (let i = 0; i < sum_price_arr.length; i++) {
             sum_all_price += Number($(sum_price_arr[i]).text());
           }
           $('#sum_all_price_in_spc').text(sum_all_price);
+
         });
         $('main').on('click', '.del_this_goods', function (e) {
           $('#shopping_car tbody .selected_good_name').text(``);
@@ -1031,42 +996,44 @@
             orderBankArr.push(user_order_Obj);
             orderBankStr = JSON.stringify(orderBankArr);
             localStorage.setItem('orderBankJSON', orderBankStr);
-            console.log(1);
           } else {
             let orderBankArr = JSON.parse(orderBankStr);
-            for (let i = 0; i < orderBankArr.length; i++) {
-              if (sessionStorage.getItem('user') == orderBankArr[i].user_name) {
-                let order_Obj = {
-                  play_id: $('#page3').attr('good_id'),
-                  play_price: $(`.goods_price_card_selected p`).text().match(/\d{3}/),
-                  play_selected_number: seat_count,
-                  play_choosedSeat: save_seat_info,
-                  play_time: $(`.goods_time_card_selected p`).text()
-                }
-                orderBankArr[i].user_order.push(order_Obj);
-                orderBankStr = JSON.stringify(orderBankArr);
-                localStorage.setItem('orderBankJSON', orderBankStr);
-                console.log(2);
-              } else {
-                console.log(3);
-                let user_order_Obj = {
-                  user_name: sessionStorage.getItem('user'),
-                  user_order: order_Obj_Arr,
-                  user_comment: []
-                }
-                let order_Obj = {
-                  play_id: $('#page3').attr('good_id'),
-                  play_price: $(`.goods_price_card_selected p`).text().match(/\d{3}/),
-                  play_selected_number: seat_count,
-                  play_choosedSeat: save_seat_info,
-                  play_time: $(`.goods_time_card_selected p`).text()
-                }
-                order_Obj_Arr.push(order_Obj);
-                orderBankArr.push(user_order_Obj);
-                orderBankStr = JSON.stringify(orderBankArr);
-                localStorage.setItem('orderBankJSON', orderBankStr);
-              }
+            function check_user_name(orderBankArr_item) {
+              return orderBankArr_item.user_name == sessionStorage.getItem('user');
             }
+            let userIndex = orderBankArr.findIndex(findUser);
+            if (userIndex != -1) {
+              let order_Obj = {
+                play_id: $('#page3').attr('good_id'),
+                play_price: $(`.goods_price_card_selected p`).text().match(/\d{3}/),
+                play_selected_number: seat_count,
+                play_choosedSeat: save_seat_info,
+                play_time: $(`.goods_time_card_selected p`).text()
+              }
+              orderBankArr[userIndex].user_order.push(order_Obj);
+              orderBankStr = JSON.stringify(orderBankArr);
+              localStorage.setItem('orderBankJSON', orderBankStr);
+              console.log('不新建用户仅存储订单');
+            } else {
+              let user_order_Obj = {
+                user_name: sessionStorage.getItem('user'),
+                user_order: order_Obj_Arr,
+                user_comment: []
+              }
+              let order_Obj = {
+                play_id: $('#page3').attr('good_id'),
+                play_price: $(`.goods_price_card_selected p`).text().match(/\d{3}/),
+                play_selected_number: seat_count,
+                play_choosedSeat: save_seat_info,
+                play_time: $(`.goods_time_card_selected p`).text()
+              }
+              order_Obj_Arr.push(order_Obj);
+              orderBankArr.push(user_order_Obj);
+              orderBankStr = JSON.stringify(orderBankArr);
+              localStorage.setItem('orderBankJSON', orderBankStr);
+              console.log('新建用户');
+            }
+
 
           }
           $(`#sits ul li`).each(function (e) {
@@ -1114,22 +1081,19 @@
             $('#see_history_order').prop('href', '#modal2');
           } else if (doSignin == 'true') {
             $('#see_history_order').prop('href', "#modal4");
-          } else if (doSignin == null) {
-            $('#see_history_order').prop('href', '#modal1');
-          }
-          let orderBankStr = localStorage.getItem('orderBankJSON');
-          let orderBankArr = JSON.parse(orderBankStr);
-          function findUser(orderBankArr_item) {
-            return orderBankArr_item.user_name == sessionStorage.getItem('user');
-          }
-          let userIndex = orderBankArr.findIndex(findUser);
-          let inport_user_order = orderBankArr[userIndex].user_order;
-          for (let i = 0; i < inport_user_order.length; i++) {
-            let good = goodsArr[inport_user_order[i].play_id - 1];
-            let single_price = inport_user_order[i].play_price[0];
-            let goods_number = inport_user_order[i].play_selected_number;
-            let sum_price = Number(single_price) * Number(goods_number);
-            let newTR = `
+            let orderBankStr = localStorage.getItem('orderBankJSON');
+            let orderBankArr = JSON.parse(orderBankStr);
+            function findUser(orderBankArr_item) {
+              return orderBankArr_item.user_name == sessionStorage.getItem('user');
+            }
+            let userIndex = orderBankArr.findIndex(findUser);
+            let inport_user_order = orderBankArr[userIndex].user_order;
+            for (let i = 0; i < inport_user_order.length; i++) {
+              let good = goodsArr[inport_user_order[i].play_id - 1];
+              let single_price = inport_user_order[i].play_price[0];
+              let goods_number = inport_user_order[i].play_selected_number;
+              let sum_price = Number(single_price) * Number(goods_number);
+              let newTR = `
             <tr>
                   <td>${good.good_name}</td>
                   <td>${single_price}</td>
@@ -1138,34 +1102,81 @@
                   <td class='del_this_order'>删除</td>
                 </tr>
             `;
-            $('#modal4 table tbody').append(newTR);
+              $('#modal4 table tbody').append(newTR);
+            }
+          } else if (doSignin == null) {
+            $('#see_history_order').prop('href', '#modal1');
           }
+
         })
         $('main').on('click', '#modal4 .del_this_order', function (e) {
           $(this).parent().remove();
         })
         $('main').on('click', '#load_comment', function (e) {
+          $('#add_all_comment_here').html('');
           let orderBankStr = localStorage.getItem('orderBankJSON');
           let orderBankArr = JSON.parse(orderBankStr);
           for (let i = 0; i < orderBankArr.length; i++) {
-            for (let j = 0; j < orderBankArr[i].user_order.length; j++) {
+            for (let j = 0; j < orderBankArr[i].user_comment.length; j++) {
               if (orderBankArr[i].user_comment[j].play_id == $('#page3').attr('good_id')) {
-                let comment_obj=orderBankArr[i].user_comment[j];
-                let newCommentCard=`
+                let comment_obj = orderBankArr[i].user_comment[j];
+                let star_num = Number(comment_obj.comment_star);
+                let star_block = ``;
+                switch (star_num) {
+                  case 1:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                  case 2:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                  case 3:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                  case 4:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                  case 5:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                }
+                let newCommentCard = `
                 <div class="col s12">
                 <div class="card horizontal">
                   <div class="card-stacked">
                     <div class="card-content">
-                      <p>
+                      <p class='del_this_comment_info'>
                       <div class="chip">
                         <img src="../images/user.jpg" alt="Contact Person" />
-                        ${sessionStorage.getItem('user')}
+                        ${orderBankArr[i].user_name}
                       </div>
                       ${comment_obj.comment}
+                      <a  name='${orderBankArr[i].user_name}'
+                        class="del_this_comment waves-effect waves-light btn right deep-purple white-text disabled">删除评论</a>
                       </p>
                     </div>
                     <div class="card-action">
                       <span class='add_comment_star_here'>
+                        ${star_block}
                       </span>
                       <span class="right">${comment_obj.comment_time}</span>
                     </div>
@@ -1173,17 +1184,22 @@
                 </div>
               </div>
                 `;
-                let new_star_add=`
-                <i class="material-icons deep-purple-text">grade</i>
-                `;
-              $('#add_all_comment_here').append(newCommentCard);
-              let comment_star_num=Number(comment_obj.comment_star);
-              for (let i=0;i<comment_star_num;i++) {
-                $('.add_comment_star_here').append(new_star_add);
-              }
+                $('#add_all_comment_here').append(newCommentCard);
               }
             }
           }
+          let comment_star_arr = $('#input_comment_star .comment_star');
+          for (let i = 0; i < comment_star_arr.length; i++) {
+            $(comment_star_arr[i]).removeClass('deep-purple-text');
+            $(comment_star_arr[i]).addClass('grey-text lighten-2');
+          }
+          $('#textarea1').val('');
+          $('#input_comment_star').attr('num_check', ``);
+          $('.del_this_comment').each(function (e) {
+            if ($(this).attr('name') == sessionStorage.getItem('user'))
+              $(this).removeClass('disabled');
+          })
+
         })
         //打分并获取
         $('#comment').on('click', '#input_comment_star .comment_star', function () {
@@ -1204,30 +1220,121 @@
           let comment_arr = [];
           let orderBankStr = localStorage.getItem('orderBankJSON');
           if (orderBankStr == null) {
-            alert('购买后才能评论');
+            alert('请先购买商品');
           } else {
             let orderBankArr = JSON.parse(orderBankStr);
+            let count_number = 0
             for (let i = 0; i < orderBankArr.length; i++) {
               if (sessionStorage.getItem('user') == orderBankArr[i].user_name) {
-                let d = new Date();
-                let strDate = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
-                let commentObj = {
-                  play_id: $('#page3').attr('good_id'),
-                  comment_star: $('#input_comment_star').attr('num_check'),
-                  comment: $('#textarea1').val(),
-                  comment_time: `${strDate}`
+                for (let j = 0; j < orderBankArr[i].user_order.length; j++) {
+                  if ($('#page3').attr('good_id') == orderBankArr[i].user_order[j].play_id) {
+                    let d = new Date();
+                    let strDate = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
+                    let commentObj = {
+                      play_id: $('#page3').attr('good_id'),
+                      comment_star: $('#input_comment_star').attr('num_check'),
+                      comment: $('#textarea1').val(),
+                      comment_time: `${strDate}`
+                    }
+                    orderBankArr[i].user_comment.push(commentObj);
+                    orderBankStr = JSON.stringify(orderBankArr);
+                    localStorage.setItem('orderBankJSON', orderBankStr);
+                    console.log('进入存后台分支');
+                    break;
+                  }
                 }
-                orderBankArr[i].user_comment.push(commentObj);
-                orderBankStr = JSON.stringify(orderBankArr);
-                localStorage.setItem('orderBankJSON', orderBankStr);
-                console.log(2);
+
               } else {
-                alert('购买后才能评论');
+                count_number++
+              }
+            }
+            if (count_number == orderBankArr.length) {
+              alert('购买后再评价');
+            }
+          }
+          $('#add_all_comment_here').html('');
+          orderBankStr = localStorage.getItem('orderBankJSON');
+          let orderBankArr = JSON.parse(orderBankStr);
+          for (let i = 0; i < orderBankArr.length; i++) {
+            for (let j = 0; j < orderBankArr[i].user_comment.length; j++) {
+              if (orderBankArr[i].user_comment[j].play_id == $('#page3').attr('good_id')) {
+                let comment_obj = orderBankArr[i].user_comment[j];
+                let star_num = Number(comment_obj.comment_star);
+                let star_block = ``;
+                switch (star_num) {
+                  case 1:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                  case 2:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                  case 3:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                  case 4:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                  case 5:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                }
+                let newCommentCard = `
+                <div class="col s12">
+                <div class="card horizontal">
+                  <div class="card-stacked">
+                    <div class="card-content">
+                      <p>
+                      <div class="chip">
+                        <img src="../images/user.jpg" alt="Contact Person" />
+                        ${orderBankArr[i].user_name}
+                      </div>
+                      ${comment_obj.comment}
+                      <a  name='${orderBankArr[i].user_name}'
+                        class="del_this_comment waves-effect waves-light btn right deep-purple white-text disabled">删除评论</a>
+                      </p>
+                    </div>
+                    <div class="card-action">
+                      <span class='add_comment_star_here'>
+                        ${star_block}
+                      </span>
+                      <span class="right">${comment_obj.comment_time}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                `;
+                $('#add_all_comment_here').append(newCommentCard);
               }
             }
           }
+          $('.del_this_comment').each(function (e) {
+            if ($(this).attr('name') == sessionStorage.getItem('user'))
+              $(this).removeClass('disabled');
+          })
         });
-
+        $('main').on('click', '.del_this_comment', function (e) {
+          $(this).parent().parent().parent().parent().remove();
+        })
       }
     });
     //NOTE 由获取影院数据而衍生出的相关功能
@@ -1239,6 +1346,19 @@
           let threater = threaterArr[i];
           showThreater(threater);
         }
+        $('main').on('click', '.threater-buy-ticket', function (e) {
+          let address = '';
+          let threater_num = $(this).attr('threater_id');
+          for (let i = 0; i < threaterArr.length; i++) {
+            if (threaterArr[i].id == threater_num) {
+              let threater = threaterArr[i];
+              address = threater.address;
+            }
+          }
+          let $add = address
+          console.log($add);
+          map($add);
+        });
       }
     });
     //NOTE showXX为在页面上生成相应内容的功能
@@ -1407,7 +1527,7 @@
                   </div>
                   <div class="card-action">
                     <span>${threater.name}</span>
-                    <p><a href="#"  goods_num='${goods}' class="right white-text deep-purple btn threater-buy-ticket">进入剧院</a></p>
+                    <p><a href="#"  goods_num='${goods}' threater_id='${threater.id}'  class="right white-text deep-purple btn threater-buy-ticket">进入剧院</a></p>
                   </div>
                 </div>
               </div>
@@ -1430,6 +1550,21 @@
         </div>
       `;
       $('#show_this_threater_goods .this_threater_goods').append(newCard);
+    }
+    function map(position) {
+      var map = new BMapGL.Map('container');
+      map.centerAndZoom(new BMapGL.Point(116.331398, 39.897445), 12);
+      //创建地址解析器实例
+      var myGeo = new BMapGL.Geocoder();
+      // 将地址解析结果显示在地图上，并调整地图视野
+      myGeo.getPoint(position, function (point) {
+        if (point) {
+          map.centerAndZoom(point, 16);
+          map.addOverlay(new BMapGL.Marker(point, { title: `${position}` }))
+        } else {
+          alert('您选择的地址没有解析到结果！');
+        }
+      }, '北京市')
     }
   </script>
 </body>
