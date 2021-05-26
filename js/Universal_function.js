@@ -1,7 +1,7 @@
 /*
  * @Author: leihao
  * @Date: 2021-05-20 12:06:18
- * @LastEditTime: 2021-05-25 17:59:39
+ * @LastEditTime: 2021-05-26 09:45:52
  * @LastEditors: Please set LastEditors
  * @Description: 
  * @FilePath: \MD-DaiMai\MD-damai\js\function.js
@@ -248,53 +248,58 @@ $('nav').on('click', '#open_user_center', function (e) {
 $('main').on('click', '#go_to_change_pass_page', function () {
   $('#modal3  #test2 .validate').val('');
 });
+doSignin = sessionStorage.getItem('signin');
+if (doSignin == 'true') {
 
-let userBankStr = localStorage.getItem('userBankJSON');
-let userBankArr = JSON.parse(userBankStr);
-function check_user_name(userBankArr_item) {
-  return userBankArr_item.name == sessionStorage.getItem('user');
+  let userBankStr = localStorage.getItem('userBankJSON');
+  let userBankArr = JSON.parse(userBankStr);
+
+  function check_user_name(userBankArr_item) {
+    return userBankArr_item.name == sessionStorage.getItem('user');
+  }
+  let userIndex = userBankArr.findIndex(check_user_name);
+  let user_pass = userBankArr[userIndex].pass;
+  let passright = false;
+  let newPassRight = false;
+  let passcheck = false;
+  $('main').on('keyup', '#inputOldPass', function () {
+    let oldPass = $('#inputOldPass').val();
+    if (oldPass == user_pass) {
+      passright = true;
+      $('#inputOldPass').removeClass('invalid');
+    } else {
+      $('#inputOldPass').addClass('invalid');
+    }
+  });
+  $('main').on('keyup', '#inputNewPass', function () {
+    let text = $('#inputNewPass').val();
+    let pass = /^[A-Z][0-9a-zA-Z]{6,16}$/;
+    if (pass.test(text)) {
+      newPassRight = true;
+      $('#inputNewPass').removeClass('invalid');
+    } else {
+      $('#inputNewPass').addClass('invalid');
+    }
+  });
+  $('main').on('keyup', '#inputReNewPass', function () {
+    let oldText = $('#inputNewPass').val();
+    let text = $('#inputReNewPass').val();
+    if (text == oldText) {
+      passcheck = true;
+      $('#inputReNewPass').removeClass('invalid');
+    } else {
+      $('#inputReNewPass').addClass('invalid');
+    }
+  });
+  $('main').on('click', '#change_password', function () {
+    console.log(passright, newPassRight, passcheck);
+    if (passright && newPassRight && passcheck) {
+      let $inputNewPass = $('#inputNewPass').val();
+      user.pass = $inputNewPass
+      userBankStr = JSON.stringify(userBankArr);
+      localStorage.setItem('userBankJSON', userBankStr);
+      alert('修改成功，请重新登录');
+    }
+  });
+
 }
-let userIndex = userBankArr.findIndex(check_user_name);
-let user = userBankArr[userIndex];
-let passright = false;
-let newPassRight=false;
-let passcheck=false;
-$('main').on('keyup', '#inputOldPass', function () {
-  let oldPass = $('#inputOldPass').val();
-  if (oldPass==user.pass) {
-    passright = true;
-    $('#inputOldPass').removeClass('invalid');
-  } else {
-    $('#inputOldPass').addClass('invalid');
-  }
-});
-$('main').on('keyup', '#inputNewPass', function () {
-  let text = $('#inputNewPass').val();
-  let pass = /^[A-Z][0-9a-zA-Z]{6,16}$/;
-  if (pass.test(text)) {
-    newPassRight = true;
-    $('#inputNewPass').removeClass('invalid');
-  } else {
-    $('#inputNewPass').addClass('invalid');
-  }
-});
-$('main').on('keyup', '#inputReNewPass', function () {
-  let oldText=$('#inputNewPass').val();
-  let text = $('#inputReNewPass').val();
-  if (text==oldText) {
-    passcheck = true;
-    $('#inputReNewPass').removeClass('invalid');
-  } else {
-    $('#inputReNewPass').addClass('invalid');
-  }
-});
-$('main').on('click', '#change_password', function () {
-  console.log(passright,newPassRight,passcheck);
-  if (passright && newPassRight && passcheck) {
-    let $inputNewPass = $('#inputNewPass').val();
-    user.pass=$inputNewPass
-    userBankStr = JSON.stringify(userBankArr);
-    localStorage.setItem('userBankJSON', userBankStr);
-    alert('修改成功，请重新登录');
-  }
-});

@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-05-20 14:17:16
- * @LastEditTime: 2021-05-23 10:26:59
+ * @LastEditTime: 2021-05-26 14:58:13
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \MD-DaiMai\MD-damai\html\index.html
@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="../css/index.min.css" />
   <title>首页</title>
   <style></style>
+  <script type="text/javascript"
+    src="//api.map.baidu.com/getscript?type=webgl&v=1.0&ak=Z9qSlnXP4e8ZoHHdDsVeIQjYXMFZ8nF7"></script>
 </head>
 
 <body>
@@ -36,7 +38,7 @@
               <!-- <a href="#!user"
                     ><img class="circle" src="../images/user.jpg"
                   /></a> -->
-              <!-- TODO 未登录更换字样 -->
+              <!-- NOTE 未登录更换字样 -->
               <a class="waves-effect waves-light btn  hoverable log-in-btn" href="#modal1">注册</a>
               <a class="waves-effect waves-light btn  hoverable sign-in-btn" href="#modal2">登录</a>
 
@@ -58,7 +60,7 @@
               </a> -->
             </div>
           </li>
-          <!-- TODO 更换登录链接 -->
+          <!-- NOTE 更换登录链接 -->
           <li class="hoverable">
             <form class="center">
               <div class="input-field">
@@ -69,77 +71,257 @@
             </form>
           </li>
           <li class="hoverable">
-            <a class="waves-effect" href="./index.html" class="hide-on-large-only">首页</a>
+            <a class="waves-effect" class="hide-on-large-only" id="page1_tab">首页</a>
           </li>
           <li class="hoverable">
-            <a class="waves-effect" href="./sports.html" class="hide-on-large-only">体育</a>
+            <a class="waves-effect" class="hide-on-large-only" id="page4_tab">全部商品</a>
           </li>
           <li class="hoverable">
-            <a class="waves-effect" href="./threater.html" class="hide-on-large-only">剧院</a>
+            <a class="waves-effect" class="hide-on-large-only" id="page2_tab">剧院</a>
           </li>
           <li>
             <div class="divider"></div><a class="subheader">账户中心</a>
           </li>
-          <li><a class="waves-effect  hoverable" href="#modal3">个人中心</a></li>
-          <li><a class="waves-effect  hoverable" href="#modal4">订单管理</a></li>
+          <li><a id="open_user_center" class="waves-effect  hoverable" href="#modal3">个人中心</a></li>
+          <li><a id="see_history_order" class="waves-effect  hoverable" href="#modal4">订单管理</a></li>
         </ul>
       </div>
     </nav>
   </header>
 
   <main>
-    <!-- 轮播图模块 -->
-    <div class="carousel">
-      <img src="../images/lbt-1.png" class="carousel-item" />
-      <img src="../images/lbt-2.png" class="carousel-item" />
-      <img src="../images/lbt-1.png" class="carousel-item" />
-      <img src="../images/lbt-2.png" class="carousel-item" />
-    </div>
-    <!-- 内容流 -->
-    <div class="container white z-depth-1">
-      <h4>热门推荐</h4>
-      <div class="row hotList" id="hotList">
-        <!-- TODO 获取文档流编辑 -->
-        <!-- STUB - 批量产生热门卡片 -->
+    <!-- NOTE 首页内容 -->
+    <div class="page-block" id="page1">
+      <!-- 轮播图模块 -->
+      <div class="carousel">
+        <img src="../images/lbt-1.png" class="carousel-item" />
+        <img src="../images/lbt-2.png" class="carousel-item" />
+        <img src="../images/lbt-1.png" class="carousel-item" />
+        <img src="../images/lbt-2.png" class="carousel-item" />
+      </div>
+      <!-- 内容流 -->
+      <div class="container white z-depth-1">
+        <h4>热门推荐</h4>
+        <div class="preloader-wrapper big active">
+          <div class="spinner-layer spinner-blue">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row hotList" id="hotList">
+          <!-- NOTE 获取文档流编辑 -->
+          <!-- STUB - 批量产生热门卡片 -->
+        </div>
+      </div>
+      <!-- NOTE 获取数据添加container -->
+      <div class="container white z-depth-1 hide catalog-box hoverable" id="showMusic">
+        <h4>1F 音乐会</h4>
+        <div class="row">
+        </div>
+      </div>
+      <div class="container white z-depth-1 hide catalog-box hoverable" id="showLive">
+        <h4>2F 演唱会</h4>
+        <div class="row">
+        </div>
+      </div>
+      <div class="container white z-depth-1 hide catalog-box hoverable" id="showOpera">
+        <h4>3F 歌剧话剧</h4>
+        <div class="row">
+        </div>
+      </div>
+      <div class="container white z-depth-1 hide  catalog-box hoverable" id="showSport">
+        <h4>4F 体育</h4>
+        <div class="row">
+        </div>
+      </div>
+      <div class="container white z-depth-1 hide  catalog-box hoverable" id="showOthers">
+        <h4>5F 其他</h4>
+        <div class="row">
+        </div>
+      </div>
+      <div class="container white z-depth-1 hide  catalog-box hoverable" id="showChild">
+        <h4>6F 儿童亲子</h4>
+        <div class="row">
+        </div>
+      </div>
+      <div class="container white z-depth-1 hide  catalog-box hoverable" id="showTrivial">
+        <h4>7F 旅游演艺</h4>
+        <div class="row">
+        </div>
       </div>
     </div>
-    <!-- TODO 获取数据添加container -->
-    <div class="container white z-depth-1 hide catalog-box" id="showMusic">
-      <h4>1F 音乐会</h4>
-      <div class="row">
+    <!-- NOTE 剧院详情 -->
+    <div class="page-block hide" id="page2">
+      <!-- 正在热映 -->
+      <div class="container">
+        <div class="row" id="main-item">
+          <div class="row film_on_show">
+            <h5 class="header center">正在演出</h5>
+          </div>
+          <div class="row" id="threater">
+            <h5 class="header center">超级剧场</h5>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="container white z-depth-1 hide catalog-box" id="showLive">
-      <h4>2F 演唱会</h4>
-      <div class="row">
+    <!-- NOTE 商品详情页 -->
+    <div class="page-block hide" id="page3" good_id="">
+      <!-- 商品详情模块 -->
+      <div class="container white z-depth-1">
+        <div class="row">
+          <div class="col l4 m4 s12">
+            <img src="" class="carousel-item responsive-img goods-title-img" alt="loading..." />
+          </div>
+          <div class="col l8 m8 s12 goods-item-right-block">
+            <h4 class="goods-show-title">标题</h4>
+            <p class="goods-show-name">商品名称</p>
+            <!-- NOTE 商品销售进度 -->
+            <ul id="progress">
+              <li>项目待定</li>
+              <li>预售</li>
+              <li>售票中</li>
+              <li>演出开始</li>
+            </ul>
+            <div class="progress">
+              <div class="determinate" style="width: 70%"></div>
+            </div>
+            <div class="row">
+              <div class="col s2">
+                <p class="right-align">演出时间：</p>
+              </div>
+              <div class="col s10">
+                <div class="row goods-show-time">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s2">
+                <p class="right-align">票价：</p>
+              </div>
+              <div class="col s10">
+                <div class="row goods-sells-price">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s2"></div>
+              <div class="col s10">
+                <a class="btn waves-effect center white-text disabled" href="#modal5" id="go_to_select_seat">选座购买</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="container white z-depth-1 hide catalog-box" id="showOpera">
-      <h4>3F 歌剧话剧</h4>
-      <div class="row">
-      </div>
-    </div>
-    <div class="container white z-depth-1 hide  catalog-box" id="showSport">
-      <h4>4F 体育</h4>
-      <div class="row">
-      </div>
-    </div>
-    <div class="container white z-depth-1 hide  catalog-box" id="showOthers">
-      <h4>5F 其他</h4>
-      <div class="row">
-      </div>
-    </div>
-    <div class="container white z-depth-1 hide  catalog-box" id="showChild">
-      <h4>6F 儿童亲子</h4>
-      <div class="row">
-      </div>
-    </div>
-    <div class="container white z-depth-1 hide  catalog-box" id="showTrivial">
-      <h4>7F 旅游演艺</h4>
-      <div class="row">
-      </div>
-    </div>
+      <!-- 演出信息模块 -->
+      <div class="container white z-depth-1">
+        <div class="row">
+          <div class="col s12">
+            <ul class="tabs" id="play_info_ctrl_tab">
+              <li class="tab col s4">
+                <a class="black-text" href="#showInfo">演出信息</a>
+              </li>
+              <li class="tab col s4">
+                <a class="black-text" href="#comment" id='load_comment'>精彩剧评</a>
+              </li>
+              <li class="tab col s4">
+                <a class="black-text" href="#buying">购买说明</a>
+              </li>
+            </ul>
+          </div>
+          <!-- 演出信息 -->
+          <div id="showInfo" class="col s12">
+            <div class="row">
+              <h5>项目概况</h5>
+              <div class="col s12">
+                <div class="container" id="play_details">
 
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 评论 -->
+          <div id="comment" class="col s12">
+            <div class="row">
+              <h5>写剧评</h5>
+              <div class="col s12">
+                <div class="card">
+                  <div class="card-content">
+                    <div class="row">
+                      <h5>打分</h5>
+                      <span id="input_comment_star">
+                        <i class="material-icons grey-text lighten-2  comment_star" star_num='1'>grade</i>
+                        <i class="material-icons grey-text lighten-2  comment_star" star_num='2'>grade</i>
+                        <i class="material-icons grey-text lighten-2  comment_star" star_num='3'>grade</i>
+                        <i class="material-icons grey-text lighten-2  comment_star" star_num='4'>grade</i>
+                        <i class="material-icons grey-text lighten-2  comment_star" star_num='5'>grade</i>
+                      </span>
+                    </div>
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label for="textarea1">写下你的评论</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <a id="save_and_show_comment"
+                        class="waves-effect waves-light btn right deep-purple white-text">立即评论</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row" id="add_all_comment_here">
+            </div>
+          </div>
+          <!-- 购买说明 -->
+          <div id="buying" class="col s12">
+            <div class="row">
+              <div class="col s12">
+                <div class="card">
+                  <div class="card-content">
+                    <h5>售前提示</h5>
+                    <ul>
+                      <li>1.为避免快递配送不能及时送达，演出距开场时间少于3天时不提供【快递配送】服务，请您谅解！您可以选择电子票或在线支
+                        付后上门自取纸质票。 点击查看上门<a href="">取票地址>></a></li>
+                      <li>2.凡演出票类商品，开票时间一般为演出前二到四周，正式开票后会第一时间短信通知您，请注意接收。</li>
+                      <li>
+                        3.如您不是通过“选座购买”通道进行的票品购买，最终票品数量视项目主办方及场馆情况而定，正式开票后大麦网将根据用户付款先后顺序依次配票，可能存在票品不足不能为您配票的风险，如最终未能配票，大麦网承诺全额退款，但不承担其他损失。
+                      </li>
+                    </ul>
+                    <h5>支付方式</h5>
+                    <p>网上银行（招商银行等） 支付平台（支付宝等） 转账汇款(招商银行等)<a href="">查看详情>></a></p>
+                    <h5>退/换货说明</h5>
+                    <p>针对不可抗力和非不可抗力的退/换票情况和处理，请点击查阅大麦网退<a href="">换货说明>></a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- NOTE 全部商品+搜索功能 -->
+    <div class="page-block hide" id="page4">
+    </div>
+    <!-- NOTE 剧院详情页实时渲染 -->
+    <div class="page-block hide" id="page5">
+      <div class="container white z-depth-1 catalog-box hoverable" id="show_this_threater_goods">
+        <h4>本剧院热销</h4>
+        <div class="row this_threater_goods">
+        </div>
+        <h4>本剧院地址</h4>
+        <div id="map">
+          <div id="container"></div>
+        </div>
+      </div>
+    </div>
     <!-- 注册模态框 -->
     <div id="modal1" class="modal">
       <div class="modal-content">
@@ -210,67 +392,33 @@
           <div class="col l12 s12">
             <ul class="tabs">
               <li class="tab col s6">
-                <a href="#test1" class="deep-purple-text">完善个人信息</a>
+                <a href="#test1" class="deep-purple-text">个人信息</a>
               </li>
               <li class="tab col s6">
-                <a href="#test2" class="deep-purple-text">修改密码</a>
+                <a href="#test2" id="go_to_change_pass_page" class="deep-purple-text">修改密码</a>
               </li>
             </ul>
           </div>
           <div id="test1" class="col s12">
             <div class="row">
               <div class="input-field col s12">
-                <i class="material-icons prefix">account_circle</i>
-                <input id="icon_prefix" type="text" class="validate" />
-                <label for="icon_prefix">姓名</label>
+                <i class="material-icons">account_circle</i>
+                <input id="icon_prefix" type="text" />
+
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <i class="material-icons prefix">phone</i>
-                <input id="icon_telephone" type="tel" class="validate" />
-                <label for="icon_telephone">电话</label>
+                <i class="material-icons">phone</i>
+                <input id="icon_telephone" type="tel" />
+
               </div>
             </div>
             <div class="row">
               <div class="input-field col s12">
-                <input id="icon_sex_man" type="radio" class="validate" name="sex" />
-                <label for="icon_sex_man">男</label>
-                <input id="icon_sex_woman" type="radio" class="validate" name="sex" />
-                <label for="icon_sex_woman">女</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">email</i>
-                <input id="icon_email" type="email" class="validate" />
-                <label for="icon_email">邮箱</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="input-field col s12">
-                <i class="material-icons prefix">today</i>
-                <input id="icon_date" type="date" class="datepicker" />
-                <label for="icon_date">生日</label>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="input-field col s12">
-              <div class="row">
-                <select class="col s6">
-                  <option value="" disabled selected>省</option>
-                  <option value="1">四川</option>
-                  <option value="2">河南</option>
-                  <option value="3">山东</option>
-                </select>
-                <select class="col s6">
-                  <option value="" disabled selected>市</option>
-                  <option value="1">成都</option>
-                  <option value="2">郑州</option>
-                  <option value="3">济南</option>
-                </select>
-                <label>选择您的地址</label>
+                <i class="material-icons">email</i>
+                <input id="icon_email" type="email" />
+
               </div>
             </div>
           </div>
@@ -280,29 +428,29 @@
             <div class="col s12">
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="inputOldPass" type="text" class="validate" />
+                  <input id="inputOldPass" type="password" class="validate" />
                   <label for="inputOldPass">请输入原密码</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="inputNewPass" type="text" class="validate" />
+                  <input id="inputNewPass" type="password" class="validate" />
                   <label for="inputNewPass">请输入新密码</label>
                 </div>
               </div>
               <div class="row">
                 <div class="input-field col s12">
-                  <input id="inputReNewPass" type="text" class="validate" />
+                  <input id="inputReNewPass" type="password" class="validate" />
                   <label for="inputReNewPass">请确认新密码</label>
                 </div>
               </div>
+              <a href="#!" id="change_password"
+                class="modal-action modal-close waves-effect deep-purple white-text waves-green btn-flat right">确认</a>
             </div>
           </div>
         </div>
       </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">保存</a>
-      </div>
+
     </div>
     </div>
     <!-- 订单模态框 -->
@@ -314,39 +462,14 @@
             <table class="bordered highlight responsive-table">
               <thead>
                 <tr>
-                  <td>项目名称</td>
+                  <td>商品名称</td>
                   <td>票价</td>
                   <td>数量</td>
-                  <td>售后</td>
                   <td>订单金额</td>
-                  <td>交易状态</td>
+                  <td>删除订单</td>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>4</td>
-                  <td>5</td>
-                  <td>6</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>4</td>
-                  <td>5</td>
-                  <td>6</td>
-                </tr>
-                <tr>
-                  <td>1</td>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>4</td>
-                  <td>5</td>
-                  <td>6</td>
-                </tr>
               </tbody>
             </table>
           </div>
@@ -365,82 +488,25 @@
           <div class="col s12">
             <div class="cyan lighten-3 center-align">大荧幕</div>
             <!-- 座位模块 -->
-            <div id="sits">
+            <div id="sits" class="container z-depth-3 hoverable">
               <!-- 每行的个数 -->
-              <ul class="center">
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-              </ul>
-              <ul class="center">
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-              </ul>
-              <ul class="center">
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-                <li><i class="material-icons">perm_identity</i></li>
-              </ul>
             </div>
           </div>
         </div>
         <!-- 已选座位 -->
         <div class="row">
-          <div class="col s2">
-            <p class="right">已选座位：</p>
+          <div class="col s12 m2">
+            <h5 class="center">已选</h5>
           </div>
-          <div class="col s10">
-            <div class="row">
-              <div class="col l3 m6 s12">
-                <div class="card">
-                  <div class="card-content">
-                    <p>已选座位信息</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col l3 m6 s12">
-                <div class="card">
-                  <div class="card-content">
-                    <p>已选座位信息</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col l3 m6 s12">
-                <div class="card">
-                  <div class="card-content">
-                    <p>已选座位信息</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col l3 m6 s12">
-                <div class="card">
-                  <div class="card-content">
-                    <p>已选座位信息</p>
-                  </div>
-                </div>
-              </div>
+          <div class="col s12 m10">
+            <div class="row select_seat_info">
             </div>
           </div>
         </div>
       </div>
       <div class="modal-footer">
-        <a href="#modal6" class="modal-action modal-close waves-effect waves-green btn-flat">确认购买</a>
+        <a href="#modal6" id="go_to_check_out"
+          class="modal-action modal-close waves-effect waves-green btn-flat deep-purple white-text disabled">确认购买</a>
       </div>
     </div>
     <!-- 订单确认模态框 -->
@@ -450,8 +516,8 @@
         <ul class="collapsible  popout" data-collapsible="accordion">
           <!-- 提示 -->
           <li>
-            <div class="collapsible-header red lighten-4"><i
-                class="material-icons deep-purple-text">info</i>请于15分钟内支付，剩余<span>15</span>分钟</div>
+            <div class="collapsible-header red lighten-4"><i class="material-icons deep-purple-text">info</i>请于15分钟内支付
+            </div>
           </li>
           <!-- 邮寄地址 -->
           <li>
@@ -460,10 +526,6 @@
               <div class="row">
                 <div class="col s12 m12 l6">
                   <div class="card">
-                    <div class="card-content">
-                      添加百度地图api
-                      <span class="card-title">地址：</span>
-                    </div>
                     <div class="card-content">
                       <p>四川省成都市武侯区孵化园5栋301室</p>
                     </div>
@@ -477,10 +539,6 @@
                 </div>
                 <div class="col s12 m12 l6">
                   <div class="card">
-                    <div class="card-content">
-                      添加百度地图api
-                      <span class="card-title">地址：</span>
-                    </div>
                     <div class="card-content">
                       <p>四川省成都市武侯区孵化园5栋301室</p>
                     </div>
@@ -542,56 +600,31 @@
               <div class="row">
                 <div class="col s12 m12">
                   <div class="card horizontal">
-                    <div class="card-image">
-                      <img src="../images/image-1.png">
-                    </div>
                     <div class="card-stacked">
                       <div class="card-content">
-                        <table class="bordered highlight responsive-table">
+                        <table class="bordered highlight responsive-table" id="shopping_car">
                           <thead>
                             <tr>
-                              <td>项目名称</td>
-                              <td>票价</td>
+                              <td>商品名称</td>
+                              <td>单价</td>
                               <td>数量</td>
-                              <td>售后</td>
                               <td>订单金额</td>
-                              <td>交易状态</td>
                               <td>操作</td>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
-                              <td>1</td>
-                              <td>2</td>
-                              <td>3</td>
-                              <td>4</td>
-                              <td>5</td>
-                              <td>6</td>
-                              <td>删除</td>
-                            </tr>
-                            <tr>
-                              <td>1</td>
-                              <td>2</td>
-                              <td>3</td>
-                              <td>4</td>
-                              <td>5</td>
-                              <td>6</td>
-                              <td>删除</td>
-                            </tr>
-                            <tr>
-                              <td>1</td>
-                              <td>2</td>
-                              <td>3</td>
-                              <td>4</td>
-                              <td>5</td>
-                              <td>6</td>
-                              <td>删除</td>
+                              <td class="selected_good_name"></td>
+                              <td class="selected_good_price"></td>
+                              <td class="selected_seat_count"></td>
+                              <td class='sum_price_of_shoppingcar'></td>
+                              <td class="del_this_goods">取消</td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
                       <div class="card-action">
-                        <p class="right red-text darken-4">总价共计：<span>00</span>元</p>
+                        <p class="right red-text darken-4">总价共计：<span id="sum_all_price_in_spc">00</span>元</p>
                       </div>
                     </div>
                   </div>
@@ -603,7 +636,7 @@
         </ul>
       </div>
       <div class="modal-footer">
-        <a href="#modal4"
+        <a href="#modal4" id="go_to_order_page"
           class="modal-action modal-close waves-effect waves-light btn-flat white-text deep-purple">立即支付</a>
       </div>
     </div>
@@ -644,6 +677,7 @@
   </footer>
   <script src="../util/jquery-3.5.1.min.js"></script>
   <script src="../util/materialize/js/materialize.js"></script>
+  <!-- //NOTE 页面效果功能组 -->
   <script>
     $(document).ready(function () {
       $(".button-collapse").sideNav();
@@ -661,12 +695,30 @@
     });
   </script>
   <script src="../js/Universal_function.js"></script>
-   <script>
+  <script>
+    //NOTE 导航栏标签页切换功能
+    $('#mobile-demo').on('click', '#page1_tab', function () {
+      $('#page2,#page3,#page4,#page5').addClass('hide');
+      $('#page1').removeClass('hide');
+    });
+    $('#mobile-demo').on('click', '#page4_tab', function () {
+      $('#page1,#page2,#page3,#page5').addClass('hide');
+      $('#page4').removeClass('hide');
+    });
+    $('#mobile-demo').on('click', '#page2_tab', function () {
+      $('#page1,#page3,#page4,#page5').addClass('hide');
+      $('#page2').removeClass('hide');
+    });
+
+
+    //NOTE 由获取演艺数据而衍生出的相关功能
     $.ajax({
       "url": "https://www.fastmock.site/mock/40e170f960701a834866a0bc956002f6/tickets/getAllArts",
       "success": function (data) {
+        $('.preloader-wrapper').addClass('hide');
         //定义新数组接收数据
         let goodsArr = data.goods;
+        //ANCHOR 首页热门推荐
         for (let i = 0; i < 4; i++) {
           let good = goodsArr[i];
           //热门推荐位为前四个商品
@@ -706,13 +758,629 @@
 
           }
         }
+        //剧院页热门推荐
+        for (let i = 0; i < 6; i++) {
+          let good = goodsArr[i];
+          //热门推荐位为前六个商品
+          showHotDataInThreater(good);
+        }
+        //商品详情页实时渲染
+        $('.page-block').on('click', '.goods_item', function (e) {
+          $('#page1,#page2,#page4,#page5').addClass('hide');
+          $('#page3').removeClass('hide');
+          let good_id_num = Number($(this).attr('num'));
+          let good = goodsArr[good_id_num - 1];
+          $('.goods-title-img').prop('src', `${good.img_src}`);
+          $('.goods-show-title').text(`${good.good_name}`);
+          $('.goods-show-name').text(`${good.place}`);
+          $('.goods-show-name .right').text(`${good.play_time}`);
+          $('#page3').attr('good_id', `${good_id_num}`);
+          $('.goods-show-time').empty();
+          $('.goods-sells-price').empty();
+          let timeArr = good.times
+          for (let i = 0; i < timeArr.length; i++) {
+            let showTime = timeArr[i];
+            let newTimeCard = `
+              <div class="col s4">
+                    <div class="card">
+                      <div class="card-content hoverable goods_time_card">
+                        <p class="flow-text">${showTime}</p>
+                      </div>
+                    </div>
+                  </div>
+              `;
+            $('.goods-item-right-block .goods-show-time').append(newTimeCard);
+          }
+          if (Array.isArray(good.price)) {
+            let showPriceArr = good.price;
+            for (let i = 0; i < showPriceArr.length; i++) {
+              let showPrice = showPriceArr[i];
+              let newPriceCard = `
+              <div class="col s4">
+                    <div class="card">
+                      <div class="card-content goods_price_card">
+                        <p class="flow-text">${showPrice}</p>
+                      </div>
+                    </div>
+                  </div>
+              `;
+              $('.goods-item-right-block .goods-sells-price').append(newPriceCard);
+            }
+          } else {
+            let newPriceCard = `
+              <div class="col s4">
+                    <div class="card">
+                      <div class="card-content hoverable goods_price_card">
+                        <p>${good.price}</p>
+                      </div>
+                    </div>
+                  </div>
+              `;
+            $('.goods-item-right-block .goods-sells-price').append(newPriceCard);
+          }
+          $(`#play_details`).empty();
+          $(`#play_details`).append(`${good.details}`);
+          $(`#play_details img`).addClass(`responsive-img`);
+          $('#play_info_ctrl_tab li a').removeClass('active');
+          $('#play_info_ctrl_tab li:first-child a').addClass('active');
+        })
+        //剧院详情页实时渲染
+        $('.page-block').on('click', '.threater-buy-ticket', function (e) {
+          $('#page1,#page2,#page3,#page4').addClass('hide');
+          $('#page5').removeClass('hide');
+          let good_id_Str_from_threater = $(this).attr('goods_num');
+          var good_id_Arr_from_threater = good_id_Str_from_threater.split(",");
+          for (let i = 0; i < good_id_Arr_from_threater.length; i++) {
+            let good_id_from_threater = Number(good_id_Arr_from_threater[i]);
+            let good = goodsArr[good_id_from_threater - 1];
+            showGoodsInThreater(good);
+          }
+        });
+
+
+        //NOTE 商品选座，添加购物车
+        //NOTE 选择商品规格
+        let can_go_to_choose_seat_time = false;
+        let can_go_to_choose_seat_price = false;
+        $('.page-block').on('click', '.goods_time_card', function (e) {
+          $('.goods_time_card').removeClass('white-text deep-purple goods_time_card_selected');
+          $(this).addClass('white-text deep-purple goods_time_card_selected');
+          can_go_to_choose_seat_time = true;
+          if (can_go_to_choose_seat_price && can_go_to_choose_seat_time) {
+            $('#go_to_select_seat').removeClass('disabled');
+          }
+        });
+        $('.page-block').on('click', '.goods_price_card', function (e) {
+          $('.goods_price_card').removeClass('white-text deep-purple goods_price_card_selected');
+          $(this).addClass('white-text deep-purple goods_price_card_selected');
+          can_go_to_choose_seat_price = true;
+          if (can_go_to_choose_seat_price && can_go_to_choose_seat_time) {
+            $('#go_to_select_seat').removeClass('disabled');
+          }
+        });
+        //NOTE 进入选座页面
+        $('.page-block').on('click', '#go_to_select_seat', function (e) {
+          let doSignin = sessionStorage.getItem('signin');
+          if (doSignin == 'false') {
+            $('#go_to_select_seat').prop('href', '#modal2');
+          } else if (doSignin == 'true') {
+            $('#go_to_select_seat').prop('href', "#modal5");
+          } else if (doSignin == null) {
+            $('#go_to_select_seat').prop('href', '#modal1');
+          }
+          $('#sits').empty();
+          //NOTE 生成座位列表
+          for (let i = 1; i <= 8; i++) {
+            $('#sits').append(`<ul class='center row_of_sits row${i}' seat_row='${i}'></ul>`);
+            for (let j = 1; j <= 8; j++) {
+              $(`.row${i}`).append(`<li class='col_of_sits' position='${i}排${j}列' seat_checked='false' seat_col='${j}'><i class="material-icons hoverable">perm_identity</i></li>`);
+            }
+          }
+          //TODO 获取后台数据锁定已选座位
+          let orderBankStr = localStorage.getItem('orderBankJSON');
+
+          if (orderBankStr !== null) {
+            let orderBankArr = JSON.parse(orderBankStr);
+            let good_id_num = $('#page3').attr('good_id');
+            let lock_seat_arr = [];
+            for (let i = 0; i < orderBankArr.length; i++) {
+              for (let j = 0; j < orderBankArr[i].user_order.length; j++) {
+                if (orderBankArr[i].user_order[j].play_id == $('#page3').attr('good_id')) {
+                  lock_seat_arr = orderBankArr[i].user_order[j].play_choosedSeat;
+                  for (let k = 0; k < lock_seat_arr.length; k++) {
+                    $('.col_of_sits').each(function (e) {
+                      if ($(this).attr('position') == lock_seat_arr[k]) {
+                        $(this).attr('seat_checked', 'lock')
+                        $(this).children().text('lock');
+                        $(this).children().addClass('white-text');
+                        $(this).children().addClass('red darken-4');
+                      }
+                    });
+                  }
+                }
+              }
+            }
+
+          }
+        });
+        //NOTE 开始选座
+        let seat_count = 0;
+        let seat_txt = ``;
+        $('main').on('click', 'ul li', function (e) {
+          if ($(this).attr('seat_checked') == 'false') {
+            if (seat_count == 4) {
+              alert('单个订单最多只能购买4张票');
+            } else {
+              seat_count++;
+              $('#go_to_check_out').removeClass('disabled');
+              $(this).children().text('done');
+              $(this).children().addClass('white-text');
+              $(this).children().addClass('deep-purple');
+              $(this).attr('seat_checked', 'true');
+              seat_txt = $(this).attr('position');
+
+              let newSeatInfo = `
+              <div class="col l3 m6 s12 SeatInfo_box" position='${seat_txt}'>
+                <div class="card">
+                  <div class="card-content deep-purple">
+                    <p class='white-text'>${seat_txt}</p>
+                  </div>
+                </div>
+              </div>
+              `;
+              $('.select_seat_info').append(newSeatInfo);
+            }
+          } else if ($(this).attr('seat_checked') == 'true') {
+            seat_count--;
+            $(this).children().text('perm_identity');
+            $(this).children().removeClass('white-text');
+            $(this).children().removeClass('deep-purple');
+            $(this).attr('seat_checked', 'false');
+            let seat_txt = $(this).attr('position');
+            $(`.SeatInfo_box`).each(function (e) {
+              if ($(this).attr('position') == seat_txt) {
+                $(this).remove();
+              }
+              if (seat_count == 0) {
+                $('#go_to_check_out').addClass('disabled');
+              }
+            });
+          }
+        });
+        $('main').on('click', '#go_to_check_out', function (e) {
+          let good_id_num = $('#page3').attr('good_id');
+          let good = goodsArr[good_id_num - 1];
+          let selected_good_price = Number($(`.goods_price_card_selected p`).text().match(/\d{3}/));
+          let sum_once_price = selected_good_price * seat_count
+          $('#shopping_car tbody .selected_good_name').text(`${good.good_name}`);
+          $('#shopping_car tbody .selected_good_price').text(`${selected_good_price}`);
+          $('#shopping_car tbody .selected_seat_count').text(`${seat_count}`);
+          $('#shopping_car tbody .sum_price_of_shoppingcar').text(`${sum_once_price}`);
+          let sum_price_arr = $('.sum_price_of_shoppingcar');
+          let sum_all_price = 0
+          for (let i = 0; i < sum_price_arr.length; i++) {
+            sum_all_price += Number($(sum_price_arr[i]).text());
+          }
+          $('#sum_all_price_in_spc').text(sum_all_price);
+
+        });
+        $('main').on('click', '.del_this_goods', function (e) {
+          $('#shopping_car tbody .selected_good_name').text(``);
+          $('#shopping_car tbody .selected_good_price').text(``);
+          $('#shopping_car tbody .selected_seat_count').text(``);
+          $('#shopping_car tbody .sum_price_of_shoppingcar').text(``);
+          $('#sum_all_price_in_spc').text("0");
+          $(`#sits ul li`).each(function (e) {
+            if ($(this).attr('seat_checked') == 'true') {
+              $(this).children().text('perm_identity');
+              $(this).children().removeClass('white-text');
+              $(this).children().removeClass('deep-purple');
+              $(this).attr('seat_checked', 'false');
+            }
+            seat_count = 0;
+            $('.select_seat_info').empty();
+            $('.goods_time_card').removeClass('white-text deep-purple goods_time_card_selected');
+            $('.goods_price_card').removeClass('white-text deep-purple goods_price_card_selected');
+          });
+        });
+
+        //NOTE 订单存入后台
+        $('main').on('click', '#go_to_order_page', function (e) {
+          let save_seat_info = [];
+          let order_Obj_Arr = [];
+          $(`.SeatInfo_box`).each(function (e) {
+            let selected_seat_info = $(this).attr('position');
+            save_seat_info.push(selected_seat_info);
+          });
+          let orderBankStr = localStorage.getItem('orderBankJSON');
+          if (orderBankStr == null) {
+            let orderBankArr = [];
+            let user_order_Obj = {
+              user_name: sessionStorage.getItem('user'),
+              user_order: order_Obj_Arr,
+              user_comment: []
+            }
+            let order_Obj = {
+              play_id: $('#page3').attr('good_id'),
+              play_price: $(`.goods_price_card_selected p`).text().match(/\d{3}/),
+              play_selected_number: seat_count,
+              play_choosedSeat: save_seat_info,
+              play_time: $(`.goods_time_card_selected p`).text()
+            }
+            order_Obj_Arr.push(order_Obj);
+            orderBankArr.push(user_order_Obj);
+            orderBankStr = JSON.stringify(orderBankArr);
+            localStorage.setItem('orderBankJSON', orderBankStr);
+          } else {
+            let orderBankArr = JSON.parse(orderBankStr);
+            function check_user_name(orderBankArr_item) {
+              return orderBankArr_item.user_name == sessionStorage.getItem('user');
+            }
+            let userIndex = orderBankArr.findIndex(findUser);
+            if (userIndex != -1) {
+              let order_Obj = {
+                play_id: $('#page3').attr('good_id'),
+                play_price: $(`.goods_price_card_selected p`).text().match(/\d{3}/),
+                play_selected_number: seat_count,
+                play_choosedSeat: save_seat_info,
+                play_time: $(`.goods_time_card_selected p`).text()
+              }
+              orderBankArr[userIndex].user_order.push(order_Obj);
+              orderBankStr = JSON.stringify(orderBankArr);
+              localStorage.setItem('orderBankJSON', orderBankStr);
+              console.log('不新建用户仅存储订单');
+            } else {
+              let user_order_Obj = {
+                user_name: sessionStorage.getItem('user'),
+                user_order: order_Obj_Arr,
+                user_comment: []
+              }
+              let order_Obj = {
+                play_id: $('#page3').attr('good_id'),
+                play_price: $(`.goods_price_card_selected p`).text().match(/\d{3}/),
+                play_selected_number: seat_count,
+                play_choosedSeat: save_seat_info,
+                play_time: $(`.goods_time_card_selected p`).text()
+              }
+              order_Obj_Arr.push(order_Obj);
+              orderBankArr.push(user_order_Obj);
+              orderBankStr = JSON.stringify(orderBankArr);
+              localStorage.setItem('orderBankJSON', orderBankStr);
+              console.log('新建用户');
+            }
+
+
+          }
+          $(`#sits ul li`).each(function (e) {
+            if ($(this).attr('seat_checked') == 'true') {
+              $(this).children().text('perm_identity');
+              $(this).children().removeClass('white-text');
+              $(this).children().removeClass('deep-purple');
+              $(this).attr('seat_checked', 'false');
+            }
+            seat_count = 0;
+            $('.select_seat_info').empty();
+            $('.goods_time_card').removeClass('white-text deep-purple goods_time_card_selected');
+            $('.goods_price_card').removeClass('white-text deep-purple goods_price_card_selected');
+          });
+          $('#modal4 table tbody').empty();
+          orderBankStr = localStorage.getItem('orderBankJSON');
+          let orderBankArr = JSON.parse(orderBankStr);
+          function findUser(orderBankArr_item) {
+            return orderBankArr_item.user_name == sessionStorage.getItem('user');
+          }
+          let userIndex = orderBankArr.findIndex(findUser);
+          let inport_user_order = orderBankArr[userIndex].user_order;
+          for (let i = 0; i < inport_user_order.length; i++) {
+            let good = goodsArr[inport_user_order[i].play_id - 1];
+            let single_price = inport_user_order[i].play_price[0];
+            let goods_number = inport_user_order[i].play_selected_number;
+            let sum_price = Number(single_price) * Number(goods_number);
+            let newTR = `
+            <tr>
+                  <td class="flow-text">${good.good_name}</td>
+                  <td>${single_price}</td>
+                  <td>${goods_number}</td>
+                  <td>${sum_price}</td>
+                  <td class='del_this_order'>删除</td>
+                </tr>
+            `;
+            $('#modal4 table tbody').append(newTR);
+          }
+        });
+        //NOTE 订单管理渲染
+        $('header').on('click', '#see_history_order', function (e) {
+          $('#modal4 table tbody').empty();
+          let doSignin = sessionStorage.getItem('signin');
+          if (doSignin == 'false') {
+            $('#see_history_order').prop('href', '#modal2');
+          } else if (doSignin == 'true') {
+            $('#see_history_order').prop('href', "#modal4");
+            let orderBankStr = localStorage.getItem('orderBankJSON');
+            let orderBankArr = JSON.parse(orderBankStr);
+            function findUser(orderBankArr_item) {
+              return orderBankArr_item.user_name == sessionStorage.getItem('user');
+            }
+            let userIndex = orderBankArr.findIndex(findUser);
+            let inport_user_order = orderBankArr[userIndex].user_order;
+            for (let i = 0; i < inport_user_order.length; i++) {
+              let good = goodsArr[inport_user_order[i].play_id - 1];
+              let single_price = inport_user_order[i].play_price[0];
+              let goods_number = inport_user_order[i].play_selected_number;
+              let sum_price = Number(single_price) * Number(goods_number);
+              let newTR = `
+            <tr>
+                  <td class="flow-text">${good.good_name}</td>
+                  <td>${single_price}</td>
+                  <td>${goods_number}</td>
+                  <td>${sum_price}</td>
+                  <td class='del_this_order'>删除</td>
+                </tr>
+            `;
+              $('#modal4 table tbody').append(newTR);
+            }
+          } else if (doSignin == null) {
+            $('#see_history_order').prop('href', '#modal1');
+          }
+
+        })
+        $('main').on('click', '#modal4 .del_this_order', function (e) {
+          $(this).parent().remove();
+        })
+        $('main').on('click', '#load_comment', function (e) {
+          $('#add_all_comment_here').html('');
+          let orderBankStr = localStorage.getItem('orderBankJSON');
+          let orderBankArr = JSON.parse(orderBankStr);
+          for (let i = 0; i < orderBankArr.length; i++) {
+            for (let j = 0; j < orderBankArr[i].user_comment.length; j++) {
+              if (orderBankArr[i].user_comment[j].play_id == $('#page3').attr('good_id')) {
+                let comment_obj = orderBankArr[i].user_comment[j];
+                let star_num = Number(comment_obj.comment_star);
+                let star_block = ``;
+                switch (star_num) {
+                  case 1:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                  case 2:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                  case 3:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                  case 4:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                  case 5:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                }
+                let newCommentCard = `
+                <div class="col s12">
+                <div class="card horizontal">
+                  <div class="card-stacked">
+                    <div class="card-content">
+                      <p class='del_this_comment_info'>
+                      <div class="chip">
+                        <img src="../images/user.jpg" alt="Contact Person" />
+                        ${orderBankArr[i].user_name}
+                      </div>
+                      ${comment_obj.comment}
+                      <a  name='${orderBankArr[i].user_name}'
+                        class="del_this_comment waves-effect waves-light btn right deep-purple white-text disabled">删除评论</a>
+                      </p>
+                    </div>
+                    <div class="card-action">
+                      <span class='add_comment_star_here'>
+                        ${star_block}
+                      </span>
+                      <span class="right">${comment_obj.comment_time}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                `;
+                $('#add_all_comment_here').append(newCommentCard);
+              }
+            }
+          }
+          let comment_star_arr = $('#input_comment_star .comment_star');
+          for (let i = 0; i < comment_star_arr.length; i++) {
+            $(comment_star_arr[i]).removeClass('deep-purple-text');
+            $(comment_star_arr[i]).addClass('grey-text lighten-2');
+          }
+          $('#textarea1').val('');
+          $('#input_comment_star').attr('num_check', ``);
+          $('.del_this_comment').each(function (e) {
+            if ($(this).attr('name') == sessionStorage.getItem('user'))
+              $(this).removeClass('disabled');
+          })
+
+        })
+        //打分并获取
+        $('#comment').on('click', '#input_comment_star .comment_star', function () {
+          let comment_star_arr = $('#input_comment_star .comment_star');
+          let star_num = $(this).attr('star_num');
+          for (let i = 0; i < comment_star_arr.length; i++) {
+            $(comment_star_arr[i]).removeClass('deep-purple-text');
+            $(comment_star_arr[i]).addClass('grey-text lighten-2');
+          }
+          for (let i = 0; i < star_num; i++) {
+            $(comment_star_arr[i]).removeClass('grey-text lighten-2');
+            $(comment_star_arr[i]).addClass('deep-purple-text');
+          }
+          $('#input_comment_star').attr('num_check', `${star_num}`);
+        });
+        //将评论写入后台
+        $('#comment').on('click', '#save_and_show_comment', function (e) {
+          let comment_arr = [];
+          let orderBankStr = localStorage.getItem('orderBankJSON');
+          if (orderBankStr == null) {
+            alert('请先购买商品');
+          } else {
+            let orderBankArr = JSON.parse(orderBankStr);
+            let count_number = 0
+            for (let i = 0; i < orderBankArr.length; i++) {
+              if (sessionStorage.getItem('user') == orderBankArr[i].user_name) {
+                for (let j = 0; j < orderBankArr[i].user_order.length; j++) {
+                  if ($('#page3').attr('good_id') == orderBankArr[i].user_order[j].play_id) {
+                    let d = new Date();
+                    let strDate = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate();
+                    let commentObj = {
+                      play_id: $('#page3').attr('good_id'),
+                      comment_star: $('#input_comment_star').attr('num_check'),
+                      comment: $('#textarea1').val(),
+                      comment_time: `${strDate}`
+                    }
+                    orderBankArr[i].user_comment.push(commentObj);
+                    orderBankStr = JSON.stringify(orderBankArr);
+                    localStorage.setItem('orderBankJSON', orderBankStr);
+                    console.log('进入存后台分支');
+                    break;
+                  }
+                }
+
+              } else {
+                count_number++
+              }
+            }
+            if (count_number == orderBankArr.length) {
+              alert('购买后再评价');
+            }
+          }
+          $('#add_all_comment_here').html('');
+          orderBankStr = localStorage.getItem('orderBankJSON');
+          let orderBankArr = JSON.parse(orderBankStr);
+          for (let i = 0; i < orderBankArr.length; i++) {
+            for (let j = 0; j < orderBankArr[i].user_comment.length; j++) {
+              if (orderBankArr[i].user_comment[j].play_id == $('#page3').attr('good_id')) {
+                let comment_obj = orderBankArr[i].user_comment[j];
+                let star_num = Number(comment_obj.comment_star);
+                let star_block = ``;
+                switch (star_num) {
+                  case 1:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                  case 2:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                  case 3:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                  case 4:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                  case 5:
+                    star_block = `
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    <i class="material-icons deep-purple-text comment_star" star_num='1'>grade</i>
+                    `
+                    break;
+                }
+                let newCommentCard = `
+                <div class="col s12">
+                <div class="card horizontal">
+                  <div class="card-stacked">
+                    <div class="card-content">
+                      <p>
+                      <div class="chip">
+                        <img src="../images/user.jpg" alt="Contact Person" />
+                        ${orderBankArr[i].user_name}
+                      </div>
+                      ${comment_obj.comment}
+                      <a  name='${orderBankArr[i].user_name}'
+                        class="del_this_comment waves-effect waves-light btn right deep-purple white-text disabled">删除评论</a>
+                      </p>
+                    </div>
+                    <div class="card-action">
+                      <span class='add_comment_star_here'>
+                        ${star_block}
+                      </span>
+                      <span class="right">${comment_obj.comment_time}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+                `;
+                $('#add_all_comment_here').append(newCommentCard);
+              }
+            }
+          }
+          $('.del_this_comment').each(function (e) {
+            if ($(this).attr('name') == sessionStorage.getItem('user'))
+              $(this).removeClass('disabled');
+          })
+        });
+        $('main').on('click', '.del_this_comment', function (e) {
+          $(this).parent().parent().parent().parent().remove();
+        })
       }
     });
-
+    //NOTE 由获取影院数据而衍生出的相关功能
+    $.ajax({
+      'url': 'https://www.fastmock.site/mock/40e170f960701a834866a0bc956002f6/tickets/getAllTheatres',
+      'success': function (data) {
+        let threaterArr = data.places;
+        for (let i = 0; i < threaterArr.length; i++) {
+          let threater = threaterArr[i];
+          showThreater(threater);
+        }
+        $('main').on('click', '.threater-buy-ticket', function (e) {
+          let address = '';
+          let threater_num = $(this).attr('threater_id');
+          for (let i = 0; i < threaterArr.length; i++) {
+            if (threaterArr[i].id == threater_num) {
+              let threater = threaterArr[i];
+              address = threater.address;
+            }
+          }
+          let $add = address
+          console.log($add);
+          map($add);
+        });
+      }
+    });
+    //NOTE showXX为在页面上生成相应内容的功能
     function showHotData(good) {
       let newCard = `
       <div class="col l3 s6">
-          <div class="card  hoverable">
+          <div class="card  hoverable goods_item" num="${good.id}">
             <div class="card-image">
               <img src="${good.img_src}"/>
             </div>
@@ -725,10 +1393,26 @@
       `;
       $('.hotList').append(newCard);
     }
+    function showHotDataInThreater(good) {
+      let newCard = `
+      <div class="col l2 m3 s6">
+          <div class="card  hoverable goods_item" num="${good.id}">
+            <div class="card-image">
+              <img src="${good.img_src}"/>
+            </div>
+            <div class="card-content">
+              <p class="truncate font-weight-bolder">${good.good_name}</p>
+              <p class="truncate pl-10">${good.place}</p>
+            </div>
+          </div>
+        </div>
+      `;
+      $('#page2 #main-item .film_on_show').append(newCard);
+    }
     function showMusic(good) {
-      let newCard=`
+      let newCard = `
       <div class="col l3 s6">
-          <div class="card  hoverable">
+          <div class="card  hoverable goods_item" num="${good.id}">
             <div class="card-image">
               <img src="${good.img_src}"/>
             </div>
@@ -742,9 +1426,9 @@
       $('#showMusic .row').append(newCard);
     }
     function showLive(good) {
-      let newCard=`
+      let newCard = `
       <div class="col l3 s6">
-          <div class="card  hoverable">
+          <div class="card  hoverable goods_item" num="${good.id}">
             <div class="card-image">
               <img src="${good.img_src}"/>
             </div>
@@ -758,9 +1442,9 @@
       $('#showLive .row').append(newCard);
     }
     function showOpera(good) {
-      let newCard=`
+      let newCard = `
       <div class="col l3 s6">
-          <div class="card  hoverable">
+          <div class="card  hoverable goods_item" num="${good.id}">
             <div class="card-image">
               <img src="${good.img_src}"/>
             </div>
@@ -774,9 +1458,9 @@
       $('#showOpera .row').append(newCard);
     }
     function showSport(good) {
-      let newCard=`
+      let newCard = `
       <div class="col l3 s6">
-          <div class="card  hoverable">
+          <div class="card  hoverable goods_item" num="${good.id}">
             <div class="card-image">
               <img src="${good.img_src}"/>
             </div>
@@ -790,9 +1474,9 @@
       $('#showSport .row').append(newCard);
     }
     function showOthers(good) {
-      let newCard=`
+      let newCard = `
       <div class="col l3 s6">
-          <div class="card  hoverable">
+          <div class="card  hoverable goods_item" num="${good.id}">
             <div class="card-image">
               <img src="${good.img_src}"/>
             </div>
@@ -806,9 +1490,9 @@
       $('#showOthers .row').append(newCard);
     }
     function showChild(good) {
-      let newCard=`
+      let newCard = `
       <div class="col l3 s6">
-          <div class="card  hoverable">
+          <div class="card  hoverable goods_item" num="${good.id}">
             <div class="card-image">
               <img src="${good.img_src}"/>
             </div>
@@ -822,9 +1506,9 @@
       $('#showChild .row').append(newCard);
     }
     function showTrivial(good) {
-      let newCard=`
+      let newCard = `
       <div class="col l3 s6">
-          <div class="card  hoverable">
+          <div class="card  hoverable goods_item" num="${good.id}">
             <div class="card-image">
               <img src="${good.img_src}"/>
             </div>
@@ -836,6 +1520,66 @@
         </div>
       `;
       $('#showTrivial .row').append(newCard);
+    }
+    function showThreater(threater) {
+      let threater_tel_Arr = threater.phone;
+      let threater_tel = ``;
+      for (let i = 0; i < threater_tel_Arr.length; i++) {
+        threater_tel = threater_tel + threater_tel_Arr[i] + ' ';
+      }
+      let goods = threater.goods
+      let newCard = `
+      <div class="col s12 m6">
+              <div class="card horizontal hoverable  threater_item_box">
+                <div class="card-image grey lighten-3">
+                  <img src="${threater.img_src}" class='z-depth-3'>
+                </div>
+                <div class="card-stacked">
+                  <div class="card-content">
+                    <p class='hoverable'>地址：<span>${threater.address}</span></p>
+                    <p class='hoverable'>电话：<span>${threater_tel}</span></p>
+                    <p class="deep-purple-text hoverable">评分：<span>${threater.mark}</span></p>
+                  </div>
+                  <div class="card-action">
+                    <span>${threater.name}</span>
+                    <p><a href="#"  goods_num='${goods}' threater_id='${threater.id}'  class="right white-text deep-purple btn threater-buy-ticket">进入剧院</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+      `;
+      $('#threater').append(newCard);
+    }
+    function showGoodsInThreater(good) {
+      let newCard = `
+      <div class="col l3 s6">
+          <div class="card  hoverable goods_item" num="${good.id}">
+            <div class="card-image">
+              <img src="${good.img_src}"/>
+            </div>
+            <div class="card-content">
+              <p class="truncate font-weight-bolder">${good.good_name}</p>
+              <p class="truncate pl-10">${good.place}</p>
+            </div>
+          </div>
+        </div>
+      `;
+      $('#show_this_threater_goods .this_threater_goods').append(newCard);
+    }
+    function map(position) {
+      var map = new BMapGL.Map('container');
+      map.centerAndZoom(new BMapGL.Point(116.331398, 39.897445), 12);
+      //创建地址解析器实例
+      var myGeo = new BMapGL.Geocoder();
+      // 将地址解析结果显示在地图上，并调整地图视野
+      myGeo.getPoint(position, function (point) {
+        if (point) {
+          map.centerAndZoom(point, 16);
+          map.addOverlay(new BMapGL.Marker(point, { title: `${position}` }))
+        } else {
+          alert('您选择的地址没有解析到结果！');
+        }
+      }, '北京市')
     }
   </script>
 </body>

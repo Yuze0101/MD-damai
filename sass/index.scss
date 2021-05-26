@@ -69,7 +69,11 @@ main {
             width: 25%;
         }
     }
-
+    .goods_time_card {
+        p {
+            font-size: 15px;
+        }
+    }
     #sits {
         ul {
             display: flex;
@@ -116,5 +120,8 @@ main {
 
             }
         }
+    }
+    .flow-text{
+        font-size: 10px;
     }
 }

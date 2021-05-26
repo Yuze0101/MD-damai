@@ -131,6 +131,10 @@ main #progress li {
   width: 25%;
 }
 
+main .goods_time_card p {
+  font-size: 15px;
+}
+
 main #sits ul {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -178,4 +182,8 @@ main #page3 .container .goods-sells-price .card-content {
 main #page3 .container .goods-show-time .card-content p,
 main #page3 .container .goods-sells-price .card-content p {
   padding-left: 10px;
+}
+
+main .flow-text {
+  font-size: 10px;
 }
